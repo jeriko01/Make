@@ -1,0 +1,27 @@
+# Render.com blueprint for the FastAPI backend.
+# In Render: New → Blueprint → point at this repo. Set env vars in the dashboard
+# (do NOT commit secrets). See backend/.env.example for the full list.
+services:
+  - type: web
+    name: make-api
+    runtime: python
+    rootDir: backend
+    plan: free            # free tier sleeps after inactivity (cold starts ~30–60s)
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: media
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: FRONTEND_ORIGINS
+        sync: false        # e.g. https://yourdomain.com,https://www.yourdomain.com
+      - key: ENVIRONMENT
+        value: production

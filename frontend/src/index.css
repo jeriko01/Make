@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --theme-palette-color-1: #39A751;
+    --theme-palette-color-2: #2f9946;
+    --theme-palette-color-3: #d2d7dc;
+    --theme-palette-color-4: #ffffff;
+    --theme-palette-color-5: #1e2b1a;
+    --theme-palette-color-6: #0e0e0e;
+    --theme-palette-color-7: #161d15;
+    --theme-palette-color-8: #000000;
+    --border-animation-color: #52fe7d73;
+    --border-animation-speed: 7s;
+    --border-animation-width: 1px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    background-color: #0e0e0e;
+  }
+
+  body {
+    background-color: #0e0e0e;
+    color: #d2d7dc;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #39A751;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: none;
+    ring: 2px;
+    ring-color: #39A751;
+    ring-offset: 2px;
+    ring-offset-color: #0e0e0e;
+    border-radius: 6px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Component layer — Make Design System
+   ──────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Dark surface tokens ── */
+  .surface-base {
+    background-color: #0e0e0e;
+    color: #d2d7dc;
+  }
+  .surface-light {
+    background-color: #0e0e0e;
+    color: #d2d7dc;
+  }
+  .surface-warm {
+    background-color: #141714;
+    color: #d2d7dc;
+  }
+  .surface-card {
+    background-color: #141714;
+    color: #d2d7dc;
+  }
+  .surface-dark {
+    background-color: #161d15;
+    color: #d2d7dc;
+  }
+  .surface-ink {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  /* ── Layout ── */
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+  }
+
+  /* ── Make Card Style ── */
+  .make-card {
+    position: relative;
+    background-color: #141714;
+    border: 1px solid #1e261d;
+    box-shadow: 0 -1px 0 0 rgba(82, 255, 125, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    transition: all 0.25s ease;
+  }
+  .make-card:hover {
+    border-color: rgba(82, 255, 125, 0.35);
+    box-shadow: 0 -1px 0 0 rgba(82, 255, 125, 0.4), 0 0 20px rgba(57, 167, 81, 0.15);
+  }
+
+  /* Make signature border-animation container */
+  .border-animation {
+    position: relative;
+    box-shadow: 0 -1px 0 0 #52ff7d29, 0 0 0 1px #ffffff1f;
+    border-radius: 14px;
+  }
+
+  /* ── Buttons (Make Design System) ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200
+           focus-visible:ring-2 focus-visible:ring-[#39A751] disabled:opacity-50 disabled:cursor-not-allowed;
+    border-radius: 7px;
+  }
+  .btn-primary {
+    @apply btn text-white active:scale-[0.98] shadow-md;
+    background-color: #39A751;
+  }
+  .btn-primary:hover {
+    background-color: #2f9946;
+    box-shadow: 0 0 16px rgba(57, 167, 81, 0.35);
+  }
+  .btn-lime {
+    @apply btn text-white active:scale-[0.98] font-bold shadow-md;
+    background-color: #39A751;
+  }
+  .btn-lime:hover {
+    background-color: #2f9946;
+    box-shadow: 0 0 16px rgba(57, 167, 81, 0.35);
+  }
+  .btn-outline {
+    @apply btn active:scale-[0.98];
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+  }
+  .btn-outline:hover {
+    border-color: #39A751;
+    color: #ffffff;
+    background-color: rgba(57, 167, 81, 0.12);
+  }
+  .btn-outline-light {
+    @apply btn active:scale-[0.98];
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+  }
+  .btn-outline-light:hover {
+    border-color: #39A751;
+    color: #ffffff;
+    background-color: rgba(57, 167, 81, 0.12);
+  }
+  .btn-ghost {
+    @apply btn text-[#d2d7dc] hover:text-white hover:bg-white/5 active:scale-[0.98];
+    border: 1px solid #1e261d;
+  }
+
+  /* ── Chips / Tags ── */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-[#1e261d] bg-[#161d15] px-3 py-1 text-xs font-semibold text-[#d2d7dc];
+  }
+  .chip-dark {
+    @apply inline-flex items-center rounded-full border border-[#1e261d] bg-[#141714] px-3 py-1 text-xs font-semibold text-[#d2d7dc];
+  }
+  .chip-lime {
+    @apply inline-flex items-center rounded-full border border-[#39A751]/40 bg-[#1e2b1a] px-3 py-1 text-xs font-bold text-[#52fe7d];
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply rounded-2xl bg-[#141714] border border-[#1e261d] p-6 text-[#d2d7dc];
+    box-shadow: 0 -1px 0 0 rgba(82, 255, 125, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .card-dark {
+    @apply rounded-2xl bg-[#161d15] border border-[#1e261d] p-6 text-[#d2d7dc];
+    box-shadow: 0 -1px 0 0 rgba(82, 255, 125, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  /* ── Glass (kept for admin compat & header) ── */
+  .glass {
+    @apply bg-[#141714]/85 backdrop-blur-xl border border-[#1e261d] shadow-lg;
+  }
+  .glass-strong {
+    @apply bg-[#0e0e0e]/95 backdrop-blur-2xl border border-[#1e261d] shadow-xl;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-[#d2d7dc] to-[#8a949e] bg-clip-text text-transparent;
+  }
+
+  /* ── Section headings ── */
+  .section-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-[#8a949e];
+  }
+  .section-eyebrow-lime {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-[#39A751];
+  }
+  .section-heading {
+    @apply font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl;
+  }
+  .section-heading-light {
+    @apply font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl;
+  }
+
+  /* ── Grid patterns ── */
+  .grid-bg-light {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .grid-bg-dark {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── Make frame border for portrait ── */
+  .make-frame {
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 -1px 0 0 #52fe7d73, 0 0 0 1px rgba(255, 255, 255, 0.15), 0 20px 40px rgba(0, 0, 0, 0.6);
+    background: #141714;
+    padding: 3px;
+  }
+  .make-frame-inner {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000000;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Utilities
+   ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0e0e0e; }
+::-webkit-scrollbar-thumb { background: #1e261d; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #2f9946; }
+
+/* ── Form inputs (Dark inputs) ── */
+.field-input {
+  @apply w-full rounded-xl border border-[#1e261d] bg-black/40 px-4 py-3 text-sm text-white placeholder-[#8a949e]
+         outline-none transition focus:border-[#39A751] focus:ring-2 focus:ring-[#39A751]/25;
+}
+.field-input-dark {
+  @apply w-full rounded-xl border border-[#1e261d] bg-black/40 px-4 py-3 text-sm text-white placeholder-[#8a949e]
+         outline-none transition focus:border-[#39A751] focus:ring-2 focus:ring-[#39A751]/25;
+}
+.field-input-error {
+  border-color: #ef4444 !important;
+}
