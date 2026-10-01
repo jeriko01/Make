@@ -42,7 +42,7 @@ function AboutContent() {
           </Reveal>
 
           {/* Portrait */}
-          <Reveal delay={120} className="mx-auto w-full max-w-[300px] lg:mx-0 lg:ml-auto">
+          <Reveal delay={120} className="mx-auto w-full max-w-[280px] sm:max-w-[310px] lg:mx-0 lg:ml-auto">
             <div className="relative">
               {/* Outer glow */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/15 via-transparent to-[#52fe7d]/8 blur-xl" />
@@ -54,20 +54,20 @@ function AboutContent() {
                     src={profile.avatar_url}
                     alt={`${profile.full_name || 'Make'} portrait`}
                     className="h-full w-full object-cover object-top"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '2/3' }}
                     loading="eager"
                   />
                 ) : (
                   <div
                     className="flex items-center justify-center bg-gradient-to-b from-[#161d15] to-[#0e0e0e]"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '2/3' }}
                   >
                     <span className="font-display text-7xl font-black text-white/10">
                       {profile.initials || 'MK'}
                     </span>
                   </div>
                 )}
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0e0e0e]/60 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
               </div>
 
               {/* Availability badge */}

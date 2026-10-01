@@ -117,7 +117,7 @@ export default function Hero() {
           </div>
 
           {/* ── Right Column: Clean Portrait ── */}
-          <Reveal delay={120} className="order-1 mx-auto w-full max-w-[320px] sm:max-w-[360px] lg:order-2 lg:mx-0 lg:ml-auto">
+          <Reveal delay={120} className="order-1 mx-auto w-full max-w-[290px] sm:max-w-[330px] lg:order-2 lg:mx-0 lg:ml-auto">
             <div className="relative">
               {/* Outer glow ring */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
@@ -129,13 +129,13 @@ export default function Hero() {
                     src={profile.avatar_url}
                     alt={`${profile.full_name || 'Make'} portrait`}
                     className="h-full w-full object-cover object-top"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '2/3' }}
                     loading="eager"
                   />
                 ) : (
                   <div
                     className="flex items-center justify-center bg-gradient-to-b from-[#161d15] to-[#0e0e0e]"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '2/3' }}
                     role="img"
                     aria-label="Portrait placeholder"
                   >
@@ -145,8 +145,8 @@ export default function Hero() {
                   </div>
                 )}
 
-                {/* Single clean overlay: bottom gradient only */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0e0e0e]/70 to-transparent" />
+                {/* Subtle bottom gradient to blend smoothly */}
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
               </div>
 
               {/* Floating availability dot — minimal, no heavy card */}
