@@ -42,8 +42,7 @@ export default function Hero() {
       aria-label="Hero"
       className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#0e0e0e] pt-24 lg:pt-28"
     >
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute inset-0 grid-bg-dark opacity-50" />
+      {/* Background ambient lighting - pure dark with subtle glow */}
       <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/8 blur-[120px]" />
       <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/4 blur-[100px]" />
 
@@ -117,7 +116,7 @@ export default function Hero() {
           </div>
 
           {/* ── Right Column: Clean Portrait ── */}
-          <Reveal delay={120} className="order-1 mx-auto w-full max-w-[290px] sm:max-w-[330px] lg:order-2 lg:mx-0 lg:ml-auto">
+          <Reveal delay={120} className="order-1 mx-auto w-full max-w-[310px] sm:max-w-[350px] lg:order-2 lg:mx-0 lg:ml-auto">
             <div className="relative">
               {/* Outer glow ring */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
