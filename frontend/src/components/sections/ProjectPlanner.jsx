@@ -101,8 +101,8 @@ export default function ProjectPlanner() {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Section Header */}
-        <div className="max-w-2xl">
+        {/* Section Header - Centered */}
+        <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a] px-3.5 py-1 text-xs font-bold tracking-widest text-[#52fe7d]">
               <Calculator className="h-3.5 w-3.5" />
@@ -111,7 +111,7 @@ export default function ProjectPlanner() {
             <h2 className="mt-4 section-heading">
               Plan your product architecture &amp; timeline
             </h2>
-            <p className="mt-4 text-base text-[#d2d7dc] leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-base text-[#d2d7dc] leading-relaxed">
               Transparent engineering planning. Select your product requirements to calculate estimated sprint milestones, recommended technical stack, and security architecture.
             </p>
           </Reveal>

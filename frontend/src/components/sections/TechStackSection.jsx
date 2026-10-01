@@ -24,14 +24,14 @@ export default function TechStackSection() {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Header */}
-        <div className="max-w-2xl">
+        {/* Header - Centered */}
+        <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="section-eyebrow-lime">Technical Architecture</p>
             <h2 className="mt-3 section-heading">
               Applications, APIs, integrations & data
             </h2>
-            <p className="mt-4 text-base text-[#d2d7dc] leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-base text-[#d2d7dc] leading-relaxed">
               Curated tools selected for stability, developer speed, and long-term maintainability—not for resume stuffing.
             </p>
           </Reveal>

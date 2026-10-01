@@ -22,8 +22,7 @@ function AboutContent() {
               <span>ABOUT MAKE</span>
             </div>
             <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Web and mobile products,<br />
-              built to work.
+              Web and mobile products, built to work.
             </h1>
             <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#d2d7dc] max-w-xl">
               {profile.long_bio ||

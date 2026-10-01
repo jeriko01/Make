@@ -21,9 +21,8 @@ export default function About({ brief = false }) {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        <div className={`grid gap-12 ${brief ? 'lg:grid-cols-[0.85fr_1.15fr]' : 'lg:grid-cols-[1fr_1fr]'} lg:items-start`}>
-
-          {/* ── Left: intro / bio ── */}
+        {/* Header - Centered */}
+        <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="section-eyebrow-lime mb-2">Capabilities</p>
             <h2 className="section-heading">
@@ -31,13 +30,11 @@ export default function About({ brief = false }) {
                 ? 'Engineering dependable systems across the stack'
                 : 'About Make'}
             </h2>
-
-            <p className="mt-5 text-[#d2d7dc] leading-relaxed max-w-md">
-              {profile.long_bio || profile.short_bio || 'Senior engineer specializing in web and mobile applications.'}
+            <p className="mt-4 mx-auto max-w-xl text-base text-[#d2d7dc] leading-relaxed">
+              {profile.short_bio || profile.long_bio || 'Senior engineer specializing in web and mobile applications.'}
             </p>
-
             {brief && (
-              <div className="mt-8">
+              <div className="mt-6 flex justify-center">
                 <Link
                   to="/about"
                   className="btn-outline inline-flex items-center gap-2 text-sm"
@@ -48,9 +45,10 @@ export default function About({ brief = false }) {
               </div>
             )}
           </Reveal>
+        </div>
 
-          {/* ── Right: capability cards ── */}
-          <div className="grid gap-4 sm:grid-cols-2">
+        {/* ── Capability cards ── */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {about.cards.map((c, i) => (
               <Reveal key={c.id} delay={i * 70}>
                 <div className="group rounded-xl border border-[#1e261d] bg-[#141714] p-6 transition-all duration-200 hover:border-[#39A751]/40 hover:bg-[#161d15] hover:shadow-lg hover:shadow-[#39A751]/10">
@@ -69,7 +67,6 @@ export default function About({ brief = false }) {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    )
+  }

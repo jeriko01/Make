@@ -98,9 +98,9 @@ export default function Hero() {
               </div>
             </Reveal>
 
-            {/* Micro stats row */}
+            {/* Micro stats row - clean, no line break/border */}
             <Reveal delay={290}>
-              <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-[#1e261d] pt-6">
+              <div className="mt-8 flex flex-wrap items-center gap-7">
                 {[
                   { num: '3+', label: 'Years Experience' },
                   { num: '20+', label: 'Projects Shipped' },

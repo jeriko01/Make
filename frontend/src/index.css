@@ -27,7 +27,7 @@
   body {
     background-color: #0e0e0e;
     color: #d2d7dc;
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -199,10 +199,10 @@
     @apply text-xs font-bold uppercase tracking-[0.2em] text-[#39A751];
   }
   .section-heading {
-    @apply font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl;
+    @apply font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight;
   }
   .section-heading-light {
-    @apply font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl;
+    @apply font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight;
   }
 
   /* ── Grid patterns ── */

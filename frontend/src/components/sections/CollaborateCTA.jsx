@@ -30,7 +30,7 @@ export default function CollaborateCTA({ heading, body }) {
                   <span>START A PROJECT</span>
                 </div>
 
-                <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+                <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
                   {heading || 'Ready to build your next web or mobile product?'}
                 </h2>
 

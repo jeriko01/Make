@@ -15,12 +15,12 @@ export default function PrinciplesSection() {
     >
       <div className="container-page">
         <Reveal>
-          <div className="max-w-2xl">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="section-eyebrow-lime">Standards</p>
             <h2 className="mt-3 section-heading">
               Engineering principles
             </h2>
-            <p className="mt-4 text-[#d2d7dc] text-base leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-[#d2d7dc] text-base leading-relaxed">
               These are not generic slogans—they are the practical standards that directly influence code structure, delivery speed, and system reliability.
             </p>
           </div>

@@ -61,14 +61,14 @@ export default function ServiceSelector() {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Header */}
-        <div className="max-w-2xl">
+        {/* Header - Centered */}
+        <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <p className="section-eyebrow-lime">Offerings</p>
             <h2 className="mt-3 section-heading">
               What do you need built?
             </h2>
-            <p className="mt-4 text-base text-[#d2d7dc] leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-base text-[#d2d7dc] leading-relaxed">
               Select the service that fits your current project. Your choice automatically carries into the inquiry form so we can discuss specific scope right away.
             </p>
           </Reveal>

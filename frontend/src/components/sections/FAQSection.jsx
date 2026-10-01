@@ -49,15 +49,16 @@ export default function FAQSection({ limit = 5 }) {
       aria-label="Frequently asked questions"
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
-      <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-        <Reveal>
-          <div className="lg:sticky lg:top-28">
+      <div className="container-page">
+        {/* Header - Centered */}
+        <div className="mx-auto max-w-2xl text-center mb-12">
+          <Reveal>
             <p className="section-eyebrow-lime">Support & FAQ</p>
             <h2 className="mt-3 section-heading">Clear answers before we start</h2>
-            <p className="mt-4 text-[#d2d7dc] text-base leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-[#d2d7dc] text-base leading-relaxed">
               Transparent expectations regarding scope, technical stack choices, communication cadence, and project delivery.
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex justify-center">
               <Link
                 to="/support"
                 className="btn-outline inline-flex items-center gap-2 text-sm"
@@ -66,11 +67,11 @@ export default function FAQSection({ limit = 5 }) {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
         <Reveal delay={80}>
-          <div className="rounded-xl border border-[#1e261d] bg-[#141714] p-6 sm:p-8 shadow-xl">
+          <div className="mx-auto max-w-3xl rounded-xl border border-[#1e261d] bg-[#141714] p-6 sm:p-8 shadow-xl">
             {faq.map((item) => (
               <FAQItem key={item.id} question={item.question} answer={item.answer} />
             ))}

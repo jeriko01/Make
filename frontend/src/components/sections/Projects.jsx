@@ -42,8 +42,8 @@ export default function Projects({ featured = false, limit, showFilters = !featu
     >
       <div className="container-page">
 
-        {/* Section Heading */}
-        <div className="max-w-2xl">
+        {/* Section Heading - Centered */}
+        <div className="mx-auto max-w-2xl text-center mb-10">
           <Reveal>
             <p className="section-eyebrow-lime">
               {featured ? 'Selected Work' : 'Portfolio'}
@@ -51,7 +51,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             <h2 className="mt-3 section-heading">
               {featured ? 'Featured applications' : 'Technical project gallery'}
             </h2>
-            <p className="mt-4 text-base text-[#d2d7dc] leading-relaxed">
+            <p className="mt-4 mx-auto max-w-xl text-base text-[#d2d7dc] leading-relaxed">
               Real projects built with modern frontend and backend architectures. No inflated metrics or speculative numbers.
             </p>
           </Reveal>
