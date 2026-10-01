@@ -53,12 +53,11 @@ export default function Hero() {
           {/* ── Left Column ── */}
           <div className="order-2 lg:order-1">
 
-            {/* Eyebrow badge */}
+            {/* Clean plain text in lowercase (no button) */}
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/25 bg-[#1e2b1a]/70 px-3 py-1 text-[10px] font-bold tracking-widest text-[#52fe7d] uppercase">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#39A751] animate-pulse" />
-                <span>{hero.eyebrow || 'SENIOR WEB & MOBILE APPLICATION ENGINEER'}</span>
-              </div>
+              <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase">
+                make · web &amp; mobile application engineer
+              </p>
             </Reveal>
 
             {/* Main Headline — refined size */}
@@ -146,12 +145,6 @@ export default function Hero() {
 
                 {/* Subtle bottom gradient to blend smoothly */}
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
-              </div>
-
-              {/* Floating availability dot — minimal, no heavy card */}
-              <div className="absolute -right-3 top-6 flex items-center gap-1.5 rounded-full border border-[#1e261d] bg-[#141714]/95 px-3 py-1.5 shadow-lg backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#39A751] animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-white">Available</span>
               </div>
             </div>
           </Reveal>

@@ -16,7 +16,7 @@ export default function PrinciplesSection() {
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="section-eyebrow-lime">Standards</p>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">standards</p>
             <h2 className="mt-3 section-heading">
               Engineering principles
             </h2>

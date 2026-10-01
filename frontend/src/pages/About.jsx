@@ -17,10 +17,9 @@ function AboutContent() {
       <div className="bg-[#0e0e0e] pt-32 pb-16 border-b border-[#1e261d]">
         <div className="container-page grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a] px-3.5 py-1 text-xs font-bold tracking-widest text-[#52fe7d]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#39A751] animate-pulse" />
-              <span>ABOUT MAKE</span>
-            </div>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
+              about make
+            </p>
             <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Web and mobile products, built to work.
             </h1>
@@ -67,12 +66,6 @@ function AboutContent() {
                   </div>
                 )}
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
-              </div>
-
-              {/* Availability badge */}
-              <div className="absolute -right-3 top-5 flex items-center gap-1.5 rounded-full border border-[#1e261d] bg-[#141714]/95 px-3 py-1.5 shadow-lg backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#39A751] animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-white">Available</span>
               </div>
             </div>
 

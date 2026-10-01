@@ -53,7 +53,7 @@ export default function FAQSection({ limit = 5 }) {
         {/* Header - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
-            <p className="section-eyebrow-lime">Support & FAQ</p>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">support &amp; faq</p>
             <h2 className="mt-3 section-heading">Clear answers before we start</h2>
             <p className="mt-4 mx-auto max-w-xl text-[#d2d7dc] text-base leading-relaxed">
               Transparent expectations regarding scope, technical stack choices, communication cadence, and project delivery.

@@ -104,10 +104,9 @@ export default function ProjectPlanner() {
         {/* Section Header - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a] px-3.5 py-1 text-xs font-bold tracking-widest text-[#52fe7d]">
-              <Calculator className="h-3.5 w-3.5" />
-              <span>INTERACTIVE SCOPE PLANNER</span>
-            </div>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
+              interactive scope planner
+            </p>
             <h2 className="mt-4 section-heading">
               Plan your product architecture &amp; timeline
             </h2>

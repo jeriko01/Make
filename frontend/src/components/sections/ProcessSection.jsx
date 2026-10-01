@@ -16,7 +16,7 @@ export default function ProcessSection() {
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="section-eyebrow-lime">Workflow</p>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">workflow</p>
             <h2 className="mt-3 section-heading">How I work</h2>
             <p className="mt-4 mx-auto max-w-xl text-[#d2d7dc] text-base leading-relaxed">
               Four disciplined phases, zero ambiguity. Every engagement follows a dependable, collaborative cycle from day one to handoff.

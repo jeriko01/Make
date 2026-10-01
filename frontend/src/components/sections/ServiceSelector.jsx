@@ -64,7 +64,7 @@ export default function ServiceSelector() {
         {/* Header - Centered */}
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="section-eyebrow-lime">Offerings</p>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">offerings</p>
             <h2 className="mt-3 section-heading">
               What do you need built?
             </h2>

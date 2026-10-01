@@ -45,8 +45,8 @@ export default function Projects({ featured = false, limit, showFilters = !featu
         {/* Section Heading - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-10">
           <Reveal>
-            <p className="section-eyebrow-lime">
-              {featured ? 'Selected Work' : 'Portfolio'}
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
+              {featured ? 'selected work' : 'portfolio'}
             </p>
             <h2 className="mt-3 section-heading">
               {featured ? 'Featured applications' : 'Technical project gallery'}

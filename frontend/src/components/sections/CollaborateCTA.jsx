@@ -24,11 +24,10 @@ export default function CollaborateCTA({ heading, body }) {
 
             <div className="relative z-10 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
-                {/* Neon accent badge */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a] px-3 py-1 text-xs font-bold text-[#52fe7d]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#39A751] animate-pulse" />
-                  <span>START A PROJECT</span>
-                </div>
+                {/* Clean plain text in lowercase (no button) */}
+                <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
+                  start a project
+                </p>
 
                 <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
                   {heading || 'Ready to build your next web or mobile product?'}
