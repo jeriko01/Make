@@ -1,7 +1,7 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Preloader from './components/common/Preloader'
 
-// Public pages — code-split for faster initial load
 const Home     = lazy(() => import('./pages/Home'))
 const Skills   = lazy(() => import('./pages/Skills'))
 const Services = lazy(() => import('./pages/Services'))
@@ -10,10 +10,8 @@ const Projects = lazy(() => import('./pages/Projects'))
 const Support  = lazy(() => import('./pages/Support'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
-// Admin (Supabase auth) loads only when /admin/* is visited
 const AdminApp = lazy(() => import('./pages/admin/AdminApp'))
 
-/** Full-page loading spinner shown while lazy chunks load */
 function PageSpinner() {
   return (
     <div className="grid min-h-screen place-items-center bg-canvas-50">
@@ -26,23 +24,30 @@ function PageSpinner() {
 }
 
 export default function App() {
+  const [loaded, setLoaded] = useState(() => sessionStorage.getItem('mk_loaded') === '1')
+
+  const handleDone = () => {
+    sessionStorage.setItem('mk_loaded', '1')
+    setLoaded(true)
+  }
+
   return (
-    <Suspense fallback={<PageSpinner />}>
-      <Routes>
-        {/* ── Public pages ── */}
-        <Route path="/"         element={<Home />} />
-        <Route path="/skills"   element={<Skills />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about"    element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/support"  element={<Support />} />
+    <>
+      {!loaded && <Preloader onDone={handleDone} />}
+      <Suspense fallback={<PageSpinner />}>
+        <Routes>
+          <Route path="/"         element={<Home />} />
+          <Route path="/skills"   element={<Skills />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about"    element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/support"  element={<Support />} />
 
-        {/* ── Admin ── */}
-        <Route path="/admin/*"  element={<AdminApp />} />
+          <Route path="/admin/*"  element={<AdminApp />} />
 
-        {/* ── 404 ── */}
-        <Route path="*"         element={<NotFound />} />
-      </Routes>
-    </Suspense>
+          <Route path="*"         element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </>
   )
 }
