@@ -108,3 +108,24 @@ def test_upload_ok(client, admin_headers):
                     files={"file": ("x.png", b"\x89PNGdata", "image/png")})
     assert r.status_code == 201
     assert r.json()["url"].startswith("https://fake.storage/media/projects/")
+
+
+def test_upload_rejects_spoofed_magic_bytes(client, admin_headers):
+    r = client.post("/api/admin/uploads?folder=projects", headers=admin_headers,
+                    files={"file": ("bad.jpg", b"NOT_A_REAL_JPEG", "image/jpeg")})
+    assert r.status_code == 400
+    assert "Invalid JPEG signature" in r.json()["detail"]
+
+
+def test_upload_rejects_svg_with_script(client, admin_headers):
+    svg_payload = b'<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>'
+    r = client.post("/api/admin/uploads?folder=projects", headers=admin_headers,
+                    files={"file": ("xss.svg", svg_payload, "image/svg+xml")})
+    assert r.status_code == 400
+    assert "active script" in r.json()["detail"]
+
+
+def test_delete_rejects_traversal_path(client, admin_headers):
+    r = client.delete("/api/admin/uploads?path=../secret.txt", headers=admin_headers)
+    assert r.status_code == 400
+    assert "Invalid file path" in r.json()["detail"]

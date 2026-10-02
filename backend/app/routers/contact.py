@@ -24,12 +24,35 @@ def _get_limiter(settings: Settings) -> RateLimiter:
     return _limiter
 
 
+import ipaddress
+
+
+def _is_valid_ip(candidate: str) -> bool:
+    try:
+        ipaddress.ip_address(candidate)
+        return True
+    except (ValueError, TypeError):
+        return False
+
+
 def _client_ip(request: Request) -> str:
-    # Respect a single proxy hop if present, else the socket peer.
+    cf = request.headers.get("cf-connecting-ip")
+    if cf and _is_valid_ip(cf.strip()):
+        return cf.strip()
+
+    real = request.headers.get("x-real-ip")
+    if real and _is_valid_ip(real.strip()):
+        return real.strip()
+
     fwd = request.headers.get("x-forwarded-for")
     if fwd:
-        return fwd.split(",")[0].strip()
-    return request.client.host if request.client else "unknown"
+        first = fwd.split(",")[0].strip()
+        if _is_valid_ip(first):
+            return first
+
+    if request.client and request.client.host and _is_valid_ip(request.client.host):
+        return request.client.host
+    return "127.0.0.1"
 
 
 @router.post("/contact", status_code=status.HTTP_201_CREATED)

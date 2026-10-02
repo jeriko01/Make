@@ -108,6 +108,8 @@ function PreviewModal({ project, onClose }) {
                 <img
                   src={project.cover_image_url}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="mx-auto max-h-52 rounded-xl border border-[#1e261d] object-cover shadow-2xl"
                 />
               )}
@@ -211,6 +213,7 @@ function ProjectCard({ project: p, onPreview }) {
             src={p.cover_image_url}
             alt={`${p.title} preview`}
             loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           />
         ) : (
