@@ -7,7 +7,7 @@ export default function Preloader({ onDone }) {
   useEffect(() => {
     let frame
     const start = performance.now()
-    const duration = 1800
+    const duration = 30000
 
     const tick = (now) => {
       const elapsed = now - start
@@ -52,17 +52,17 @@ export default function Preloader({ onDone }) {
         <div style={{ position: 'relative' }}>
           <div style={{
             position: 'absolute',
-            inset: '-12px',
-            borderRadius: '24px',
-            background: 'radial-gradient(ellipse at center, rgba(82,254,125,0.18) 0%, transparent 70%)',
-            animation: 'mkPulse 2s ease-in-out infinite',
+            inset: '-16px',
+            borderRadius: '28px',
+            background: 'radial-gradient(ellipse at center, rgba(82,254,125,0.2) 0%, transparent 70%)',
+            animation: 'mkPulse 2.4s ease-in-out infinite',
           }} />
 
           <svg
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ width: 72, height: 72, display: 'block', animation: 'mkSpin 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards' }}
+            style={{ width: 88, height: 88, display: 'block', animation: 'mkSpin 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards' }}
           >
             <defs>
               <linearGradient id="plBg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
@@ -82,36 +82,12 @@ export default function Preloader({ onDone }) {
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
-              style={{ strokeDasharray: 70, strokeDashoffset: 0, animation: 'mkDraw 1s ease forwards' }}
+              style={{ strokeDasharray: 70, strokeDashoffset: 0, animation: 'mkDraw 1.2s ease forwards' }}
             />
           </svg>
         </div>
 
-        <div style={{ textAlign: 'center' }}>
-          <p style={{
-            fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-            fontSize: '22px',
-            fontWeight: 800,
-            color: '#ffffff',
-            letterSpacing: '-0.02em',
-            margin: 0,
-          }}>
-            Make
-          </p>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '11px',
-            fontWeight: 600,
-            color: '#8a949e',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            marginTop: '4px',
-          }}>
-            Engineering Studio
-          </p>
-        </div>
-
-        <div style={{ width: 200 }}>
+        <div style={{ width: 180 }}>
           <div style={{
             height: '2px',
             borderRadius: '999px',
@@ -124,27 +100,16 @@ export default function Preloader({ onDone }) {
               width: `${progress}%`,
               background: 'linear-gradient(90deg, #39A751, #52fe7d)',
               boxShadow: '0 0 10px rgba(82,254,125,0.5)',
-              transition: 'width 0.08s linear',
+              transition: 'width 0.1s linear',
             }} />
           </div>
-          <p style={{
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: '10px',
-            color: '#39A751',
-            textAlign: 'right',
-            marginTop: '6px',
-            fontWeight: 600,
-            letterSpacing: '0.05em',
-          }}>
-            {progress}%
-          </p>
         </div>
       </div>
 
       <style>{`
         @keyframes mkPulse {
-          0%, 100% { opacity: 0.6; transform: scale(1); }
-          50%       { opacity: 1;   transform: scale(1.08); }
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50%       { opacity: 1;   transform: scale(1.1); }
         }
         @keyframes mkSpin {
           0%   { opacity: 0; transform: rotate(-15deg) scale(0.7); }
