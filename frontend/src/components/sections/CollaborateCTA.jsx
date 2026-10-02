@@ -9,15 +9,8 @@ export default function CollaborateCTA({ heading, body }) {
   return (
     <section
       aria-label="Start a project"
-      className="section-pad border-t border-[#1e261d] relative overflow-hidden"
-      style={{
-        backgroundImage: 'url(/images/services-hero-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/88" />
       <div className="container-page">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-[#1e261d] bg-[#141714] p-8 sm:p-12 md:p-16 shadow-2xl"
