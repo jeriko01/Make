@@ -66,7 +66,6 @@ export default function Footer() {
                 'Engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.'}
             </p>
 
-            {/* Contact details */}
             <div className="mt-6 space-y-2">
               <a
                 href={`mailto:${profile.email || info.email || 'hello@make.dev'}`}
@@ -141,19 +140,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright & actions bar */}
         <div className="mt-12 border-t border-[#1e261d] pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Spacer to achieve symmetric center alignment on desktop */}
           <div className="hidden md:block flex-1" />
 
-          {/* Centered copyright */}
           <div className="text-center order-2 md:order-1 flex-shrink-0">
             <p className="text-xs text-[#8a949e]">© {year} Make. All rights reserved.</p>
           </div>
 
-          {/* Right side: WhatsApp Chat + Back to Top (100% equal twin size & icons) */}
           <div className="flex-1 flex items-center justify-center md:justify-end gap-3 order-1 md:order-2 w-full md:w-auto">
-            {/* 1. WhatsApp Chat */}
             <a
               href="https://wa.me/2529199708"
               target="_blank"
@@ -165,7 +159,6 @@ export default function Footer() {
               <WhatsAppIcon className="w-6 h-6 fill-current transition-transform duration-300 group-hover:scale-110" />
             </a>
 
-            {/* 2. Back to top */}
             <button
               type="button"
               onClick={scrollToTop}

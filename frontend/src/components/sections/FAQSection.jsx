@@ -50,7 +50,6 @@ export default function FAQSection({ limit = 5 }) {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Header - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">support &amp; faq</p>

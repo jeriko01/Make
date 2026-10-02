@@ -226,7 +226,6 @@ function SkillCard({ skill }) {
   return (
     <div className="group relative flex flex-col justify-between rounded-xl border border-[#1e261d] bg-[#141714] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#161d15] hover:shadow-xl hover:shadow-[#39A751]/10">
       <div>
-        {/* Top bar: Real Brand Icon + Layer badge */}
         <div className="flex items-center justify-between">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0b0e0b] border border-[#1e261d] p-2 transition group-hover:scale-110 group-hover:border-[#39A751]/40 shadow-inner">
             <BrandIcon name={skill.name} className="h-6 w-6" />
@@ -236,34 +235,24 @@ function SkillCard({ skill }) {
             {TYPE_LABEL[skill.type] || skill.type}
           </span>
         </div>
-
-        {/* Skill Name */}
         <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#52fe7d] transition-colors">
           {skill.name}
         </h3>
-
-        {/* Context / Description */}
         <p className="mt-1.5 text-xs text-[#8a949e] leading-relaxed line-clamp-2">
           {skill.note || 'Production-tested stack component for modern, high-velocity engineering.'}
         </p>
       </div>
-
-      {/* ── Progress Bar & Proficiency Percentage (out of 100%) ── */}
       <div className="mt-5 pt-3.5 border-t border-[#1e261d]">
         <div className="flex items-center justify-between text-xs mb-1.5 font-mono">
           <span className="text-[11px] text-[#8a949e]">Proficiency</span>
           <span className="text-xs font-bold text-[#52fe7d]">{metric.percent}%</span>
         </div>
-
-        {/* Progress Track */}
         <div className="h-1.5 w-full rounded-full bg-[#1e261d] overflow-hidden">
           <div
             className="h-full rounded-full bg-gradient-to-r from-[#39A751] to-[#52fe7d] shadow-sm shadow-[#39A751]/50 transition-all duration-500"
             style={{ width: `${metric.percent}%` }}
           />
         </div>
-
-        {/* Level and Experience indicator */}
         <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-[#8a949e]">
           <span>{metric.level}</span>
           <span className="text-[#d2d7dc]">{metric.exp}</span>
@@ -300,22 +289,17 @@ function SkillsContent() {
 
   return (
     <>
-      {/* ── Page Hero with Atmospheric Background Image ── */}
       <div className="relative pt-32 pb-20 border-b border-[#1e261d] overflow-hidden bg-[#0e0e0e]">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center scale-105 pointer-events-none"
           style={{ backgroundImage: `url('/images/skills-hero-bg.jpg')`, opacity: 0.45 }}
         />
-
-        {/* Dark Gradient Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/60 via-[#0e0e0e]/75 to-[#0e0e0e] pointer-events-none" />
         <div className="pointer-events-none absolute -left-48 top-0 h-[450px] w-[450px] rounded-full bg-[#39A751]/10 blur-[130px]" />
         <div className="pointer-events-none absolute -right-48 top-10 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/5 blur-[120px]" />
 
         <div className="container-page relative z-10 text-center mx-auto max-w-3xl">
           <Reveal>
-            {/* Clean plain lowercase text - NO button */}
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-3">
               skills &amp; technologies
             </p>
@@ -327,8 +311,6 @@ function SkillsContent() {
             <p className="mt-4 mx-auto max-w-2xl text-base text-[#8a949e] leading-relaxed">
               Production-proven technologies evaluated on real project delivery, type safety, and runtime stability. Each tool backed by hands-on engineering depth.
             </p>
-
-            {/* Quick Skills Summary Metrics */}
             <div className="mt-8 flex flex-wrap justify-center items-center gap-6 sm:gap-10 pt-6 border-t border-[#1e261d]/60">
               <div>
                 <p className="font-display text-2xl font-bold text-white">18+</p>
@@ -348,14 +330,9 @@ function SkillsContent() {
           </Reveal>
         </div>
       </div>
-
-      {/* ── Skills Gallery Section ── */}
       <section className="section-pad bg-[#0e0e0e]" aria-label="Skills Grid">
         <div className="container-page">
-
-          {/* Controls: Filter Tabs & Search Bar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#1e261d]">
-            {/* Category Tabs */}
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
@@ -383,8 +360,6 @@ function SkillsContent() {
                 </button>
               ))}
             </div>
-
-            {/* Quick search */}
             <div className="relative w-full md:w-64">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#8a949e]" />
               <input
@@ -396,8 +371,6 @@ function SkillsContent() {
               />
             </div>
           </div>
-
-          {/* Grouped Skills Cards */}
           <div className="mt-10 space-y-14">
             {visible.map((cat) => (
               <div key={cat.id} className="space-y-5">
@@ -427,8 +400,6 @@ function SkillsContent() {
               </div>
             )}
           </div>
-
-          {/* Reassurance Banner */}
           <Reveal delay={200}>
             <div className="mt-16 rounded-2xl border border-[#1e261d] bg-[#141714] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
@@ -454,8 +425,6 @@ function SkillsContent() {
           </Reveal>
         </div>
       </section>
-
-      {/* Final Collaborate CTA */}
       <CollaborateCTA
         heading="Need these technologies on your team?"
         body="Whether you need a senior full-stack engineer for an end-to-end product build or specialized React / FastAPI development, let's talk."

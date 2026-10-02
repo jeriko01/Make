@@ -39,9 +39,7 @@ router = APIRouter(
 )
 
 
-# =====================================================================
 # Overview
-# =====================================================================
 _COUNT_TABLES = [
     "projects", "experience", "skills", "services", "testimonials", "social_links",
 ]
@@ -60,9 +58,7 @@ def overview(store: Store = Depends(get_store)):
     }
 
 
-# =====================================================================
 # Generic collection CRUD factory
-# =====================================================================
 def register_crud(path: str, table: str, schema: Type[BaseModel]) -> None:
     """Register list/create/update/publish/delete/reorder for a collection."""
 
@@ -123,9 +119,7 @@ register_crud("testimonials", "testimonials", TestimonialIn)
 register_crud("social-links", "social_links", SocialLinkIn)
 
 
-# =====================================================================
 # Singletons
-# =====================================================================
 @router.get("/profile")
 def get_profile(store: Store = Depends(get_store)):
     return store.get_singleton("profile")
@@ -166,9 +160,7 @@ def update_seo(payload: SeoUpdate, store: Store = Depends(get_store)):
     return store.update_singleton("seo_metadata", payload.model_dump(mode="json", exclude_unset=True))
 
 
-# =====================================================================
 # Contact messages (private inbox)
-# =====================================================================
 @router.get("/messages")
 def list_messages(store: Store = Depends(get_store)):
     return store.list("contact_messages", order="created_at", desc=True)

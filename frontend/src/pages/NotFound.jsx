@@ -10,12 +10,10 @@ function NotFoundContent() {
       <Navbar />
       <main id="main-content" className="flex flex-1 items-center justify-center px-5 py-32">
         <div className="text-center max-w-lg">
-          {/* Large 404 */}
           <p className="font-display text-[7rem] sm:text-[9rem] font-black leading-none text-[#1e261d] select-none" aria-hidden="true">
             404
           </p>
 
-          {/* Neon rule */}
           <div className="mx-auto my-6 h-1 w-12 rounded-full bg-[#39A751]" />
 
           <h1 className="font-display text-2xl sm:text-3xl font-bold text-white">Page not found</h1>
@@ -40,7 +38,6 @@ function NotFoundContent() {
             </Link>
           </div>
 
-          {/* Quick jump */}
           <nav aria-label="Quick navigation" className="mt-12">
             <p className="text-xs font-bold uppercase tracking-widest text-[#8a949e] mb-3">Explore pages</p>
             <div className="flex flex-wrap justify-center gap-2">

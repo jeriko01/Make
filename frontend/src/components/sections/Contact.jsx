@@ -57,7 +57,6 @@ export default function Contact() {
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* Info cards */}
           <div className="space-y-4">
             {info.email && (
               <Reveal>
@@ -97,7 +96,6 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Form */}
           <Reveal delay={120}>
             <form onSubmit={onSubmit} noValidate className="glass rounded-3xl p-6 sm:p-8 border border-blue-500/30 shadow-xl shadow-blue-950/50">
               {status === 'success' ? (
@@ -127,7 +125,6 @@ export default function Contact() {
                     error={errors.message}
                   />
 
-                  {/* Honeypot — hidden from humans, must stay empty */}
                   <div className="absolute left-[-9999px]" aria-hidden="true">
                     <label htmlFor="website">Leave this field empty</label>
                     <input

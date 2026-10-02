@@ -26,8 +26,6 @@ export default function ProjectsPage() {
         title="Projects — Case Studies & Code"
         description="Make's technical portfolio — web applications, mobile apps, and full-stack engineering builds. Browse live previews and source code."
       >
-
-        {/* ── Hero ── */}
         <div
           className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
           style={{
@@ -54,8 +52,6 @@ export default function ProjectsPage() {
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#8a949e] sm:text-lg">
                 A filterable gallery of shipped web applications, mobile apps, and full-stack software. Click any project to open a live preview or visit the source.
               </p>
-
-              {/* Stats */}
               <div className="mt-10 flex flex-wrap items-center justify-center gap-8 border-t border-[#1e261d]/60 pt-8">
                 {STATS.map(({ num, label }) => (
                   <div key={label} className="text-center">
@@ -67,8 +63,6 @@ export default function ProjectsPage() {
             </Reveal>
           </div>
         </div>
-
-        {/* ── What I build highlight strip ── */}
         <div className="border-b border-[#1e261d] bg-[#0b0f0b] py-10">
           <div className="container-page grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {HIGHLIGHTS.map((h, i) => {
@@ -89,11 +83,7 @@ export default function ProjectsPage() {
             })}
           </div>
         </div>
-
-        {/* ── Full Gallery with Category Filters + Live Preview ── */}
         <ProjectsGallery showFilters featured={false} />
-
-        {/* ── CTA ── */}
         <CollaborateCTA
           heading="Have a similar product to build?"
           body="Tell me about your target users and timeline. I'll provide an architectural breakdown and estimated milestone plan."

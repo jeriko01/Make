@@ -32,7 +32,6 @@ const ICON_MAP = {
   Wrench,
 }
 
-/* ── Engagement models ── */
 const MODELS = [
   {
     id: '01',
@@ -57,7 +56,6 @@ const MODELS = [
   },
 ]
 
-/* ── Guarantees ── */
 const GUARANTEES = [
   'Direct engineering — no outsourcing, ever',
   'Full source code & IP ownership transferred',
@@ -76,11 +74,9 @@ function ServiceCard({ service, index }) {
       <article
         className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#39A751]/60 hover:shadow-2xl hover:shadow-[#39A751]/10"
       >
-        {/* Top glow on hover */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/0 to-transparent transition-all duration-300 group-hover:via-[#52fe7d]/60" />
 
         <div>
-          {/* Icon + number row */}
           <div className="flex items-center justify-between">
             <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d] transition-all duration-300 group-hover:scale-110 group-hover:border-[#39A751]/70 group-hover:bg-[#39A751] group-hover:text-white">
               <IconComp className="h-5 w-5" />
@@ -90,22 +86,18 @@ function ServiceCard({ service, index }) {
             </span>
           </div>
 
-          {/* Title */}
           <h2 className="mt-5 font-display text-lg font-bold leading-snug text-white transition-colors duration-200 group-hover:text-[#52fe7d]">
             {service.title}
           </h2>
 
-          {/* Audience tag */}
           {service.audience && (
             <p className="mt-2 text-xs text-[#8a949e]">{service.audience}</p>
           )}
 
-          {/* Description */}
           <p className="mt-3 text-sm leading-relaxed text-[#8a949e]">
             {service.description}
           </p>
 
-          {/* Deliverables */}
           {service.deliverables?.length > 0 && (
             <ul className="mt-5 space-y-1.5" aria-label="Key deliverables">
               {service.deliverables.map((d) => (
@@ -118,7 +110,6 @@ function ServiceCard({ service, index }) {
           )}
         </div>
 
-        {/* CTA */}
         <div className="mt-7 border-t border-[#1e261d] pt-5">
           <button
             type="button"
@@ -141,7 +132,6 @@ function ServicesContent() {
 
   return (
     <>
-      {/* ── Hero ── */}
       <div
         className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
         style={{
@@ -150,7 +140,6 @@ function ServicesContent() {
           backgroundPosition: 'center top',
         }}
       >
-        {/* Overlays */}
         <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/78" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e0e]" />
         <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/10 blur-[130px]" />
@@ -171,7 +160,6 @@ function ServicesContent() {
               Specialized web, mobile, and API development with clean architecture, type-safe codebases, and full IP ownership on handover.
             </p>
 
-            {/* Stats row */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-8 border-t border-[#1e261d]/60 pt-8">
               {[
                 { num: '8', label: 'Service Areas' },
@@ -189,7 +177,6 @@ function ServicesContent() {
         </div>
       </div>
 
-      {/* ── Services Grid ── */}
       <section className="section-pad bg-[#0e0e0e]" aria-label="Services">
         <div className="container-page">
           <Reveal>
@@ -212,7 +199,6 @@ function ServicesContent() {
         </div>
       </section>
 
-      {/* ── Guarantees strip ── */}
       <section className="border-y border-[#1e261d] bg-[#0b0f0b] py-14" aria-label="Engineering guarantees">
         <div className="container-page">
           <Reveal>
@@ -236,7 +222,6 @@ function ServicesContent() {
         </div>
       </section>
 
-      {/* ── Engagement Models ── */}
       <section className="section-pad bg-[#0e0e0e]" aria-label="Engagement models">
         <div className="container-page">
           <Reveal>
@@ -281,7 +266,6 @@ function ServicesContent() {
         </div>
       </section>
 
-      {/* ── Interactive Project Planner ── */}
       <ProjectPlanner />
 
       {/* ── CTA ── */}

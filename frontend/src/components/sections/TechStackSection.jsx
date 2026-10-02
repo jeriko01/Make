@@ -89,7 +89,6 @@ export default function TechStackSection() {
     >
       <div className="container-page">
 
-        {/* ── Section Header (Clean, Human & Centered) ── */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
@@ -106,7 +105,6 @@ export default function TechStackSection() {
           </Reveal>
         </div>
 
-        {/* ── 3 Architecture Tier Cards ── */}
         <div className="grid gap-6 md:grid-cols-3">
           {CORE_TIERS.map((tier, i) => {
             const IconComp = tier.icon
@@ -114,7 +112,6 @@ export default function TechStackSection() {
               <Reveal key={tier.step} delay={i * 70}>
                 <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-[#1e261d] bg-[#141714] p-6 sm:p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#161d15] hover:shadow-xl hover:shadow-[#39A751]/10">
                   <div>
-                    {/* Top bar with tier badge and icon */}
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs font-bold tracking-wider text-[#52fe7d]">
                         {tier.step}
@@ -137,7 +134,6 @@ export default function TechStackSection() {
                     </p>
                   </div>
 
-                  {/* Highlights checklist */}
                   <div className="mt-6 pt-5 border-t border-[#1e261d] space-y-2.5">
                     {tier.highlights.map((item) => (
                       <div key={item} className="flex items-center gap-2 text-xs text-[#d2d7dc]">
@@ -152,7 +148,6 @@ export default function TechStackSection() {
           })}
         </div>
 
-        {/* ── DevOps & Delivery Pipeline (Visual Flow) ── */}
         <Reveal delay={240}>
           <div className="mt-12 rounded-2xl border border-[#1e261d] bg-[#141714] p-6 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#1e261d]">
@@ -171,7 +166,6 @@ export default function TechStackSection() {
               </div>
             </div>
 
-            {/* 4 Pipeline Steps */}
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {PIPELINE_STEPS.map((step) => (
                 <div
@@ -198,7 +192,6 @@ export default function TechStackSection() {
               ))}
             </div>
 
-            {/* Bottom Guarantee Strip */}
             <div className="mt-8 pt-5 border-t border-[#1e261d] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#8a949e]">
               <div className="flex flex-wrap items-center gap-6">
                 <span className="flex items-center gap-2 text-[#d2d7dc]">

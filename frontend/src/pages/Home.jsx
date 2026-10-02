@@ -17,34 +17,15 @@ import { SiteDataProvider } from '../context/SiteDataContext'
 function HomeContent() {
   return (
     <>
-      {/* 1 & 2 & 3 · Hero + Capability Strip */}
       <Hero />
-
-      {/* 4 · Feature cards / Service selector ("What do you need built?") */}
       <ServiceSelector />
-
-      {/* 5 · Capabilities overview */}
       <About brief />
-
-      {/* 6 · Featured projects */}
       <Projects featured limit={3} />
-
-      {/* 7 · Interactive Project Scope & Timeline Planner */}
       <ProjectPlanner />
-
-      {/* 8 · How I work (4 steps) */}
       <ProcessSection />
-
-      {/* 9 · Technical solutions: Stack & Architecture pipeline */}
       <TechStackSection />
-
-      {/* 9 · Engineering principles */}
       <PrinciplesSection />
-
-      {/* 10 · FAQ & Support */}
       <FAQSection limit={5} />
-
-      {/* 11 · Final Collaboration CTA */}
       <CollaborateCTA />
     </>
   )

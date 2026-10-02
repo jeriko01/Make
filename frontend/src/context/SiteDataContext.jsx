@@ -3,11 +3,7 @@ import { api } from '../lib/api'
 
 const SiteDataContext = createContext(null)
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Fallback data — shown while the API loads or if it is unreachable.
-// All fields that describe Make's real details are marked with a TODO so
-// that they can be replaced once real data is supplied.
-// ─────────────────────────────────────────────────────────────────────────────
+// Default initial state used for immediate render prior to API hydration.
 const FALLBACK_SITE_DATA = {
   profile: {
     full_name: 'Make',

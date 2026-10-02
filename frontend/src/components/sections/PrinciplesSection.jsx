@@ -30,7 +30,6 @@ export default function PrinciplesSection() {
           {principles.map((p, i) => (
             <Reveal key={p.id} delay={i * 60}>
               <div className="group rounded-xl border border-[#1e261d] bg-[#141714] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/40 hover:bg-[#161d15] hover:shadow-lg hover:shadow-[#39A751]/10">
-                {/* Neon accent bar */}
                 <div className="mb-4 h-1 w-8 rounded-full bg-[#39A751] transition-all duration-300 group-hover:w-14 group-hover:bg-[#52fe7d]" />
                 <h3 className="font-display text-lg font-bold text-white group-hover:text-[#52fe7d] transition-colors">
                   {p.label}

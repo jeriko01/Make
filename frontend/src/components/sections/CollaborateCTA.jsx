@@ -18,13 +18,11 @@ export default function CollaborateCTA({ heading, body }) {
                  boxShadow: '0 -1px 0 0 #52ff7d29, 0 0 0 1px rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.7)'
                }}>
 
-            {/* Background subtle neon glow */}
             <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[#39A751]/10 blur-3xl" />
             <div className="pointer-events-none absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-[#52fe7d]/5 blur-3xl" />
 
             <div className="relative z-10 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
-                {/* Clean plain text in lowercase (no button) */}
                 <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
                   start a project
                 </p>
@@ -38,7 +36,6 @@ export default function CollaborateCTA({ heading, body }) {
                     'Share what you need built. I will review your goals and respond with a clear breakdown, recommended tech architecture, and actionable next steps.'}
                 </p>
 
-                {/* Value list */}
                 <div className="mt-8 space-y-3">
                   {[
                     'Direct communication with the engineer building your product',
@@ -57,7 +54,6 @@ export default function CollaborateCTA({ heading, body }) {
                 </div>
               </div>
 
-              {/* Action Column */}
               <div className="flex flex-col items-start lg:items-center justify-center gap-4 rounded-xl border border-[#1e261d] bg-[#0e0e0e]/80 p-8 text-center backdrop-blur-md">
                 <p className="font-display text-lg font-bold text-white">
                   Let&apos;s build something dependable

@@ -61,7 +61,6 @@ export default function ServiceSelector() {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Header - Centered */}
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">offerings</p>
@@ -74,7 +73,6 @@ export default function ServiceSelector() {
           </Reveal>
         </div>
 
-        {/* Feature Cards Grid */}
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICE_ITEMS.map((item, i) => {
             const IconComp = item.icon
@@ -85,7 +83,6 @@ export default function ServiceSelector() {
                   className="group flex h-full flex-col justify-between rounded-xl border border-[#1e261d] bg-[#141714] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#161d15] hover:shadow-lg hover:shadow-[#39A751]/10 focus-visible:ring-2 focus-visible:ring-[#39A751]"
                 >
                   <div>
-                    {/* Icon container */}
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1e2b1a] border border-[#39A751]/30 text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
                       <IconComp className="h-5 w-5" />
                     </div>
@@ -109,7 +106,6 @@ export default function ServiceSelector() {
           })}
         </div>
 
-        {/* Link to dedicated services page */}
         <Reveal delay={350}>
           <div className="mt-8 text-center sm:text-left">
             <Link

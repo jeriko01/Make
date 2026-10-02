@@ -29,7 +29,6 @@ export default function ProcessSection() {
             <Reveal key={step.id} delay={i * 70}>
               <div className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1e261d] bg-[#141714] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/40 hover:bg-[#161d15] hover:shadow-lg hover:shadow-[#39A751]/10">
                 <div>
-                  {/* Step number */}
                   <div className="flex items-center justify-between">
                     <span className="font-display text-4xl font-black text-[#1e261d] transition-colors group-hover:text-[#39A751]/60">
                       {step.step}
@@ -37,7 +36,6 @@ export default function ProcessSection() {
                     <span className="h-2 w-2 rounded-full bg-[#1e261d] transition-colors group-hover:bg-[#39A751]" />
                   </div>
 
-                  {/* Neon accent rule */}
                   <div className="mt-4 mb-4 h-0.5 w-8 bg-[#39A751] rounded-full" />
 
                   <h3 className="font-display text-lg font-bold text-white group-hover:text-[#52fe7d] transition-colors">

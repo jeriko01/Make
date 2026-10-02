@@ -101,7 +101,6 @@ export default function ProjectPlanner() {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Section Header - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
@@ -116,11 +115,8 @@ export default function ProjectPlanner() {
           </Reveal>
         </div>
 
-        {/* Planner Workspace */}
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.9fr]">
-          {/* Controls Column */}
           <div className="space-y-8">
-            {/* Step 1: Project Type */}
             <Reveal delay={60}>
               <div className="rounded-xl border border-[#1e261d] bg-[#141714] p-6">
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">
@@ -159,7 +155,6 @@ export default function ProjectPlanner() {
               </div>
             </Reveal>
 
-            {/* Step 2: Key Capabilities */}
             <Reveal delay={120}>
               <div className="rounded-xl border border-[#1e261d] bg-[#141714] p-6">
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">
@@ -203,7 +198,6 @@ export default function ProjectPlanner() {
               </div>
             </Reveal>
 
-            {/* Step 3: Pace */}
             <Reveal delay={160}>
               <div className="rounded-xl border border-[#1e261d] bg-[#141714] p-6">
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">
@@ -246,7 +240,6 @@ export default function ProjectPlanner() {
             </Reveal>
           </div>
 
-          {/* Real-Time Specification Card */}
           <Reveal delay={100}>
             <div
               className="sticky top-24 rounded-2xl border border-[#1e261d] bg-[#141714] p-7 sm:p-8 shadow-2xl"
@@ -268,7 +261,6 @@ export default function ProjectPlanner() {
                 </div>
               </div>
 
-              {/* Metrics row */}
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="rounded-xl border border-[#1e261d] bg-[#0e0e0e] p-4">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#8a949e]">
@@ -298,7 +290,6 @@ export default function ProjectPlanner() {
                 </div>
               </div>
 
-              {/* Architecture Blueprint */}
               <div className="mt-6 rounded-xl border border-[#1e261d] bg-[#161d15] p-4">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#52fe7d]">
                   <Cpu className="h-4 w-4" />
@@ -320,7 +311,6 @@ export default function ProjectPlanner() {
                 </div>
               </div>
 
-              {/* Scope Checklist */}
               <div className="mt-6 space-y-2">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-[#8a949e]">
                   Included in this scope:
@@ -341,7 +331,6 @@ export default function ProjectPlanner() {
                 </div>
               </div>
 
-              {/* CTA Button to proceed */}
               <button
                 type="button"
                 onClick={handleExportToInquiry}

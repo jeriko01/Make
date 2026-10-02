@@ -52,7 +52,6 @@ export default function Navbar() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex flex-col items-center px-4 pt-3 sm:pt-4">
       <nav aria-label="Primary" className={navBase}>
 
-        {/* Brand mark: MAKE */}
         <Link
           to="/"
           aria-label="Make — home"
@@ -61,7 +60,6 @@ export default function Navbar() {
           <MakeLogo size="sm" />
         </Link>
 
-        {/* Desktop nav */}
         <ul className="mx-auto hidden items-center gap-7 md:flex" role="list">
           {NAV_LINKS.map((l) => (
             <li key={l.to}>
@@ -77,7 +75,6 @@ export default function Navbar() {
                 {({ isActive }) => (
                   <>
                     {l.label}
-                    {/* Underline: always visible for active, slides in on hover */}
                     <span
                       className={`absolute -bottom-px left-0 h-[1.5px] rounded-full bg-[#52fe7d] transition-all duration-200 ${
                         isActive
@@ -92,7 +89,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Prominent "Let's collaborate" CTA button */}
         <div className="hidden md:flex items-center">
           <Link
             to="/support"
@@ -103,7 +99,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
         <button
           type="button"
           className="pointer-events-auto ml-auto flex h-9 w-9 items-center justify-center rounded-lg border border-[#1e261d] bg-[#141714] text-[#d2d7dc] hover:text-white transition md:hidden"
@@ -116,7 +111,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
       {open && (
         <div
           id="mobile-menu"

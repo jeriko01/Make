@@ -24,7 +24,6 @@ export default function Skills() {
   return (
     <section id="skills" className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]">
       <div className="container-page">
-        {/* Heading */}
         <Reveal>
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -41,7 +40,6 @@ export default function Skills() {
           </div>
         </Reveal>
 
-        {/* Category filter */}
         <Reveal delay={60}>
           <div className="mt-8 flex flex-wrap gap-2">
             <FilterBtn active={activeCat === 'all'} onClick={() => setActiveCat('all')}>All</FilterBtn>
@@ -53,7 +51,6 @@ export default function Skills() {
           </div>
         </Reveal>
 
-        {/* Skills grid */}
         <div className="mt-8 space-y-10">
           {visible.map((cat) => (
             <div key={cat.id}>

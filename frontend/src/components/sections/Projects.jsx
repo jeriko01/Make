@@ -23,9 +23,6 @@ const FILTER_TABS = [
   { id: 'fullstack', label: 'Full-Stack' },
 ]
 
-/* ─────────────────────────────────────────────
-   Live Preview Modal
-───────────────────────────────────────────── */
 function PreviewModal({ project, onClose }) {
   const [expanded, setExpanded] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -60,22 +57,18 @@ function PreviewModal({ project, onClose }) {
             : 'h-[85vh] w-full max-w-5xl'
         }`}
       >
-        {/* Modal Header bar */}
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[#1e261d] bg-[#0e0e0e] px-4 py-3">
-          {/* Traffic lights */}
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
 
-          {/* URL bar */}
           <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#1e261d] bg-[#1a1a1a] px-3 py-1.5 text-xs text-[#8a949e] font-mono">
             <Monitor className="h-3.5 w-3.5 shrink-0 text-[#39A751]" />
             <span className="truncate">{project.live_url || 'No live URL provided'}</span>
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-2">
             {project.live_url && !isPlaceholderUrl && (
               <a
@@ -107,12 +100,10 @@ function PreviewModal({ project, onClose }) {
           </div>
         </div>
 
-        {/* iFrame / Fallback content */}
         <div className="relative flex-1 bg-[#0a0a0a]">
           {isPlaceholderUrl ? (
             /* No real URL — show project card summary instead */
             <div className="flex h-full flex-col items-center justify-center gap-6 p-8 text-center">
-              {/* Project cover if available */}
               {project.cover_image_url && !project.is_placeholder && (
                 <img
                   src={project.cover_image_url}
@@ -165,7 +156,6 @@ function PreviewModal({ project, onClose }) {
           )}
         </div>
 
-        {/* Footer with tech tags + GitHub */}
         <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-[#1e261d] bg-[#0e0e0e] px-4 py-2.5">
           <div className="flex flex-wrap gap-1.5">
             {project.tech_tags?.slice(0, 5).map((tag) => (
@@ -200,19 +190,14 @@ function PreviewModal({ project, onClose }) {
   )
 }
 
-/* ─────────────────────────────────────────────
-   Project Card
-───────────────────────────────────────────── */
 function ProjectCard({ project: p, onPreview }) {
   const hasCover = !!p.cover_image_url && !p.is_placeholder
 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#39A751]/50 hover:shadow-2xl hover:shadow-[#39A751]/10">
 
-      {/* Top glow line */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/0 to-transparent transition-all duration-300 group-hover:via-[#52fe7d]/50" />
 
-      {/* Cover image / placeholder */}
       <div
         className="relative aspect-video cursor-pointer overflow-hidden border-b border-[#1e261d] bg-[#0a0a0a]"
         onClick={() => onPreview(p)}
@@ -241,7 +226,6 @@ function ProjectCard({ project: p, onPreview }) {
           </div>
         )}
 
-        {/* Hover overlay — "Click to preview" */}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#0e0e0e]/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#39A751]/60 bg-[#1a2a1a] text-[#52fe7d]">
             <Eye className="h-5 w-5" />
@@ -250,7 +234,6 @@ function ProjectCard({ project: p, onPreview }) {
         </div>
       </div>
 
-      {/* Card body */}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#52fe7d]">
@@ -265,7 +248,6 @@ function ProjectCard({ project: p, onPreview }) {
           {p.summary || p.description}
         </p>
 
-        {/* Tech tags */}
         {p.tech_tags?.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-1.5">
             {p.tech_tags.map((tag) => (
@@ -280,10 +262,8 @@ function ProjectCard({ project: p, onPreview }) {
         )}
       </div>
 
-      {/* Card footer */}
       <div className="flex items-center justify-between gap-2 border-t border-[#1e261d] bg-[#0e0e0e]/50 px-5 py-3">
         <div className="flex items-center gap-3">
-          {/* Preview button */}
           <button
             type="button"
             onClick={() => onPreview(p)}
@@ -329,9 +309,6 @@ function ProjectCard({ project: p, onPreview }) {
   )
 }
 
-/* ─────────────────────────────────────────────
-   Main Projects Section
-───────────────────────────────────────────── */
 export default function Projects({ featured = false, limit, showFilters = !featured }) {
   const { data } = useSiteData()
   const [activeFilter, setActiveFilter] = useState('all')
@@ -355,7 +332,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
 
   return (
     <>
-      {/* Live Preview Modal */}
       {previewProject && (
         <PreviewModal
           project={previewProject}
@@ -370,7 +346,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
       >
         <div className="container-page">
 
-          {/* Section heading */}
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <Reveal>
               <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
@@ -386,7 +361,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             </Reveal>
           </div>
 
-          {/* Placeholder notice */}
           {!featured && hasPlaceholders && (
             <Reveal delay={60}>
               <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-950/20 p-4">
@@ -398,7 +372,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             </Reveal>
           )}
 
-          {/* Filter tabs */}
           {showFilters && (
             <Reveal delay={80}>
               <div className="mb-8 flex flex-wrap items-center gap-2">
@@ -422,7 +395,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             </Reveal>
           )}
 
-          {/* Grid */}
           {projects.length === 0 ? (
             <Reveal delay={100}>
               <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-12 text-center">
@@ -444,7 +416,6 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             </div>
           )}
 
-          {/* View all link (home page) */}
           {featured && (
             <Reveal delay={200}>
               <div className="mt-10 text-center">

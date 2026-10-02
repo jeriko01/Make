@@ -9,7 +9,6 @@ import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
 import PageLayout from '../components/layout/PageLayout'
 import Reveal from '../components/common/Reveal'
 
-/* ── Service options ── */
 const SERVICE_OPTIONS = [
   { value: '',                   label: 'Select a service…' },
   { value: 'business-websites',  label: 'Business Websites' },
@@ -75,7 +74,6 @@ const WHY_ITEMS = [
   { icon: MessageSquare,  title: 'Direct Communication', desc: 'You talk directly to the engineer — no account manager.' },
 ]
 
-/* ── FAQ Accordion ── */
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
@@ -96,7 +94,6 @@ function FAQItem({ q, a }) {
   )
 }
 
-/* ── Form field components ── */
 function Field({ id, label, error, textarea, required, hint, ...props }) {
   const base = `w-full rounded-xl border bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-[#4a5568] outline-none transition focus:ring-2 focus:ring-[#39A751]/60 ${
     error ? 'border-red-500/60' : 'border-[#1e261d] focus:border-[#39A751]/60'
@@ -148,7 +145,6 @@ function SelectField({ id, label, error, required, options, ...props }) {
   )
 }
 
-/* ── Inquiry Form ── */
 function InquiryForm() {
   const [searchParams] = useSearchParams()
   const rawServiceParam = searchParams.get('service') || ''
@@ -199,7 +195,6 @@ function InquiryForm() {
     }
   }
 
-  /* ── Success state ── */
   if (formStatus === 'success') {
     return (
       <div className="flex flex-col items-center rounded-2xl border border-[#39A751]/40 bg-[#0e1a0e] p-12 text-center" role="status">
@@ -233,7 +228,6 @@ function InquiryForm() {
   return (
     <form onSubmit={handleSubmit} noValidate aria-label="Project inquiry form" className="space-y-5">
 
-      {/* Selected service banner */}
       {values.service && (
         <div className="flex items-center justify-between rounded-xl border border-[#39A751]/35 bg-[#1a2a1a] px-4 py-3 text-xs">
           <div className="flex items-center gap-2 text-[#52fe7d]">
@@ -246,7 +240,6 @@ function InquiryForm() {
         </div>
       )}
 
-      {/* Name + Email */}
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Your Name" required type="text" autoComplete="name"
           placeholder="Jane Doe" value={values.name} onChange={set('name')} error={errors.name} />
@@ -254,7 +247,6 @@ function InquiryForm() {
           placeholder="jane@company.com" value={values.email} onChange={set('email')} error={errors.email} />
       </div>
 
-      {/* Service + Platform */}
       <div className="grid gap-5 sm:grid-cols-2">
         <SelectField id="service" label="Service Required" required
           options={SERVICE_OPTIONS} value={values.service} onChange={set('service')} error={errors.service} />
@@ -262,13 +254,11 @@ function InquiryForm() {
           options={PLATFORM_OPTIONS} value={values.platform} onChange={set('platform')} />
       </div>
 
-      {/* Description */}
       <Field id="description" label="Project Description & Goals" required textarea
         hint="What are you building? Who will use it? What's the main goal?"
         placeholder="Describe your product requirements, existing codebase or designs, and target functionality…"
         value={values.description} onChange={set('description')} error={errors.description} />
 
-      {/* Timeline + Budget */}
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="timeline" label="Target Timeline (optional)" type="text"
           placeholder="e.g. 4–6 weeks, Q2 release" value={values.timeline} onChange={set('timeline')} />
@@ -276,14 +266,12 @@ function InquiryForm() {
           placeholder="e.g. $3,000 – $7,000" value={values.budget} onChange={set('budget')} />
       </div>
 
-      {/* Honeypot */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="website">Leave empty</label>
         <input id="website" type="text" tabIndex={-1} autoComplete="off"
           value={values.website} onChange={set('website')} />
       </div>
 
-      {/* Server error */}
       {formStatus === 'error' && (
         <div className="flex items-start gap-3 rounded-xl border border-red-500/30 bg-red-950/20 px-4 py-3" role="alert">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
@@ -295,7 +283,6 @@ function InquiryForm() {
         Your details are strictly used to respond to this inquiry and are never shared with third parties.
       </p>
 
-      {/* Submit */}
       <button
         type="submit"
         disabled={formStatus === 'submitting'}
@@ -317,7 +304,6 @@ function InquiryForm() {
   )
 }
 
-/* ── Support Content ── */
 function SupportContent() {
   const { data } = useSiteData()
   const info = data?.contact_info || {}
@@ -327,7 +313,6 @@ function SupportContent() {
 
   return (
     <>
-      {/* ── Hero ── */}
       <div
         className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
         style={{
@@ -355,7 +340,6 @@ function SupportContent() {
               Share your project vision, scope, or technical challenge. I reply with architecture recommendations, recommended stack, and estimated milestones.
             </p>
 
-            {/* Why work with me — 4 chips */}
             <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {WHY_ITEMS.map((item, i) => {
                 const IconComp = item.icon
@@ -374,14 +358,11 @@ function SupportContent() {
         </div>
       </div>
 
-      {/* ── Main: Info + Form ── */}
       <section className="section-pad bg-[#0e0e0e]" aria-label="Contact and inquiry">
         <div className="container-page grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
 
-          {/* ─ Left sidebar ─ */}
           <div className="space-y-5">
 
-            {/* Direct contact card */}
             <Reveal>
               <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-6">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Direct Contact</p>
@@ -412,7 +393,6 @@ function SupportContent() {
                   </div>
                 </div>
 
-                {/* Response time */}
                 <div className="mt-5 rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-[#52fe7d] shadow-[0_0_6px_rgba(82,254,125,0.8)]" />
@@ -425,7 +405,6 @@ function SupportContent() {
               </div>
             </Reveal>
 
-            {/* FAQ */}
             <Reveal delay={80}>
               <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-6">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Common Questions</p>
@@ -436,7 +415,6 @@ function SupportContent() {
               </div>
             </Reveal>
 
-            {/* Confidentiality */}
             <Reveal delay={120}>
               <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-5">
                 <div className="flex items-center gap-2">
@@ -450,13 +428,11 @@ function SupportContent() {
             </Reveal>
           </div>
 
-          {/* ─ Right: Form ─ */}
           <Reveal delay={60}>
             <div
               className="relative overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] p-7 sm:p-9"
               style={{ boxShadow: '0 0 0 1px rgba(57,167,81,0.08), 0 30px 60px rgba(0,0,0,0.6), 0 -1px 0 0 rgba(82,254,125,0.12)' }}
             >
-              {/* Top accent line */}
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/40 to-transparent" />
 
               <div className="mb-7 border-b border-[#1e261d] pb-6">

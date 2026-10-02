@@ -37,7 +37,7 @@ Make/
 │   ├── tests/                # Pytest test suite (35+ test cases)
 │   └── run_https.py          # Local HTTPS development server
 ├── frontend/                 # React + Vite application
-│   ├── public/               # Static assets, favicon, and generated imagery
+│   ├── public/               # Static assets, favicon, and media assets
 │   │   ├── favicon.svg       # Brand monogram SVG favicon
 │   │   └── images/           # High-resolution project mockups & portrait
 │   ├── src/

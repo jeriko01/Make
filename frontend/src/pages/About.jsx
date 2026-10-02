@@ -18,7 +18,6 @@ import Reveal from '../components/common/Reveal'
 import Icon from '../components/common/Icon'
 import CollaborateCTA from '../components/sections/CollaborateCTA'
 
-/* ─── Journey Timeline data ─── */
 const TIMELINE = [
   {
     year: '2019',
@@ -94,7 +93,6 @@ const TIMELINE = [
   },
 ]
 
-/* ─── Core capabilities ─── */
 const CAPABILITIES = [
   { icon: Globe, title: 'Web Engineering', desc: 'React 19, TypeScript, Vite, Tailwind CSS — component-driven, accessible UIs.' },
   { icon: Smartphone, title: 'Mobile Apps', desc: 'React Native and Flutter for cross-platform iOS & Android with native APIs.' },
@@ -109,7 +107,6 @@ function AboutContent() {
 
   return (
     <>
-      {/* ── Hero ── */}
       <div
         className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
         style={{
@@ -137,8 +134,6 @@ function AboutContent() {
               {profile.long_bio ||
                 'I turn product ideas into clear, dependable applications — from the first screen to the API and data behind it. No middlemen. Direct engineering.'}
             </p>
-
-            {/* Stats */}
             <div className="mt-8 flex flex-wrap gap-7 border-t border-[#1e261d]/60 pt-8">
               {[
                 { num: '3+', label: 'Years Experience' },
@@ -168,8 +163,6 @@ function AboutContent() {
               </Link>
             </div>
           </Reveal>
-
-          {/* Portrait */}
           <Reveal delay={120} className="mx-auto w-full max-w-[270px] lg:mx-0 lg:ml-auto">
             <div className="relative">
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
@@ -198,8 +191,6 @@ function AboutContent() {
           </Reveal>
         </div>
       </div>
-
-      {/* ── Engineering Philosophy ── */}
       <section className="section-pad border-b border-[#1e261d] bg-[#0e0e0e]" aria-label="The Approach">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <Reveal>
@@ -219,8 +210,6 @@ function AboutContent() {
               </p>
             </div>
           </Reveal>
-
-          {/* Capabilities */}
           <div className="grid gap-4 sm:grid-cols-2">
             {CAPABILITIES.map((cap, i) => {
               const IconComp = cap.icon
@@ -239,8 +228,6 @@ function AboutContent() {
           </div>
         </div>
       </section>
-
-      {/* ── Journey Timeline ── */}
       <section className="section-pad bg-[#0b0f0b]" aria-label="Journey timeline">
         <div className="container-page">
           <Reveal>
@@ -254,10 +241,7 @@ function AboutContent() {
               </p>
             </div>
           </Reveal>
-
-          {/* Timeline */}
           <div className="relative mx-auto max-w-3xl">
-            {/* Vertical line */}
             <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#39A751]/60 via-[#39A751]/30 to-transparent sm:left-1/2 sm:-translate-x-px" />
 
             <div className="space-y-8">
@@ -267,11 +251,8 @@ function AboutContent() {
                 return (
                   <Reveal key={`${item.year}-${i}`} delay={i * 60}>
                     <div className={`relative flex gap-6 sm:gap-0 ${isRight ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
-
-                      {/* Content card */}
                       <div className={`flex-1 ${isRight ? 'sm:pr-10 sm:text-right' : 'sm:pl-10 sm:text-left'} pl-16 sm:pl-0`}>
                         <div className={`group inline-block w-full rounded-2xl border border-[#1e261d] bg-[#111511] p-6 text-left transition-all duration-300 hover:border-[#39A751]/50 hover:shadow-xl hover:shadow-[#39A751]/8`}>
-                          {/* Year + type badge */}
                           <div className={`flex flex-wrap items-center gap-2 ${isRight ? 'sm:flex-row-reverse sm:justify-end' : ''}`}>
                             <span className="font-mono text-[11px] font-bold tracking-widest text-[#52fe7d]">
                               {item.year}
@@ -290,8 +271,6 @@ function AboutContent() {
                           </h3>
                           <p className="mt-0.5 text-xs font-medium text-[#39A751]">{item.org}</p>
                           <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">{item.desc}</p>
-
-                          {/* Tags */}
                           <div className={`mt-4 flex flex-wrap gap-1.5 ${isRight ? 'sm:justify-end' : ''}`}>
                             {item.tags.map((tag) => (
                               <span key={tag} className="rounded-md border border-[#1e261d] bg-[#0e0e0e] px-2 py-0.5 text-[10px] text-[#8a949e]">
@@ -301,15 +280,11 @@ function AboutContent() {
                           </div>
                         </div>
                       </div>
-
-                      {/* Center dot */}
                       <div className="absolute left-6 top-6 sm:static sm:flex sm:w-0 sm:items-start sm:justify-center sm:pt-6">
                         <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#39A751] bg-[#1a2a1a] shadow-lg shadow-[#39A751]/30 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
                           <IconComp className="h-3 w-3 text-[#52fe7d]" />
                         </div>
                       </div>
-
-                      {/* Empty spacer for alternating layout */}
                       <div className="hidden flex-1 sm:block" />
                     </div>
                   </Reveal>
@@ -319,8 +294,6 @@ function AboutContent() {
           </div>
         </div>
       </section>
-
-      {/* ── Core Principles ── */}
       {(about.principles || []).length > 0 && (
         <section className="section-pad border-t border-[#1e261d] bg-[#0e0e0e]" aria-label="Core Principles">
           <div className="container-page">
@@ -353,8 +326,6 @@ function AboutContent() {
           </div>
         </section>
       )}
-
-      {/* ── CTA ── */}
       <CollaborateCTA
         heading="Let's build something exceptional together"
         body="Have an upcoming project, contract, or architecture need? Let's connect and discuss the technical roadmap."

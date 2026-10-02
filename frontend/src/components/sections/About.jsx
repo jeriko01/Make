@@ -21,7 +21,6 @@ export default function About({ brief = false }) {
       className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
     >
       <div className="container-page">
-        {/* Header - Centered */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">capabilities</p>
@@ -46,13 +45,10 @@ export default function About({ brief = false }) {
             )}
           </Reveal>
         </div>
-
-        {/* ── Capability cards ── */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {about.cards.map((c, i) => (
               <Reveal key={c.id} delay={i * 70}>
                 <div className="group rounded-xl border border-[#1e261d] bg-[#141714] p-6 transition-all duration-200 hover:border-[#39A751]/40 hover:bg-[#161d15] hover:shadow-lg hover:shadow-[#39A751]/10">
-                  {/* Icon */}
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1e2b1a] border border-[#39A751]/30 text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
                     <Icon name={c.icon} className="h-5 w-5" />
                   </span>

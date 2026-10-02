@@ -6,9 +6,7 @@ from typing import Any, Literal, Optional
 
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, field_validator
 
-# ---------------------------------------------------------------------
 # Shared
-# ---------------------------------------------------------------------
 Platform = Literal["web", "android", "ios", "cross_platform"]
 SkillType = Literal["language", "framework", "library", "database", "tool", "platform"]
 ServiceSize = Literal["small", "medium", "large", "wide"]
@@ -24,9 +22,7 @@ class OrderItem(BaseModel):
     display_order: int
 
 
-# ---------------------------------------------------------------------
 # Profile / Hero / About singletons
-# ---------------------------------------------------------------------
 class ProfileUpdate(BaseModel):
     full_name: Optional[str] = Field(default=None, max_length=120)
     title: Optional[str] = Field(default=None, max_length=160)
@@ -65,9 +61,7 @@ class AboutCardIn(BaseModel):
     is_published: bool = True
 
 
-# ---------------------------------------------------------------------
 # Experience timeline
-# ---------------------------------------------------------------------
 class ExperienceIn(BaseModel):
     title: str = Field(min_length=1, max_length=160)
     organization: Optional[str] = Field(default=None, max_length=160)
@@ -89,9 +83,7 @@ class ExperienceIn(BaseModel):
         return v
 
 
-# ---------------------------------------------------------------------
 # Skills
-# ---------------------------------------------------------------------
 class SkillCategoryIn(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     display_order: int = 0
@@ -109,9 +101,7 @@ class SkillIn(BaseModel):
     is_published: bool = True
 
 
-# ---------------------------------------------------------------------
 # Projects
-# ---------------------------------------------------------------------
 class ProjectCategoryIn(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     slug: str = Field(min_length=1, max_length=80, pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -144,9 +134,7 @@ class ProjectIn(BaseModel):
     display_order: int = 0
 
 
-# ---------------------------------------------------------------------
 # Services
-# ---------------------------------------------------------------------
 class ServiceIn(BaseModel):
     title: str = Field(min_length=1, max_length=120)
     description: str = ""
@@ -157,9 +145,7 @@ class ServiceIn(BaseModel):
     is_published: bool = True
 
 
-# ---------------------------------------------------------------------
 # Testimonials
-# ---------------------------------------------------------------------
 class TestimonialIn(BaseModel):
     client_name: str = Field(min_length=1, max_length=120)
     role_company: Optional[str] = Field(default=None, max_length=160)
@@ -172,9 +158,7 @@ class TestimonialIn(BaseModel):
     is_sample: bool = False
 
 
-# ---------------------------------------------------------------------
 # Social links / contact info / SEO
-# ---------------------------------------------------------------------
 class SocialLinkIn(BaseModel):
     platform: str = Field(min_length=1, max_length=40)
     label: Optional[str] = Field(default=None, max_length=60)
@@ -198,9 +182,7 @@ class SeoUpdate(BaseModel):
     twitter_handle: Optional[str] = Field(default=None, max_length=40)
 
 
-# ---------------------------------------------------------------------
 # Contact message (public submit)
-# ---------------------------------------------------------------------
 class ContactMessageIn(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     email: EmailStr

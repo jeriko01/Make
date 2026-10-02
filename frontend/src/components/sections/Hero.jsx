@@ -48,27 +48,20 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Dark overlay — keeps text + portrait readable */}
       <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/80" />
-      {/* Subtle green ambient glows on top */}
       <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/6 blur-[100px]" />
 
-      {/* Main Split Hero */}
       <div className="container-page relative z-10 my-auto py-10 lg:py-14">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
 
-          {/* ── Left Column ── */}
           <div className="order-1 lg:order-1">
-
-            {/* Clean plain text in lowercase (no button) */}
             <Reveal>
               <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase">
                 make · web &amp; mobile application engineer
               </p>
             </Reveal>
 
-            {/* Main Headline — refined responsive size */}
             <Reveal delay={70}>
               <h1 className="mt-5 font-display text-2xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold leading-[1.12] tracking-tight text-white">
                 Web and mobile products,{' '}
@@ -76,7 +69,6 @@ export default function Hero() {
               </h1>
             </Reveal>
 
-            {/* Paragraph — clean, no underline below */}
             <Reveal delay={150}>
               <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-[#8a949e] sm:text-[17px]">
                 {hero.description ||
@@ -84,7 +76,6 @@ export default function Hero() {
               </p>
             </Reveal>
 
-            {/* CTAs — Strictly side-by-side (is horyaalaan) across all screens */}
             <Reveal delay={220}>
               <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-3.5">
                 <Link
@@ -105,7 +96,6 @@ export default function Hero() {
               </div>
             </Reveal>
 
-            {/* Micro stats row — responsive spacing */}
             <Reveal delay={290}>
               <div className="mt-8 flex items-center justify-between sm:justify-start gap-4 sm:gap-7">
                 {[
@@ -122,13 +112,10 @@ export default function Hero() {
             </Reveal>
           </div>
 
-          {/* ── Right Column: Clean Portrait ── */}
           <Reveal delay={120} className="order-2 mx-auto w-full max-w-[270px] sm:max-w-[320px] lg:max-w-[360px] lg:order-2 lg:mx-0 lg:ml-auto">
             <div className="relative">
-              {/* Outer glow ring */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
 
-              {/* Portrait card */}
               <div className="relative overflow-hidden rounded-2xl border border-[#1e261d]/80 shadow-2xl shadow-black/60">
                 {profile.avatar_url ? (
                   <img
@@ -151,7 +138,6 @@ export default function Hero() {
                   </div>
                 )}
 
-                {/* Subtle bottom gradient to blend smoothly */}
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
               </div>
             </div>
@@ -160,7 +146,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Capability strip ── */}
       <div id="capability-strip" className="relative z-10 border-t border-[#1e261d] bg-[#0b0f0b]">
         <div className="container-page py-5">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
