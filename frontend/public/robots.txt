@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /skills
+Allow: /services
+Allow: /about
+Allow: /projects
+Allow: /support
+Disallow: /admin
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://make.dev/sitemap.xml

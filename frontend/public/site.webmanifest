@@ -1,0 +1,17 @@
+{
+  "name": "Make — Web & Mobile Application Studio",
+  "short_name": "Make",
+  "description": "Senior web and mobile engineering studio building dependable, high-performance applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e0e0e",
+  "theme_color": "#0e0e0e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

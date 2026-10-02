@@ -9,8 +9,15 @@
     <meta name="description" content="Make is a senior web and mobile engineering studio building dependable, high-performance applications from frontend to API and scalable data layer." />
     <meta name="author" content="Make" />
 
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="keywords" content="web engineering, mobile application engineer, full stack developer, react, typescript, python, fastapi, supabase, postgresql, custom software" />
+    <link rel="canonical" href="https://make.dev/" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://make.dev/" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Make — Senior Web &amp; Mobile Application Studio" />
     <meta property="og:description" content="Web and mobile products, built to work. Turning product ideas into clear, dependable applications—from interface to API and scalable cloud data." />
     <meta property="og:site_name" content="Make" />
@@ -29,6 +36,45 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data (JSON-LD) for Search Engine Rich Snippets -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://make.dev/#person",
+            "name": "Make",
+            "jobTitle": "Senior Web & Mobile Application Engineer",
+            "url": "https://make.dev",
+            "knowsAbout": [
+              "Web Development",
+              "React",
+              "TypeScript",
+              "React Native",
+              "Python",
+              "FastAPI",
+              "PostgreSQL",
+              "Supabase"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://make.dev/#service",
+            "name": "Make Studio",
+            "url": "https://make.dev",
+            "logo": "https://make.dev/favicon.svg",
+            "image": "https://make.dev/images/og-image.jpg",
+            "description": "Senior web and mobile engineering studio building dependable, high-performance applications from frontend to API and scalable data layer.",
+            "priceRange": "$$$",
+            "founder": {
+              "@id": "https://make.dev/#person"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

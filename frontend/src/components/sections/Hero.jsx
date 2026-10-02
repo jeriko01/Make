@@ -41,17 +41,25 @@ export default function Hero() {
       id="home"
       aria-label="Hero"
       className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#0e0e0e] pt-24 lg:pt-28"
+      style={{
+        backgroundImage: 'url(/images/skills-hero-bg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
-      {/* Background ambient lighting - pure dark with subtle glow */}
-      <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/8 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/4 blur-[100px]" />
+      {/* Dark overlay — keeps text + portrait readable */}
+      <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/80" />
+      {/* Subtle green ambient glows on top */}
+      <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/6 blur-[100px]" />
 
       {/* Main Split Hero */}
       <div className="container-page relative z-10 my-auto py-10 lg:py-14">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
 
           {/* ── Left Column ── */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
 
             {/* Clean plain text in lowercase (no button) */}
             <Reveal>
@@ -60,9 +68,9 @@ export default function Hero() {
               </p>
             </Reveal>
 
-            {/* Main Headline — refined size */}
+            {/* Main Headline — refined responsive size */}
             <Reveal delay={70}>
-              <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] xl:text-5xl">
+              <h1 className="mt-5 font-display text-2xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold leading-[1.12] tracking-tight text-white">
                 Web and mobile products,{' '}
                 <span className="text-[#52fe7d]">built to work.</span>
               </h1>
@@ -70,44 +78,44 @@ export default function Hero() {
 
             {/* Paragraph — clean, no underline below */}
             <Reveal delay={150}>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-[#8a949e] sm:text-[17px]">
+              <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-[#8a949e] sm:text-[17px]">
                 {hero.description ||
                   'I turn product ideas into clear, dependable applications—from the first screen to the API and data behind it.'}
               </p>
             </Reveal>
 
-            {/* CTAs */}
+            {/* CTAs — Strictly side-by-side (is horyaalaan) across all screens */}
             <Reveal delay={220}>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-3.5">
                 <Link
                   to={hero.primary_cta_href || '/projects'}
-                  className="btn-lime gap-2 px-6 py-3 text-sm shadow-lg shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all"
+                  className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all text-center whitespace-nowrap"
                 >
                   <span>{hero.primary_cta_label || 'Explore my work'}</span>
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
                 </Link>
 
                 <Link
                   to={hero.secondary_cta_href || '/support'}
-                  className="btn-outline gap-2 px-6 py-3 text-sm"
+                  className="btn-outline flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm transition-all text-center whitespace-nowrap"
                 >
                   <span>{hero.secondary_cta_label || "Let's collaborate"}</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
                 </Link>
               </div>
             </Reveal>
 
-            {/* Micro stats row - clean, no line break/border */}
+            {/* Micro stats row — responsive spacing */}
             <Reveal delay={290}>
-              <div className="mt-8 flex flex-wrap items-center gap-7">
+              <div className="mt-8 flex items-center justify-between sm:justify-start gap-4 sm:gap-7">
                 {[
                   { num: '3+', label: 'Years Experience' },
                   { num: '20+', label: 'Projects Shipped' },
                   { num: '100%', label: 'Client Satisfaction' },
                 ].map(({ num, label }) => (
                   <div key={label}>
-                    <p className="font-display text-xl font-black text-white">{num}</p>
-                    <p className="text-[11px] text-[#8a949e] font-medium">{label}</p>
+                    <p className="font-display text-lg sm:text-xl font-black text-white">{num}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#8a949e] font-medium">{label}</p>
                   </div>
                 ))}
               </div>
@@ -115,7 +123,7 @@ export default function Hero() {
           </div>
 
           {/* ── Right Column: Clean Portrait ── */}
-          <Reveal delay={120} className="order-1 mx-auto w-full max-w-[310px] sm:max-w-[350px] lg:order-2 lg:mx-0 lg:ml-auto">
+          <Reveal delay={120} className="order-2 mx-auto w-full max-w-[270px] sm:max-w-[320px] lg:max-w-[360px] lg:order-2 lg:mx-0 lg:ml-auto">
             <div className="relative">
               {/* Outer glow ring */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />

@@ -1,5 +1,20 @@
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, Globe, Zap, ShoppingCart, LayoutDashboard, Calendar, Smartphone, Server, Wrench } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  Globe,
+  Zap,
+  ShoppingCart,
+  LayoutDashboard,
+  Calendar,
+  Smartphone,
+  Server,
+  Wrench,
+  Shield,
+  Clock,
+  Star,
+  Users,
+} from 'lucide-react'
 import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
 import PageLayout from '../components/layout/PageLayout'
 import Reveal from '../components/common/Reveal'
@@ -17,71 +32,102 @@ const ICON_MAP = {
   Wrench,
 }
 
+/* ── Engagement models ── */
+const MODELS = [
+  {
+    id: '01',
+    title: 'Milestone-Based Fixed Scope',
+    desc: 'Ideal for MVPs and defined feature sets. Clear deliverables, fixed deadlines, zero scope creep.',
+    badge: 'Most Popular',
+    icon: Star,
+  },
+  {
+    id: '02',
+    title: 'Dedicated Sprint Engagement',
+    desc: 'Two-week agile sprints embedded alongside your product team to ship complex full-stack features.',
+    badge: null,
+    icon: Clock,
+  },
+  {
+    id: '03',
+    title: 'Maintenance & Advisory',
+    desc: 'Ongoing technical guardianship: patches, performance tuning, and architecture guidance.',
+    badge: null,
+    icon: Users,
+  },
+]
+
+/* ── Guarantees ── */
+const GUARANTEES = [
+  'Direct engineering — no outsourcing, ever',
+  'Full source code & IP ownership transferred',
+  'Responsive across mobile, tablet, and desktop',
+  'OWASP-aligned security on every project',
+  'Structured documentation on handover',
+  'Post-launch support window included',
+]
+
 function ServiceCard({ service, index }) {
   const navigate = useNavigate()
   const IconComp = ICON_MAP[service.icon] || Globe
 
-  const handleChoose = () => {
-    navigate(`/support?service=${service.slug}`)
-  }
-
   return (
-    <Reveal delay={index * 50}>
-      <article className="group flex h-full flex-col justify-between rounded-xl border border-[#1e261d] bg-[#141714] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#161d15] hover:shadow-xl hover:shadow-[#39A751]/10">
+    <Reveal delay={index * 55}>
+      <article
+        className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#39A751]/60 hover:shadow-2xl hover:shadow-[#39A751]/10"
+      >
+        {/* Top glow on hover */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/0 to-transparent transition-all duration-300 group-hover:via-[#52fe7d]/60" />
+
         <div>
-          {/* Header row */}
-          <div className="flex items-center justify-between gap-4">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1e2b1a] border border-[#39A751]/30 text-[#52fe7d] transition group-hover:scale-105 group-hover:bg-[#39A751] group-hover:text-white">
-              <IconComp className="h-6 w-6" />
+          {/* Icon + number row */}
+          <div className="flex items-center justify-between">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d] transition-all duration-300 group-hover:scale-110 group-hover:border-[#39A751]/70 group-hover:bg-[#39A751] group-hover:text-white">
+              <IconComp className="h-5 w-5" />
             </span>
-            <span className="rounded-full border border-[#1e261d] bg-[#0e0e0e] px-3 py-1 text-[11px] font-mono font-medium text-[#52fe7d]">
-              Service {String(index + 1).padStart(2, '0')}
+            <span className="font-mono text-[11px] font-bold tracking-widest text-[#39A751]/60">
+              {String(index + 1).padStart(2, '0')}
             </span>
           </div>
 
           {/* Title */}
-          <h2 className="mt-5 font-display text-xl font-bold text-white group-hover:text-[#52fe7d] transition-colors">
+          <h2 className="mt-5 font-display text-lg font-bold leading-snug text-white transition-colors duration-200 group-hover:text-[#52fe7d]">
             {service.title}
           </h2>
 
-          {/* Target Audience Pill */}
-          <div className="mt-3 inline-block rounded-md border border-[#1e261d] bg-[#161d15] px-2.5 py-1 text-xs text-[#8a949e]">
-            {service.audience}
-          </div>
+          {/* Audience tag */}
+          {service.audience && (
+            <p className="mt-2 text-xs text-[#8a949e]">{service.audience}</p>
+          )}
 
           {/* Description */}
-          <p className="mt-4 text-xs sm:text-sm leading-relaxed text-[#d2d7dc]">
+          <p className="mt-3 text-sm leading-relaxed text-[#8a949e]">
             {service.description}
           </p>
 
-          {/* Deliverables Checklist */}
+          {/* Deliverables */}
           {service.deliverables?.length > 0 && (
-            <div className="mt-6 border-t border-[#1e261d] pt-5">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-[#8a949e] mb-3">
-                Key Deliverables
-              </p>
-              <ul className="space-y-2" aria-label="What is delivered">
-                {service.deliverables.map((d) => (
-                  <li key={d} className="flex items-start gap-2.5 text-xs text-[#d2d7dc]">
-                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#39A751]" />
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="mt-5 space-y-1.5" aria-label="Key deliverables">
+              {service.deliverables.map((d) => (
+                <li key={d} className="flex items-start gap-2 text-xs text-[#d2d7dc]">
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#39A751]" />
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
 
-        {/* Selection CTA carries selection into inquiry form */}
-        <div className="mt-8 pt-4 border-t border-[#1e261d]">
+        {/* CTA */}
+        <div className="mt-7 border-t border-[#1e261d] pt-5">
           <button
             type="button"
-            onClick={handleChoose}
-            className="btn-lime w-full justify-center gap-2 py-3 text-xs sm:text-sm shadow-md shadow-[#39A751]/20 cursor-pointer"
-            aria-label={`Select ${service.title} and start inquiry`}
+            onClick={() => navigate(`/support?service=${service.slug}`)}
+            className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-[#1a2a1a] border border-[#39A751]/30 py-2.5 text-xs font-semibold text-[#52fe7d] transition-all duration-200 hover:bg-[#39A751] hover:text-white hover:border-[#39A751] hover:shadow-lg hover:shadow-[#39A751]/20"
+            aria-label={`Select ${service.title}`}
           >
             <span>Choose this service</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
           </button>
         </div>
       </article>
@@ -95,80 +141,153 @@ function ServicesContent() {
 
   return (
     <>
-      {/* Page Hero */}
-      <div className="bg-[#0e0e0e] pt-32 pb-16 border-b border-[#1e261d]">
-        <div className="container-page">
+      {/* ── Hero ── */}
+      <div
+        className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
+        style={{
+          backgroundImage: 'url(/images/services-hero-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+        }}
+      >
+        {/* Overlays */}
+        <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/78" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e0e]" />
+        <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/10 blur-[130px]" />
+        <div className="pointer-events-none absolute right-0 top-1/3 h-[300px] w-[300px] rounded-full bg-[#52fe7d]/5 blur-[100px]" />
+
+        <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a] px-3.5 py-1 text-xs font-bold tracking-widest text-[#52fe7d]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#39A751] animate-pulse" />
-              <span>SERVICES &amp; SOLUTIONS</span>
-            </div>
-            <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Software engineering offerings
-            </h1>
-            <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-[#d2d7dc]">
-              Specialized web, mobile, and API development services. Every project includes structured architecture, clean TypeScript or Python source code, and full intellectual property ownership.
+            <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
+              services &amp; solutions
             </p>
+
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+              Engineering services{' '}
+              <span className="text-[#52fe7d]">built for real products</span>
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#8a949e] sm:text-lg">
+              Specialized web, mobile, and API development with clean architecture, type-safe codebases, and full IP ownership on handover.
+            </p>
+
+            {/* Stats row */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-8 border-t border-[#1e261d]/60 pt-8">
+              {[
+                { num: '8', label: 'Service Areas' },
+                { num: '3+', label: 'Years Active' },
+                { num: '20+', label: 'Projects Shipped' },
+                { num: '100%', label: 'IP Ownership Transferred' },
+              ].map(({ num, label }) => (
+                <div key={label} className="text-center">
+                  <p className="font-display text-2xl font-black text-white">{num}</p>
+                  <p className="mt-0.5 text-[11px] font-medium text-[#8a949e]">{label}</p>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </div>
 
-      {/* 8 Selectable Services Grid */}
-      <section className="section-pad bg-[#0e0e0e]" aria-label="Services List">
+      {/* ── Services Grid ── */}
+      <section className="section-pad bg-[#0e0e0e]" aria-label="Services">
         <div className="container-page">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <Reveal>
+            <div className="mb-12 text-center">
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">what i build</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
+                Choose your service
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm text-[#8a949e]">
+                Each service is a standalone engagement. Select one below — your choice carries directly into the inquiry form.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {services.map((s, i) => (
               <ServiceCard key={s.id || s.slug} service={s} index={i} />
             ))}
           </div>
-
-          {/* Engagement models assurance block */}
-          <Reveal delay={250}>
-            <div className="mt-16 rounded-xl border border-[#1e261d] bg-[#141714] p-8 sm:p-10 shadow-2xl">
-              <h3 className="font-display text-xl font-bold text-white">
-                How we work together
-              </h3>
-              <p className="mt-2 text-sm text-[#8a949e] max-w-2xl">
-                Clear collaboration models tailored to your timeline, requirements, and internal team composition.
-              </p>
-
-              <div className="mt-8 grid gap-6 md:grid-cols-3">
-                <div className="rounded-lg border border-[#1e261d] bg-[#0e0e0e] p-5">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">Model 01</span>
-                  <h4 className="mt-2 font-display text-base font-bold text-white">Milestone-Based Fixed Scope</h4>
-                  <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">
-                    Ideal for MVPs, business websites, or defined feature sets. Clear deliverables, fixed deadlines, and zero scope creep.
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-[#1e261d] bg-[#0e0e0e] p-5">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">Model 02</span>
-                  <h4 className="mt-2 font-display text-base font-bold text-white">Dedicated Sprint Engagements</h4>
-                  <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">
-                    Two-week agile sprints embedded alongside your product team to ship complex full-stack features or mobile apps.
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-[#1e261d] bg-[#0e0e0e] p-5">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#52fe7d]">Model 03</span>
-                  <h4 className="mt-2 font-display text-base font-bold text-white">Maintenance &amp; Advisory</h4>
-                  <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">
-                    Ongoing technical guardianship: security patches, performance tuning, and technical guidance on architecture.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* Interactive Customer Project Planner */}
+      {/* ── Guarantees strip ── */}
+      <section className="border-y border-[#1e261d] bg-[#0b0f0b] py-14" aria-label="Engineering guarantees">
+        <div className="container-page">
+          <Reveal>
+            <div className="mx-auto mb-8 max-w-xl text-center">
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">every project</p>
+              <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
+                What's included — always
+              </h2>
+            </div>
+          </Reveal>
+          <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {GUARANTEES.map((g, i) => (
+              <Reveal key={g} delay={i * 40}>
+                <div className="flex items-start gap-3 rounded-xl border border-[#1e261d] bg-[#111511] px-5 py-4">
+                  <Shield className="mt-0.5 h-4 w-4 shrink-0 text-[#39A751]" />
+                  <p className="text-sm text-[#d2d7dc]">{g}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Engagement Models ── */}
+      <section className="section-pad bg-[#0e0e0e]" aria-label="Engagement models">
+        <div className="container-page">
+          <Reveal>
+            <div className="mb-12 text-center">
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">how we work</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
+                Three collaboration models
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm text-[#8a949e]">
+                Tailored to your timeline, team, and project complexity.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {MODELS.map((m, i) => {
+              const IconComp = m.icon
+              return (
+                <Reveal key={m.id} delay={i * 80}>
+                  <div className="group relative flex h-full flex-col rounded-2xl border border-[#1e261d] bg-[#111511] p-7 transition-all duration-300 hover:border-[#39A751]/50 hover:shadow-xl hover:shadow-[#39A751]/8">
+                    {m.badge && (
+                      <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#39A751]/40 bg-[#1a2a1a] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#52fe7d]">
+                        <Star className="h-3 w-3" />
+                        {m.badge}
+                      </span>
+                    )}
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
+                        <IconComp className="h-5 w-5" />
+                      </span>
+                      <span className="font-mono text-xs font-bold tracking-widest text-[#39A751]/60">
+                        Model {m.id}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 font-display text-lg font-bold text-white">{m.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-[#8a949e]">{m.desc}</p>
+                  </div>
+                </Reveal>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Interactive Project Planner ── */}
       <ProjectPlanner />
 
-      {/* Final Collaborate CTA */}
+      {/* ── CTA ── */}
       <CollaborateCTA
         heading="Have a custom product in mind?"
-        body="Select one of the services above to jump directly into the inquiry form, or send a general description of your project."
+        body="Select a service above to jump directly into the inquiry form, or describe your project and we'll figure out the right scope together."
       />
     </>
   )

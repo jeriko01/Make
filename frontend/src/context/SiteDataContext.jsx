@@ -13,7 +13,7 @@ const FALLBACK_SITE_DATA = {
     full_name: 'Make',
     title: 'Senior Web & Mobile Engineering Studio',
     tagline: 'High-performance web and mobile products, built to work.',
-    short_bio: 'Senior engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.',
+    short_bio: 'Engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.',
     long_bio:
       'I turn product ideas into clear, dependable applications—from the first screen to the API and data behind it. I work across the full stack: React on the frontend, Python/FastAPI on the backend, and React Native or Flutter for mobile. I care about code that is readable, architecture that is maintainable, and products that feel right to the people who use them.',
     location: 'Available Worldwide · Remote',

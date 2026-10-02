@@ -40,13 +40,11 @@ export default function Navbar() {
       : 'border-white/5 bg-[#0e0e0e]/40 backdrop-blur-md'
   }`
 
-  const linkBase = 'relative flex items-center rounded-lg px-3.5 py-1.5 text-sm font-medium transition-all duration-200'
-
   function getLinkClass({ isActive }) {
-    return `${linkBase} ${
+    return `relative flex items-center px-1 py-1 text-sm font-medium transition-colors duration-200 ${
       isActive
-        ? 'text-white bg-white/10 font-semibold shadow-inner'
-        : 'text-[#d2d7dc] hover:text-white hover:bg-white/5'
+        ? 'text-white'
+        : 'text-[#8a949e] hover:text-white'
     }`
   }
 
@@ -64,15 +62,31 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="mx-auto hidden items-center gap-1 md:flex" role="list">
+        <ul className="mx-auto hidden items-center gap-7 md:flex" role="list">
           {NAV_LINKS.map((l) => (
             <li key={l.to}>
               <NavLink
                 to={l.to}
                 end={l.exact}
-                className={getLinkClass}
+                className={({ isActive }) =>
+                  `group relative flex items-center gap-0.5 px-1 py-1 text-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'text-white' : 'text-[#8a949e] hover:text-white'
+                  }`
+                }
               >
-                {l.label}
+                {({ isActive }) => (
+                  <>
+                    {l.label}
+                    {/* Underline: always visible for active, slides in on hover */}
+                    <span
+                      className={`absolute -bottom-px left-0 h-[1.5px] rounded-full bg-[#52fe7d] transition-all duration-200 ${
+                        isActive
+                          ? 'w-full opacity-100'
+                          : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-60'
+                      }`}
+                    />
+                  </>
+                )}
               </NavLink>
             </li>
           ))}

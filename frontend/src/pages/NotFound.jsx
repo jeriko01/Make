@@ -23,14 +23,20 @@ function NotFoundContent() {
             The requested page does not exist or has been relocated. Use the navigation links below to return to Make&apos;s portfolio.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/" className="btn-lime gap-2 px-6 py-3 text-sm">
-              <Home className="h-4 w-4" />
+          <div className="mt-8 flex flex-row items-center justify-center gap-2.5 sm:gap-3.5">
+            <Link
+              to="/"
+              className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all text-center whitespace-nowrap"
+            >
+              <Home className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
               <span>Return Home</span>
             </Link>
-            <Link to="/support" className="btn-outline gap-2 px-6 py-3 text-sm">
+            <Link
+              to="/support"
+              className="btn-outline flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm transition-all text-center whitespace-nowrap"
+            >
               <span>Contact Make</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
             </Link>
           </div>
 

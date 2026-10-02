@@ -304,12 +304,12 @@ function SkillsContent() {
       <div className="relative pt-32 pb-20 border-b border-[#1e261d] overflow-hidden bg-[#0e0e0e]">
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity scale-105 pointer-events-none"
-          style={{ backgroundImage: `url('/images/skills-hero-bg.jpg')` }}
+          className="absolute inset-0 bg-cover bg-center scale-105 pointer-events-none"
+          style={{ backgroundImage: `url('/images/skills-hero-bg.jpg')`, opacity: 0.45 }}
         />
 
-        {/* Dark Gradient Overlay for optimal readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/80 via-[#0e0e0e]/92 to-[#0e0e0e] pointer-events-none" />
+        {/* Dark Gradient Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/60 via-[#0e0e0e]/75 to-[#0e0e0e] pointer-events-none" />
         <div className="pointer-events-none absolute -left-48 top-0 h-[450px] w-[450px] rounded-full bg-[#39A751]/10 blur-[130px]" />
         <div className="pointer-events-none absolute -right-48 top-10 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/5 blur-[120px]" />
 

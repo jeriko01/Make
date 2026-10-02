@@ -75,7 +75,7 @@ export default function AdminLayout() {
             </Link>
             {nav}
             <div className="mt-auto space-y-2 pt-6">
-              <a href="/" target="_blank" rel="noreferrer" className="btn-ghost w-full justify-start !py-2 text-sm">
+              <a href="/" target="_blank" rel="noopener noreferrer" className="btn-ghost w-full justify-start !py-2 text-sm">
                 <ExternalLink className="h-4 w-4" /> View site
               </a>
               <div className="rounded-xl border border-white/10 p-3 text-xs text-slate-400">
