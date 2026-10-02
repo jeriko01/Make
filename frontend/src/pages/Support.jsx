@@ -332,7 +332,7 @@ function SupportContent() {
             </p>
 
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-              Let's build something{' '}
+              Let&apos;s build something{' '}
               <span className="text-[#52fe7d]">together.</span>
             </h1>
 
@@ -439,7 +439,7 @@ function SupportContent() {
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Project Inquiry</p>
                 <h2 className="mt-2 font-display text-2xl font-bold text-white">Tell me about your project</h2>
                 <p className="mt-1.5 text-sm text-[#8a949e]">
-                  Fill in the details below and I'll come back with a concrete technical response.
+                  Fill in the details below and I&apos;ll come back with a concrete technical response.
                 </p>
               </div>
 

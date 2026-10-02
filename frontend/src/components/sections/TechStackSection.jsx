@@ -3,14 +3,8 @@ import {
   Globe,
   Server,
   Database,
-  GitBranch,
   CheckCircle2,
   ArrowRight,
-  ShieldCheck,
-  Layers,
-  Cpu,
-  RefreshCw,
-  Lock,
 } from 'lucide-react'
 import Reveal from '../common/Reveal'
 

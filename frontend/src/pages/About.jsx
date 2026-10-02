@@ -15,7 +15,6 @@ import {
 import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
 import PageLayout from '../components/layout/PageLayout'
 import Reveal from '../components/common/Reveal'
-import Icon from '../components/common/Icon'
 import CollaborateCTA from '../components/sections/CollaborateCTA'
 
 const TIMELINE = [
@@ -200,13 +199,13 @@ function AboutContent() {
             </h2>
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#8a949e] sm:text-base">
               <p>
-                Building digital products is more than writing syntax that compiles. It's crafting dependable systems that users find intuitive, that handle errors gracefully, and that other engineers can maintain without friction.
+                Building digital products is more than writing syntax that compiles. It&apos;s crafting dependable systems that users find intuitive, that handle errors gracefully, and that other engineers can maintain without friction.
               </p>
               <p>
                 I specialize across the full lifecycle: from the React component tree and React Native mobile interfaces, through async FastAPI endpoints, down to relational PostgreSQL schemas with Supabase.
               </p>
               <p>
-                I believe in honest engineering: realistic scopes, measurable milestones, and transparent communication. Every project I ship is one I'm proud to put my name on.
+                I believe in honest engineering: realistic scopes, measurable milestones, and transparent communication. Every project I ship is one I&apos;m proud to put my name on.
               </p>
             </div>
           </Reveal>

@@ -1,14 +1,8 @@
 import { useState } from 'react'
 import {
   Search,
-  CheckCircle2,
-  Cpu,
-  Layers,
-  Sparkles,
   ArrowRight,
-  Shield,
-  Activity,
-  Award,
+  Cpu,
 } from 'lucide-react'
 import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
 import PageLayout from '../components/layout/PageLayout'

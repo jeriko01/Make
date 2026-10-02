@@ -205,7 +205,7 @@ function ServicesContent() {
             <div className="mx-auto mb-8 max-w-xl text-center">
               <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">every project</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
-                What's included — always
+                What&apos;s included — always
               </h2>
             </div>
           </Reveal>

@@ -40,13 +40,6 @@ export default function Navbar() {
       : 'border-white/5 bg-[#0e0e0e]/40 backdrop-blur-md'
   }`
 
-  function getLinkClass({ isActive }) {
-    return `relative flex items-center px-1 py-1 text-sm font-medium transition-colors duration-200 ${
-      isActive
-        ? 'text-white'
-        : 'text-[#8a949e] hover:text-white'
-    }`
-  }
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex flex-col items-center px-4 pt-3 sm:pt-4">
