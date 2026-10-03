@@ -42,15 +42,14 @@ export default function Hero() {
       aria-label="Hero"
       className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#06080E] pt-24 lg:pt-28"
       style={{
-        backgroundImage: 'url(/images/skills-hero-bg.jpg)',
+        backgroundImage: 'url(/images/hero-software-build.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[#06080E]/85" />
-      <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#0284C7]/15 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#38BDF8]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#06080E]/50 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#06080E] to-transparent" />
 
       <div className="container-page relative z-10 my-auto py-10 lg:py-14">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
