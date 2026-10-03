@@ -63,14 +63,14 @@ export default function ProjectsPage() {
             </Reveal>
           </div>
         </div>
-        <div className="border-b border-[#1E2C4A] bg-[#0b0f0b] py-10">
+        <div className="border-b border-[#1E2C4A] bg-[#06080E] py-10">
           <div className="container-page grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {HIGHLIGHTS.map((h, i) => {
               const IconComp = h.icon
               return (
                 <Reveal key={h.title} delay={i * 50}>
-                  <div className="flex items-start gap-4 rounded-xl border border-[#1E2C4A] bg-[#111511] p-5 transition hover:border-[#0284C7]/35">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8]">
+                  <div className="flex items-start gap-4 rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-5 transition hover:border-[#0284C7]/35">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8]">
                       <IconComp className="h-4 w-4" />
                     </span>
                     <div>

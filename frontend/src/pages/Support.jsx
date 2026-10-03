@@ -133,7 +133,7 @@ function SelectField({ id, label, error, required, options, ...props }) {
         {...props}
       >
         {options.map((o) => (
-          <option key={o.value} value={o.value} className="bg-[#111511] text-white">{o.label}</option>
+          <option key={o.value} value={o.value} className="bg-[#0D1424] text-white">{o.label}</option>
         ))}
       </select>
       {error && (
@@ -198,7 +198,7 @@ function InquiryForm() {
   if (formStatus === 'success') {
     return (
       <div className="flex flex-col items-center rounded-2xl border border-[#0284C7]/40 bg-[#0e1a0e] p-12 text-center" role="status">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#0284C7]/40 bg-[#1a2a1a]">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#0284C7]/40 bg-[#131F37]">
           <CheckCircle2 className="h-8 w-8 text-[#38BDF8]" />
         </div>
         <h3 className="mt-5 font-display text-2xl font-bold text-white">Inquiry received</h3>
@@ -229,7 +229,7 @@ function InquiryForm() {
     <form onSubmit={handleSubmit} noValidate aria-label="Project inquiry form" className="space-y-5">
 
       {values.service && (
-        <div className="flex items-center justify-between rounded-xl border border-[#0284C7]/35 bg-[#1a2a1a] px-4 py-3 text-xs">
+        <div className="flex items-center justify-between rounded-xl border border-[#0284C7]/35 bg-[#131F37] px-4 py-3 text-xs">
           <div className="flex items-center gap-2 text-[#38BDF8]">
             <Zap className="h-3.5 w-3.5" />
             <span>Selected: <strong>{SERVICE_OPTIONS.find(o => o.value === values.service)?.label || values.service}</strong></span>
@@ -345,7 +345,7 @@ function SupportContent() {
                 const IconComp = item.icon
                 return (
                   <Reveal key={item.title} delay={i * 50}>
-                    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#1E2C4A] bg-[#111511]/80 p-4 text-center backdrop-blur-sm">
+                    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#1E2C4A] bg-[#0D1424]/80 p-4 text-center backdrop-blur-sm">
                       <IconComp className="h-5 w-5 text-[#38BDF8]" />
                       <p className="text-xs font-bold text-white">{item.title}</p>
                       <p className="text-[10px] leading-snug text-[#94A3B8]">{item.desc}</p>
@@ -364,16 +364,16 @@ function SupportContent() {
           <div className="space-y-5">
 
             <Reveal>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6">
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Direct Contact</p>
                 <h2 className="mt-2 font-display text-lg font-bold text-white">Get in touch</h2>
 
                 <div className="mt-5 space-y-4">
                   <a
                     href={`mailto:${email}`}
-                    className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5 transition hover:border-[#0284C7]/50 hover:bg-[#1a2a1a]"
+                    className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5 transition hover:border-[#0284C7]/50 hover:bg-[#131F37]"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                       <Mail className="h-4 w-4" />
                     </span>
                     <div>
@@ -383,7 +383,7 @@ function SupportContent() {
                   </a>
 
                   <div className="flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#111511] text-[#38BDF8]">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#0D1424] text-[#38BDF8]">
                       <MapPin className="h-4 w-4" />
                     </span>
                     <div>
@@ -393,7 +393,7 @@ function SupportContent() {
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] px-4 py-3">
+                <div className="mt-5 rounded-xl border border-[#0284C7]/25 bg-[#131F37] px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-[#38BDF8] shadow-[0_0_6px_rgba(82,254,125,0.8)]" />
                     <p className="text-xs font-bold text-[#38BDF8]">Currently accepting new projects</p>
@@ -406,7 +406,7 @@ function SupportContent() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6">
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Common Questions</p>
                 <h2 className="mt-2 mb-1 font-display text-base font-bold text-white">Quick answers</h2>
                 {SUPPORT_FAQ.map((item) => (
@@ -416,7 +416,7 @@ function SupportContent() {
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-5">
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-5">
                 <div className="flex items-center gap-2">
                   <Shield className="h-4 w-4 text-[#38BDF8]" />
                   <p className="text-xs font-bold text-white">Confidentiality</p>
@@ -430,7 +430,7 @@ function SupportContent() {
 
           <Reveal delay={60}>
             <div
-              className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 sm:p-9"
+              className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-7 sm:p-9"
               style={{ boxShadow: '0 0 0 1px rgba(57,167,81,0.08), 0 30px 60px rgba(0,0,0,0.6), 0 -1px 0 0 rgba(82,254,125,0.12)' }}
             >
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/40 to-transparent" />

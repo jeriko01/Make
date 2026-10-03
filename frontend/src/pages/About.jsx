@@ -214,8 +214,8 @@ function AboutContent() {
               const IconComp = cap.icon
               return (
                 <Reveal key={cap.title} delay={i * 60}>
-                  <div className="group rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6 transition-all duration-200 hover:border-[#0284C7]/40 hover:shadow-lg hover:shadow-[#0284C7]/8">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
+                  <div className="group rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6 transition-all duration-200 hover:border-[#0284C7]/40 hover:shadow-lg hover:shadow-[#0284C7]/8">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                       <IconComp className="h-5 w-5" />
                     </span>
                     <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">{cap.title}</h3>
@@ -227,7 +227,7 @@ function AboutContent() {
           </div>
         </div>
       </section>
-      <section className="section-pad bg-[#0b0f0b]" aria-label="Journey timeline">
+      <section className="section-pad bg-[#06080E]" aria-label="Journey timeline">
         <div className="container-page">
           <Reveal>
             <div className="mb-14 text-center">
@@ -251,7 +251,7 @@ function AboutContent() {
                   <Reveal key={`${item.year}-${i}`} delay={i * 60}>
                     <div className={`relative flex gap-6 sm:gap-0 ${isRight ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
                       <div className={`flex-1 ${isRight ? 'sm:pr-10 sm:text-right' : 'sm:pl-10 sm:text-left'} pl-16 sm:pl-0`}>
-                        <div className={`group inline-block w-full rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6 text-left transition-all duration-300 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8`}>
+                        <div className={`group inline-block w-full rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6 text-left transition-all duration-300 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8`}>
                           <div className={`flex flex-wrap items-center gap-2 ${isRight ? 'sm:flex-row-reverse sm:justify-end' : ''}`}>
                             <span className="font-mono text-[11px] font-bold tracking-widest text-[#38BDF8]">
                               {item.year}
@@ -280,7 +280,7 @@ function AboutContent() {
                         </div>
                       </div>
                       <div className="absolute left-6 top-6 sm:static sm:flex sm:w-0 sm:items-start sm:justify-center sm:pt-6">
-                        <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#0284C7] bg-[#1a2a1a] shadow-lg shadow-[#0284C7]/30 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                        <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#0284C7] bg-[#131F37] shadow-lg shadow-[#0284C7]/30 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
                           <IconComp className="h-3 w-3 text-[#38BDF8]" />
                         </div>
                       </div>
@@ -311,7 +311,7 @@ function AboutContent() {
             <div className="grid gap-5 sm:grid-cols-2">
               {about.principles.map((p, i) => (
                 <Reveal key={p.id} delay={i * 60}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8">
+                  <div className="group relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8">
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/0 to-transparent transition-all duration-300 group-hover:via-[#38BDF8]/50" />
                     <div className="mb-4 h-1 w-8 rounded-full bg-[#0284C7] transition-all duration-300 group-hover:w-14 group-hover:bg-[#38BDF8]" />
                     <h3 className="font-display text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors">

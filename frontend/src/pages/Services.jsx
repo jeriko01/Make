@@ -72,13 +72,13 @@ function ServiceCard({ service, index }) {
   return (
     <Reveal delay={index * 55}>
       <article
-        className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0284C7]/60 hover:shadow-2xl hover:shadow-[#0284C7]/10"
+        className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0284C7]/60 hover:shadow-2xl hover:shadow-[#0284C7]/10"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/0 to-transparent transition-all duration-300 group-hover:via-[#38BDF8]/60" />
 
         <div>
           <div className="flex items-center justify-between">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition-all duration-300 group-hover:scale-110 group-hover:border-[#0284C7]/70 group-hover:bg-[#0284C7] group-hover:text-white">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8] transition-all duration-300 group-hover:scale-110 group-hover:border-[#0284C7]/70 group-hover:bg-[#0284C7] group-hover:text-white">
               <IconComp className="h-5 w-5" />
             </span>
             <span className="font-mono text-[11px] font-bold tracking-widest text-[#0284C7]/60">
@@ -114,7 +114,7 @@ function ServiceCard({ service, index }) {
           <button
             type="button"
             onClick={() => navigate(`/support?service=${service.slug}`)}
-            className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-[#1a2a1a] border border-[#0284C7]/30 py-2.5 text-xs font-semibold text-[#38BDF8] transition-all duration-200 hover:bg-[#0284C7] hover:text-white hover:border-[#0284C7] hover:shadow-lg hover:shadow-[#0284C7]/20"
+            className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-[#131F37] border border-[#0284C7]/30 py-2.5 text-xs font-semibold text-[#38BDF8] transition-all duration-200 hover:bg-[#0284C7] hover:text-white hover:border-[#0284C7] hover:shadow-lg hover:shadow-[#0284C7]/20"
             aria-label={`Select ${service.title}`}
           >
             <span>Choose this service</span>
@@ -199,7 +199,7 @@ function ServicesContent() {
         </div>
       </section>
 
-      <section className="border-y border-[#1E2C4A] bg-[#0b0f0b] py-14" aria-label="Engineering guarantees">
+      <section className="border-y border-[#1E2C4A] bg-[#06080E] py-14" aria-label="Engineering guarantees">
         <div className="container-page">
           <Reveal>
             <div className="mx-auto mb-8 max-w-xl text-center">
@@ -212,7 +212,7 @@ function ServicesContent() {
           <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {GUARANTEES.map((g, i) => (
               <Reveal key={g} delay={i * 40}>
-                <div className="flex items-start gap-3 rounded-xl border border-[#1E2C4A] bg-[#111511] px-5 py-4">
+                <div className="flex items-start gap-3 rounded-xl border border-[#1E2C4A] bg-[#0D1424] px-5 py-4">
                   <Shield className="mt-0.5 h-4 w-4 shrink-0 text-[#0284C7]" />
                   <p className="text-sm text-[#CBD5E1]">{g}</p>
                 </div>
@@ -241,15 +241,15 @@ function ServicesContent() {
               const IconComp = m.icon
               return (
                 <Reveal key={m.id} delay={i * 80}>
-                  <div className="group relative flex h-full flex-col rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 transition-all duration-300 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8">
+                  <div className="group relative flex h-full flex-col rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-300 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8">
                     {m.badge && (
-                      <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#0284C7]/40 bg-[#1a2a1a] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#38BDF8]">
+                      <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#0284C7]/40 bg-[#131F37] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#38BDF8]">
                         <Star className="h-3 w-3" />
                         {m.badge}
                       </span>
                     )}
                     <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                         <IconComp className="h-5 w-5" />
                       </span>
                       <span className="font-mono text-xs font-bold tracking-widest text-[#0284C7]/60">
