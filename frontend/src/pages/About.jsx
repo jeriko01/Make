@@ -107,33 +107,33 @@ function AboutContent() {
   return (
     <>
       <div
-        className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
+        className="relative overflow-hidden border-b border-[#1E2C4A] pt-32 pb-24"
         style={{
           backgroundImage: 'url(/images/about-hero-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/80" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e0e]" />
-        <div className="pointer-events-none absolute -left-48 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/8 blur-[130px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
+        <div className="pointer-events-none absolute -left-48 top-0 h-[500px] w-[500px] rounded-full bg-[#0284C7]/8 blur-[130px]" />
 
         <div className="container-page relative z-10 grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
+            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
               about make
             </p>
 
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               Building software people{' '}
-              <span className="text-[#52fe7d]">actually rely on.</span>
+              <span className="text-[#38BDF8]">actually rely on.</span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#8a949e] sm:text-lg">
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#94A3B8] sm:text-lg">
               {profile.long_bio ||
                 'I turn product ideas into clear, dependable applications — from the first screen to the API and data behind it. No middlemen. Direct engineering.'}
             </p>
-            <div className="mt-8 flex flex-wrap gap-7 border-t border-[#1e261d]/60 pt-8">
+            <div className="mt-8 flex flex-wrap gap-7 border-t border-[#1E2C4A]/60 pt-8">
               {[
                 { num: '3+', label: 'Years Experience' },
                 { num: '20+', label: 'Projects Shipped' },
@@ -141,7 +141,7 @@ function AboutContent() {
               ].map(({ num, label }) => (
                 <div key={label}>
                   <p className="font-display text-2xl font-black text-white">{num}</p>
-                  <p className="mt-0.5 text-xs font-medium text-[#8a949e]">{label}</p>
+                  <p className="mt-0.5 text-xs font-medium text-[#94A3B8]">{label}</p>
                 </div>
               ))}
             </div>
@@ -149,7 +149,7 @@ function AboutContent() {
             <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-3.5">
               <Link
                 to="/support"
-                className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all text-center whitespace-nowrap"
+                className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#0284C7]/20 hover:shadow-[#0284C7]/35 transition-all text-center whitespace-nowrap"
               >
                 <span>Start conversation</span>
                 <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
@@ -164,8 +164,8 @@ function AboutContent() {
           </Reveal>
           <Reveal delay={120} className="mx-auto w-full max-w-[270px] lg:mx-0 lg:ml-auto">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
-              <div className="relative overflow-hidden rounded-2xl border border-[#1e261d]/80 shadow-2xl shadow-black/60">
+              <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#0284C7]/20 via-transparent to-[#38BDF8]/10 blur-xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-[#1E2C4A]/80 shadow-2xl shadow-black/60">
                 {profile.avatar_url ? (
                   <img
                     src={profile.avatar_url}
@@ -176,7 +176,7 @@ function AboutContent() {
                   />
                 ) : (
                   <div
-                    className="flex items-center justify-center bg-gradient-to-b from-[#161d15] to-[#0e0e0e]"
+                    className="flex items-center justify-center bg-gradient-to-b from-[#111A30] to-[#06080E]"
                     style={{ aspectRatio: '2/3' }}
                   >
                     <span className="font-display text-7xl font-black text-white/10">
@@ -184,20 +184,20 @@ function AboutContent() {
                     </span>
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#06080E]/50 to-transparent" />
               </div>
             </div>
           </Reveal>
         </div>
       </div>
-      <section className="section-pad border-b border-[#1e261d] bg-[#0e0e0e]" aria-label="The Approach">
+      <section className="section-pad border-b border-[#1E2C4A] bg-[#06080E]" aria-label="The Approach">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">the philosophy</p>
+            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">the philosophy</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               How I approach software engineering
             </h2>
-            <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#8a949e] sm:text-base">
+            <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#94A3B8] sm:text-base">
               <p>
                 Building digital products is more than writing syntax that compiles. It&apos;s crafting dependable systems that users find intuitive, that handle errors gracefully, and that other engineers can maintain without friction.
               </p>
@@ -214,12 +214,12 @@ function AboutContent() {
               const IconComp = cap.icon
               return (
                 <Reveal key={cap.title} delay={i * 60}>
-                  <div className="group rounded-2xl border border-[#1e261d] bg-[#111511] p-6 transition-all duration-200 hover:border-[#39A751]/40 hover:shadow-lg hover:shadow-[#39A751]/8">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
+                  <div className="group rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6 transition-all duration-200 hover:border-[#0284C7]/40 hover:shadow-lg hover:shadow-[#0284C7]/8">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                       <IconComp className="h-5 w-5" />
                     </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#52fe7d] transition-colors">{cap.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">{cap.desc}</p>
+                    <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">{cap.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[#94A3B8]">{cap.desc}</p>
                   </div>
                 </Reveal>
               )
@@ -231,17 +231,17 @@ function AboutContent() {
         <div className="container-page">
           <Reveal>
             <div className="mb-14 text-center">
-              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">the journey</p>
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">the journey</p>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
                 Learning · Building · Growing
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#8a949e]">
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8]">
                 From writing my first line of code to shipping 20+ real-world products — a transparent look at the path.
               </p>
             </div>
           </Reveal>
           <div className="relative mx-auto max-w-3xl">
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#39A751]/60 via-[#39A751]/30 to-transparent sm:left-1/2 sm:-translate-x-px" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#0284C7]/60 via-[#0284C7]/30 to-transparent sm:left-1/2 sm:-translate-x-px" />
 
             <div className="space-y-8">
               {TIMELINE.map((item, i) => {
@@ -251,28 +251,28 @@ function AboutContent() {
                   <Reveal key={`${item.year}-${i}`} delay={i * 60}>
                     <div className={`relative flex gap-6 sm:gap-0 ${isRight ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
                       <div className={`flex-1 ${isRight ? 'sm:pr-10 sm:text-right' : 'sm:pl-10 sm:text-left'} pl-16 sm:pl-0`}>
-                        <div className={`group inline-block w-full rounded-2xl border border-[#1e261d] bg-[#111511] p-6 text-left transition-all duration-300 hover:border-[#39A751]/50 hover:shadow-xl hover:shadow-[#39A751]/8`}>
+                        <div className={`group inline-block w-full rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6 text-left transition-all duration-300 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8`}>
                           <div className={`flex flex-wrap items-center gap-2 ${isRight ? 'sm:flex-row-reverse sm:justify-end' : ''}`}>
-                            <span className="font-mono text-[11px] font-bold tracking-widest text-[#52fe7d]">
+                            <span className="font-mono text-[11px] font-bold tracking-widest text-[#38BDF8]">
                               {item.year}
                             </span>
                             <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
                               item.type === 'education'
                                 ? 'bg-blue-500/15 text-blue-400 border border-blue-500/25'
-                                : 'bg-[#39A751]/15 text-[#52fe7d] border border-[#39A751]/25'
+                                : 'bg-[#0284C7]/15 text-[#38BDF8] border border-[#0284C7]/25'
                             }`}>
                               {item.type === 'education' ? 'Learning' : 'Work'}
                             </span>
                           </div>
 
-                          <h3 className="mt-2 font-display text-base font-bold text-white group-hover:text-[#52fe7d] transition-colors">
+                          <h3 className="mt-2 font-display text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">
                             {item.title}
                           </h3>
-                          <p className="mt-0.5 text-xs font-medium text-[#39A751]">{item.org}</p>
-                          <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">{item.desc}</p>
+                          <p className="mt-0.5 text-xs font-medium text-[#0284C7]">{item.org}</p>
+                          <p className="mt-2 text-xs leading-relaxed text-[#94A3B8]">{item.desc}</p>
                           <div className={`mt-4 flex flex-wrap gap-1.5 ${isRight ? 'sm:justify-end' : ''}`}>
                             {item.tags.map((tag) => (
-                              <span key={tag} className="rounded-md border border-[#1e261d] bg-[#0e0e0e] px-2 py-0.5 text-[10px] text-[#8a949e]">
+                              <span key={tag} className="rounded-md border border-[#1E2C4A] bg-[#06080E] px-2 py-0.5 text-[10px] text-[#94A3B8]">
                                 {tag}
                               </span>
                             ))}
@@ -280,8 +280,8 @@ function AboutContent() {
                         </div>
                       </div>
                       <div className="absolute left-6 top-6 sm:static sm:flex sm:w-0 sm:items-start sm:justify-center sm:pt-6">
-                        <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#39A751] bg-[#1a2a1a] shadow-lg shadow-[#39A751]/30 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
-                          <IconComp className="h-3 w-3 text-[#52fe7d]" />
+                        <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-[#0284C7] bg-[#1a2a1a] shadow-lg shadow-[#0284C7]/30 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                          <IconComp className="h-3 w-3 text-[#38BDF8]" />
                         </div>
                       </div>
                       <div className="hidden flex-1 sm:block" />
@@ -294,15 +294,15 @@ function AboutContent() {
         </div>
       </section>
       {(about.principles || []).length > 0 && (
-        <section className="section-pad border-t border-[#1e261d] bg-[#0e0e0e]" aria-label="Core Principles">
+        <section className="section-pad border-t border-[#1E2C4A] bg-[#06080E]" aria-label="Core Principles">
           <div className="container-page">
             <Reveal>
               <div className="mb-12 text-center">
-                <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">values</p>
+                <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">values</p>
                 <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
                   Core engineering principles
                 </h2>
-                <p className="mx-auto mt-3 max-w-xl text-sm text-[#8a949e]">
+                <p className="mx-auto mt-3 max-w-xl text-sm text-[#94A3B8]">
                   These principles govern every line of code and every project decision.
                 </p>
               </div>
@@ -311,13 +311,13 @@ function AboutContent() {
             <div className="grid gap-5 sm:grid-cols-2">
               {about.principles.map((p, i) => (
                 <Reveal key={p.id} delay={i * 60}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#39A751]/50 hover:shadow-xl hover:shadow-[#39A751]/8">
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/0 to-transparent transition-all duration-300 group-hover:via-[#52fe7d]/50" />
-                    <div className="mb-4 h-1 w-8 rounded-full bg-[#39A751] transition-all duration-300 group-hover:w-14 group-hover:bg-[#52fe7d]" />
-                    <h3 className="font-display text-lg font-bold text-white group-hover:text-[#52fe7d] transition-colors">
+                  <div className="group relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#0284C7]/50 hover:shadow-xl hover:shadow-[#0284C7]/8">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/0 to-transparent transition-all duration-300 group-hover:via-[#38BDF8]/50" />
+                    <div className="mb-4 h-1 w-8 rounded-full bg-[#0284C7] transition-all duration-300 group-hover:w-14 group-hover:bg-[#38BDF8]" />
+                    <h3 className="font-display text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors">
                       {p.label}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#8a949e]">{p.description}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">{p.description}</p>
                   </div>
                 </Reveal>
               ))}

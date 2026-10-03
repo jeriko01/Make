@@ -20,7 +20,7 @@ export function SectionHeading({ eyebrow, title, description }) {
       <h2 className="section-heading">
         {title}
       </h2>
-      {description && <p className="mt-4 text-base sm:text-lg text-[#d2d7dc]">{description}</p>}
+      {description && <p className="mt-4 text-base sm:text-lg text-[#CBD5E1]">{description}</p>}
     </Reveal>
   )
 }
@@ -29,13 +29,13 @@ export function SectionHeading({ eyebrow, title, description }) {
 export function BrandPlaceholder({ label = 'Make', className = '' }) {
   return (
     <div
-      className={`flex items-center justify-center bg-gradient-to-br from-[#161d15] to-[#0e0e0e] border border-[#1e261d] ${className}`}
+      className={`flex items-center justify-center bg-gradient-to-br from-[#111A30] to-[#06080E] border border-[#1E2C4A] ${className}`}
       role="img"
       aria-label={`${label} placeholder image`}
     >
       <div className="text-center">
-        <div className="mx-auto mb-2 h-10 w-10 rounded-xl bg-gradient-to-br from-[#39A751] to-[#1e2b1a] shadow-md shadow-[#39A751]/30" />
-        <span className="font-display text-sm font-bold tracking-widest text-[#d2d7dc]">
+        <div className="mx-auto mb-2 h-10 w-10 rounded-xl bg-gradient-to-br from-[#0284C7] to-[#131F37] shadow-md shadow-[#0284C7]/30" />
+        <span className="font-display text-sm font-bold tracking-widest text-[#CBD5E1]">
           {label.toUpperCase()}
         </span>
       </div>
@@ -45,6 +45,6 @@ export function BrandPlaceholder({ label = 'Make', className = '' }) {
 
 export function EmptyState({ children }) {
   return (
-    <div className="rounded-2xl border border-[#1e261d] bg-[#141714] p-10 text-center text-[#d2d7dc] shadow-xl">{children}</div>
+    <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-10 text-center text-[#CBD5E1] shadow-xl">{children}</div>
   )
 }

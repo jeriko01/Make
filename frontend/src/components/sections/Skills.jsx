@@ -22,7 +22,7 @@ export default function Skills() {
   const visible = activeCat === 'all' ? grouped : grouped.filter((c) => c.id === activeCat)
 
   return (
-    <section id="skills" className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]">
+    <section id="skills" className="section-pad bg-[#06080E] border-t border-[#1E2C4A]">
       <div className="container-page">
         <Reveal>
           <div className="flex items-end justify-between gap-4">
@@ -32,7 +32,7 @@ export default function Skills() {
             </div>
             <Link
               to="/skills"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#d2d7dc] hover:text-[#52fe7d] transition shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#CBD5E1] hover:text-[#38BDF8] transition shrink-0"
             >
               <span>Full skills list</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -56,20 +56,20 @@ export default function Skills() {
             <div key={cat.id}>
               <Reveal>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="h-0.5 w-6 rounded-full bg-[#39A751]" />
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#8a949e]">{cat.name}</h3>
+                  <div className="h-0.5 w-6 rounded-full bg-[#0284C7]" />
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#94A3B8]">{cat.name}</h3>
                 </div>
               </Reveal>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                 {cat.items.map((s, i) => (
                   <Reveal key={s.id} delay={i * 35}>
-                    <div className="group flex items-center gap-3 rounded-xl border border-[#1e261d] bg-[#141714] px-4 py-3 transition hover:border-[#39A751]/40 hover:bg-[#161d15]">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1e2b1a] text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
+                    <div className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#0D1424] px-4 py-3 transition hover:border-[#0284C7]/40 hover:bg-[#111A30]">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#131F37] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                         <Icon name={s.icon} className="h-4 w-4" />
                       </span>
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-white group-hover:text-[#52fe7d] transition-colors">{s.name}</p>
-                        {s.note && <p className="truncate text-xs text-[#8a949e]">{s.note}</p>}
+                        <p className="truncate text-sm font-semibold text-white group-hover:text-[#38BDF8] transition-colors">{s.name}</p>
+                        {s.note && <p className="truncate text-xs text-[#94A3B8]">{s.note}</p>}
                       </div>
                     </div>
                   </Reveal>
@@ -90,8 +90,8 @@ function FilterBtn({ active, onClick, children }) {
       onClick={onClick}
       className={`rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition ${
         active
-          ? 'bg-[#39A751] text-white shadow-md shadow-[#39A751]/20'
-          : 'border border-[#1e261d] bg-[#141714] text-[#d2d7dc] hover:border-[#39A751]/40 hover:text-white'
+          ? 'bg-[#0284C7] text-white shadow-md shadow-[#0284C7]/20'
+          : 'border border-[#1E2C4A] bg-[#0D1424] text-[#CBD5E1] hover:border-[#0284C7]/40 hover:text-white'
       }`}
     >
       {children}

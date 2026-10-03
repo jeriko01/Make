@@ -51,21 +51,21 @@ function PreviewModal({ project, onClose }) {
       aria-label={`Live preview — ${project.title}`}
     >
       <div
-        className={`relative flex flex-col overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] shadow-2xl shadow-black/80 transition-all duration-300 ${
+        className={`relative flex flex-col overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] shadow-2xl shadow-black/80 transition-all duration-300 ${
           expanded
             ? 'h-[96vh] w-[98vw]'
             : 'h-[85vh] w-full max-w-5xl'
         }`}
       >
-        <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[#1e261d] bg-[#0e0e0e] px-4 py-3">
+        <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[#1E2C4A] bg-[#06080E] px-4 py-3">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
 
-          <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#1e261d] bg-[#1a1a1a] px-3 py-1.5 text-xs text-[#8a949e] font-mono">
-            <Monitor className="h-3.5 w-3.5 shrink-0 text-[#39A751]" />
+          <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#1E2C4A] bg-[#1a1a1a] px-3 py-1.5 text-xs text-[#94A3B8] font-mono">
+            <Monitor className="h-3.5 w-3.5 shrink-0 text-[#0284C7]" />
             <span className="truncate">{project.live_url || 'No live URL provided'}</span>
           </div>
 
@@ -75,7 +75,7 @@ function PreviewModal({ project, onClose }) {
                 href={project.live_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-lg border border-[#1e261d] bg-[#1a2a1a] px-3 py-1.5 text-xs font-semibold text-[#52fe7d] transition hover:bg-[#39A751] hover:text-white"
+                className="flex items-center gap-1.5 rounded-lg border border-[#1E2C4A] bg-[#1a2a1a] px-3 py-1.5 text-xs font-semibold text-[#38BDF8] transition hover:bg-[#0284C7] hover:text-white"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 <span className="hidden sm:inline">Open</span>
@@ -84,7 +84,7 @@ function PreviewModal({ project, onClose }) {
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#1e261d] bg-[#1a1a1a] text-[#8a949e] transition hover:text-white"
+              className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#1a1a1a] text-[#94A3B8] transition hover:text-white"
               aria-label={expanded ? 'Collapse' : 'Expand'}
             >
               {expanded ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
@@ -92,7 +92,7 @@ function PreviewModal({ project, onClose }) {
             <button
               type="button"
               onClick={onClose}
-              className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#1e261d] bg-[#1a1a1a] text-[#8a949e] transition hover:bg-red-500/20 hover:text-red-400"
+              className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#1a1a1a] text-[#94A3B8] transition hover:bg-red-500/20 hover:text-red-400"
               aria-label="Close preview"
             >
               <X className="h-3.5 w-3.5" />
@@ -110,7 +110,7 @@ function PreviewModal({ project, onClose }) {
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="mx-auto max-h-52 rounded-xl border border-[#1e261d] object-cover shadow-2xl"
+                  className="mx-auto max-h-52 rounded-xl border border-[#1E2C4A] object-cover shadow-2xl"
                 />
               )}
               <div className="max-w-lg">
@@ -118,10 +118,10 @@ function PreviewModal({ project, onClose }) {
                   Live demo not publicly available
                 </span>
                 <h3 className="mt-4 font-display text-xl font-bold text-white">{project.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#8a949e]">{project.description || project.summary}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">{project.description || project.summary}</p>
                 <div className="mt-4 flex flex-wrap justify-center gap-1.5">
                   {project.tech_tags?.map((tag) => (
-                    <span key={tag} className="rounded-md border border-[#1e261d] bg-[#1a1a1a] px-2.5 py-0.5 text-xs text-[#d2d7dc]">
+                    <span key={tag} className="rounded-md border border-[#1E2C4A] bg-[#1a1a1a] px-2.5 py-0.5 text-xs text-[#CBD5E1]">
                       {tag}
                     </span>
                   ))}
@@ -131,7 +131,7 @@ function PreviewModal({ project, onClose }) {
                     href={project.github_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 rounded-xl border border-[#1e261d] bg-[#1a2a1a] px-5 py-2.5 text-sm font-semibold text-[#52fe7d] transition hover:bg-[#39A751] hover:text-white"
+                    className="mt-6 inline-flex items-center gap-2 rounded-xl border border-[#1E2C4A] bg-[#1a2a1a] px-5 py-2.5 text-sm font-semibold text-[#38BDF8] transition hover:bg-[#0284C7] hover:text-white"
                   >
                     <Github className="h-4 w-4" />
                     View Source Code
@@ -143,8 +143,8 @@ function PreviewModal({ project, onClose }) {
             <>
               {!loaded && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#1e261d] border-t-[#52fe7d]" />
-                  <p className="text-xs text-[#8a949e]">Loading preview…</p>
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#1E2C4A] border-t-[#38BDF8]" />
+                  <p className="text-xs text-[#94A3B8]">Loading preview…</p>
                 </div>
               )}
               <iframe
@@ -158,10 +158,10 @@ function PreviewModal({ project, onClose }) {
           )}
         </div>
 
-        <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-[#1e261d] bg-[#0e0e0e] px-4 py-2.5">
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-[#1E2C4A] bg-[#06080E] px-4 py-2.5">
           <div className="flex flex-wrap gap-1.5">
             {project.tech_tags?.slice(0, 5).map((tag) => (
-              <span key={tag} className="rounded border border-[#1e261d] px-2 py-0.5 font-mono text-[10px] text-[#8a949e]">
+              <span key={tag} className="rounded border border-[#1E2C4A] px-2 py-0.5 font-mono text-[10px] text-[#94A3B8]">
                 {tag}
               </span>
             ))}
@@ -172,7 +172,7 @@ function PreviewModal({ project, onClose }) {
                 href={project.github_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-medium text-[#8a949e] transition hover:text-[#52fe7d]"
+                className="flex items-center gap-1.5 text-xs font-medium text-[#94A3B8] transition hover:text-[#38BDF8]"
               >
                 <Github className="h-3.5 w-3.5" />
                 Source
@@ -181,7 +181,7 @@ function PreviewModal({ project, onClose }) {
             <Link
               to={`/support?service=custom-web-apps`}
               onClick={onClose}
-              className="text-xs font-semibold text-[#39A751] hover:text-[#52fe7d] transition"
+              className="text-xs font-semibold text-[#0284C7] hover:text-[#38BDF8] transition"
             >
               Build something similar →
             </Link>
@@ -196,12 +196,12 @@ function ProjectCard({ project: p, onPreview }) {
   const hasCover = !!p.cover_image_url && !p.is_placeholder
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#39A751]/50 hover:shadow-2xl hover:shadow-[#39A751]/10">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0284C7]/50 hover:shadow-2xl hover:shadow-[#0284C7]/10">
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/0 to-transparent transition-all duration-300 group-hover:via-[#52fe7d]/50" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/0 to-transparent transition-all duration-300 group-hover:via-[#38BDF8]/50" />
 
       <div
-        className="relative aspect-video cursor-pointer overflow-hidden border-b border-[#1e261d] bg-[#0a0a0a]"
+        className="relative aspect-video cursor-pointer overflow-hidden border-b border-[#1E2C4A] bg-[#0a0a0a]"
         onClick={() => onPreview(p)}
         role="button"
         tabIndex={0}
@@ -218,19 +218,19 @@ function ProjectCard({ project: p, onPreview }) {
           />
         ) : (
           <div className="relative flex h-full w-full flex-col items-center justify-center gap-2 p-6 text-center select-none">
-            <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #39A751 0%, transparent 70%)' }} />
-            <Code2 className="relative z-10 h-8 w-8 text-[#39A751]/60" />
+            <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #0284C7 0%, transparent 70%)' }} />
+            <Code2 className="relative z-10 h-8 w-8 text-[#0284C7]/60" />
             <span className="relative z-10 font-display text-base font-extrabold tracking-tight text-white/40">
               {p.title}
             </span>
-            <span className="relative z-10 rounded border border-[#1e261d] bg-[#161d15] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#52fe7d]">
+            <span className="relative z-10 rounded border border-[#1E2C4A] bg-[#111A30] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#38BDF8]">
               {p.platform || 'Full-Stack'}
             </span>
           </div>
         )}
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#0e0e0e]/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#39A751]/60 bg-[#1a2a1a] text-[#52fe7d]">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#06080E]/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#0284C7]/60 bg-[#1a2a1a] text-[#38BDF8]">
             <Eye className="h-5 w-5" />
           </div>
           <span className="text-xs font-semibold text-white">Click to preview</span>
@@ -239,15 +239,15 @@ function ProjectCard({ project: p, onPreview }) {
 
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-display text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#52fe7d]">
+          <h3 className="font-display text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#38BDF8]">
             {p.title}
           </h3>
-          <span className="shrink-0 rounded-full border border-[#1e261d] bg-[#0e0e0e] px-2 py-0.5 font-mono text-[10px] text-[#8a949e]">
+          <span className="shrink-0 rounded-full border border-[#1E2C4A] bg-[#06080E] px-2 py-0.5 font-mono text-[10px] text-[#94A3B8]">
             {p.platform || 'web'}
           </span>
         </div>
 
-        <p className="mt-2.5 flex-1 text-xs leading-relaxed text-[#8a949e]">
+        <p className="mt-2.5 flex-1 text-xs leading-relaxed text-[#94A3B8]">
           {p.summary || p.description}
         </p>
 
@@ -256,7 +256,7 @@ function ProjectCard({ project: p, onPreview }) {
             {p.tech_tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-[#1e261d] bg-[#161d15] px-2 py-0.5 text-[11px] font-medium text-[#d2d7dc]"
+                className="rounded-md border border-[#1E2C4A] bg-[#111A30] px-2 py-0.5 text-[11px] font-medium text-[#CBD5E1]"
               >
                 {tag}
               </span>
@@ -265,12 +265,12 @@ function ProjectCard({ project: p, onPreview }) {
         )}
       </div>
 
-      <div className="flex items-center justify-between gap-2 border-t border-[#1e261d] bg-[#0e0e0e]/50 px-5 py-3">
+      <div className="flex items-center justify-between gap-2 border-t border-[#1E2C4A] bg-[#06080E]/50 px-5 py-3">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => onPreview(p)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-[#52fe7d] transition hover:text-white"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[#38BDF8] transition hover:text-white"
           >
             <Eye className="h-3.5 w-3.5" />
             Preview
@@ -281,7 +281,7 @@ function ProjectCard({ project: p, onPreview }) {
               href={p.github_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#8a949e] transition hover:text-white"
+              className="flex items-center gap-1.5 text-xs font-medium text-[#94A3B8] transition hover:text-white"
             >
               <Github className="h-3.5 w-3.5" />
               Source
@@ -293,7 +293,7 @@ function ProjectCard({ project: p, onPreview }) {
               href={p.live_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#8a949e] transition hover:text-[#52fe7d]"
+              className="flex items-center gap-1.5 text-xs font-medium text-[#94A3B8] transition hover:text-[#38BDF8]"
             >
               <ExternalLink className="h-3.5 w-3.5" />
               Live
@@ -303,7 +303,7 @@ function ProjectCard({ project: p, onPreview }) {
 
         <Link
           to="/support?service=custom-web-apps"
-          className="text-[11px] font-semibold text-[#39A751] hover:text-[#52fe7d] transition"
+          className="text-[11px] font-semibold text-[#0284C7] hover:text-[#38BDF8] transition"
         >
           Build similar →
         </Link>
@@ -345,19 +345,19 @@ export default function Projects({ featured = false, limit, showFilters = !featu
       <section
         id="projects"
         aria-label={featured ? 'Featured projects' : 'Project gallery'}
-        className="section-pad border-t border-[#1e261d] bg-[#0e0e0e]"
+        className="section-pad border-t border-[#1E2C4A] bg-[#06080E]"
       >
         <div className="container-page">
 
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <Reveal>
-              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
                 {featured ? 'selected work' : 'portfolio'}
               </p>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
                 {featured ? 'Featured applications' : 'Project gallery'}
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#8a949e]">
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8]">
                 Real projects built with modern frontend and backend architectures.
                 Click any card to open an in-browser live preview.
               </p>
@@ -369,7 +369,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
               <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-950/20 p-4">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
                 <p className="text-xs text-amber-300/80">
-                  Update <code className="font-mono text-[#52fe7d]">SiteDataContext.jsx</code> or the backend DB to show verified live case studies.
+                  Update <code className="font-mono text-[#38BDF8]">SiteDataContext.jsx</code> or the backend DB to show verified live case studies.
                 </p>
               </div>
             </Reveal>
@@ -378,7 +378,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
           {showFilters && (
             <Reveal delay={80}>
               <div className="mb-8 flex flex-wrap items-center gap-2">
-                <Filter className="h-4 w-4 shrink-0 text-[#8a949e]" />
+                <Filter className="h-4 w-4 shrink-0 text-[#94A3B8]" />
                 {FILTER_TABS.map((tab) => (
                   <button
                     key={tab.id}
@@ -386,8 +386,8 @@ export default function Projects({ featured = false, limit, showFilters = !featu
                     onClick={() => setActiveFilter(tab.id)}
                     className={`rounded-lg px-4 py-2 text-xs font-bold tracking-wide transition ${
                       activeFilter === tab.id
-                        ? 'bg-[#39A751] text-white shadow-md shadow-[#39A751]/20'
-                        : 'border border-[#1e261d] bg-[#111511] text-[#8a949e] hover:border-[#39A751]/40 hover:text-white'
+                        ? 'bg-[#0284C7] text-white shadow-md shadow-[#0284C7]/20'
+                        : 'border border-[#1E2C4A] bg-[#111511] text-[#94A3B8] hover:border-[#0284C7]/40 hover:text-white'
                     }`}
                     aria-pressed={activeFilter === tab.id}
                   >
@@ -400,9 +400,9 @@ export default function Projects({ featured = false, limit, showFilters = !featu
 
           {projects.length === 0 ? (
             <Reveal delay={100}>
-              <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-12 text-center">
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-12 text-center">
                 <p className="font-display text-lg font-bold text-white">Projects will appear here once verified.</p>
-                <p className="mt-2 text-sm text-[#8a949e]">Have a specific project in mind? Reach out to discuss direct scope.</p>
+                <p className="mt-2 text-sm text-[#94A3B8]">Have a specific project in mind? Reach out to discuss direct scope.</p>
                 <Link to="/support" className="mt-6 btn-lime inline-flex items-center gap-2">
                   <span>Start a project inquiry</span>
                   <ArrowRight className="h-4 w-4" />

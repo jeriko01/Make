@@ -27,55 +27,55 @@ export default function ProjectsPage() {
         description="Make's technical portfolio — web applications, mobile apps, and full-stack engineering builds. Browse live previews and source code."
       >
         <div
-          className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
+          className="relative overflow-hidden border-b border-[#1E2C4A] pt-32 pb-24"
           style={{
             backgroundImage: 'url(/images/projects-hero-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center top',
           }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/82" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e0e]" />
-          <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/3 rounded-full bg-[#39A751]/8 blur-[120px]" />
+          <div className="pointer-events-none absolute inset-0 bg-[#06080E]/82" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
+          <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/3 rounded-full bg-[#0284C7]/8 blur-[120px]" />
 
           <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
             <Reveal>
-              <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
                 case studies &amp; code
               </p>
 
               <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
                 Real products.{' '}
-                <span className="text-[#52fe7d]">Real engineering.</span>
+                <span className="text-[#38BDF8]">Real engineering.</span>
               </h1>
 
-              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#8a949e] sm:text-lg">
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#94A3B8] sm:text-lg">
                 A filterable gallery of shipped web applications, mobile apps, and full-stack software. Click any project to open a live preview or visit the source.
               </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-8 border-t border-[#1e261d]/60 pt-8">
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-8 border-t border-[#1E2C4A]/60 pt-8">
                 {STATS.map(({ num, label }) => (
                   <div key={label} className="text-center">
                     <p className="font-display text-2xl font-black text-white">{num}</p>
-                    <p className="mt-0.5 text-[11px] font-medium text-[#8a949e]">{label}</p>
+                    <p className="mt-0.5 text-[11px] font-medium text-[#94A3B8]">{label}</p>
                   </div>
                 ))}
               </div>
             </Reveal>
           </div>
         </div>
-        <div className="border-b border-[#1e261d] bg-[#0b0f0b] py-10">
+        <div className="border-b border-[#1E2C4A] bg-[#0b0f0b] py-10">
           <div className="container-page grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {HIGHLIGHTS.map((h, i) => {
               const IconComp = h.icon
               return (
                 <Reveal key={h.title} delay={i * 50}>
-                  <div className="flex items-start gap-4 rounded-xl border border-[#1e261d] bg-[#111511] p-5 transition hover:border-[#39A751]/35">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d]">
+                  <div className="flex items-start gap-4 rounded-xl border border-[#1E2C4A] bg-[#111511] p-5 transition hover:border-[#0284C7]/35">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8]">
                       <IconComp className="h-4 w-4" />
                     </span>
                     <div>
                       <p className="font-display text-sm font-bold text-white">{h.title}</p>
-                      <p className="mt-1 text-xs leading-relaxed text-[#8a949e]">{h.desc}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-[#94A3B8]">{h.desc}</p>
                     </div>
                   </div>
                 </Reveal>

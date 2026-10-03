@@ -218,38 +218,38 @@ function SkillCard({ skill }) {
   const metric = SKILL_METRICS[skill.name] || { percent: 90, exp: '3+ Years', level: 'Production' }
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-xl border border-[#1e261d] bg-[#141714] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#161d15] hover:shadow-xl hover:shadow-[#39A751]/10">
+    <div className="group relative flex flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#0284C7]/50 hover:bg-[#111A30] hover:shadow-xl hover:shadow-[#0284C7]/10">
       <div>
         <div className="flex items-center justify-between">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0b0e0b] border border-[#1e261d] p-2 transition group-hover:scale-110 group-hover:border-[#39A751]/40 shadow-inner">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0b0e0b] border border-[#1E2C4A] p-2 transition group-hover:scale-110 group-hover:border-[#0284C7]/40 shadow-inner">
             <BrandIcon name={skill.name} className="h-6 w-6" />
           </span>
 
-          <span className="rounded-md border border-[#1e261d] bg-[#0e0e0e] px-2 py-0.5 text-[10px] font-mono text-[#8a949e]">
+          <span className="rounded-md border border-[#1E2C4A] bg-[#06080E] px-2 py-0.5 text-[10px] font-mono text-[#94A3B8]">
             {TYPE_LABEL[skill.type] || skill.type}
           </span>
         </div>
-        <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#52fe7d] transition-colors">
+        <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">
           {skill.name}
         </h3>
-        <p className="mt-1.5 text-xs text-[#8a949e] leading-relaxed line-clamp-2">
+        <p className="mt-1.5 text-xs text-[#94A3B8] leading-relaxed line-clamp-2">
           {skill.note || 'Production-tested stack component for modern, high-velocity engineering.'}
         </p>
       </div>
-      <div className="mt-5 pt-3.5 border-t border-[#1e261d]">
+      <div className="mt-5 pt-3.5 border-t border-[#1E2C4A]">
         <div className="flex items-center justify-between text-xs mb-1.5 font-mono">
-          <span className="text-[11px] text-[#8a949e]">Proficiency</span>
-          <span className="text-xs font-bold text-[#52fe7d]">{metric.percent}%</span>
+          <span className="text-[11px] text-[#94A3B8]">Proficiency</span>
+          <span className="text-xs font-bold text-[#38BDF8]">{metric.percent}%</span>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-[#1e261d] overflow-hidden">
+        <div className="h-1.5 w-full rounded-full bg-[#1E2C4A] overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#39A751] to-[#52fe7d] shadow-sm shadow-[#39A751]/50 transition-all duration-500"
+            className="h-full rounded-full bg-gradient-to-r from-[#0284C7] to-[#38BDF8] shadow-sm shadow-[#0284C7]/50 transition-all duration-500"
             style={{ width: `${metric.percent}%` }}
           />
         </div>
-        <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-[#8a949e]">
+        <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-[#94A3B8]">
           <span>{metric.level}</span>
-          <span className="text-[#d2d7dc]">{metric.exp}</span>
+          <span className="text-[#CBD5E1]">{metric.exp}</span>
         </div>
       </div>
     </div>
@@ -283,18 +283,18 @@ function SkillsContent() {
 
   return (
     <>
-      <div className="relative pt-32 pb-20 border-b border-[#1e261d] overflow-hidden bg-[#0e0e0e]">
+      <div className="relative pt-32 pb-20 border-b border-[#1E2C4A] overflow-hidden bg-[#06080E]">
         <div
           className="absolute inset-0 bg-cover bg-center scale-105 pointer-events-none"
           style={{ backgroundImage: `url('/images/skills-hero-bg.jpg')`, opacity: 0.45 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/60 via-[#0e0e0e]/75 to-[#0e0e0e] pointer-events-none" />
-        <div className="pointer-events-none absolute -left-48 top-0 h-[450px] w-[450px] rounded-full bg-[#39A751]/10 blur-[130px]" />
-        <div className="pointer-events-none absolute -right-48 top-10 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/5 blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#06080E]/60 via-[#06080E]/75 to-[#06080E] pointer-events-none" />
+        <div className="pointer-events-none absolute -left-48 top-0 h-[450px] w-[450px] rounded-full bg-[#0284C7]/10 blur-[130px]" />
+        <div className="pointer-events-none absolute -right-48 top-10 h-[400px] w-[400px] rounded-full bg-[#38BDF8]/5 blur-[120px]" />
 
         <div className="container-page relative z-10 text-center mx-auto max-w-3xl">
           <Reveal>
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-3">
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-3">
               skills &amp; technologies
             </p>
 
@@ -302,39 +302,39 @@ function SkillsContent() {
               Engineered with modern tools &amp; frameworks
             </h1>
 
-            <p className="mt-4 mx-auto max-w-2xl text-base text-[#8a949e] leading-relaxed">
+            <p className="mt-4 mx-auto max-w-2xl text-base text-[#94A3B8] leading-relaxed">
               Production-proven technologies evaluated on real project delivery, type safety, and runtime stability. Each tool backed by hands-on engineering depth.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-6 sm:gap-10 pt-6 border-t border-[#1e261d]/60">
+            <div className="mt-8 flex flex-wrap justify-center items-center gap-6 sm:gap-10 pt-6 border-t border-[#1E2C4A]/60">
               <div>
                 <p className="font-display text-2xl font-bold text-white">18+</p>
-                <p className="font-mono text-[11px] text-[#8a949e] uppercase">Core Tools</p>
+                <p className="font-mono text-[11px] text-[#94A3B8] uppercase">Core Tools</p>
               </div>
-              <div className="h-8 w-px bg-[#1e261d]" />
+              <div className="h-8 w-px bg-[#1E2C4A]" />
               <div>
-                <p className="font-display text-2xl font-bold text-[#52fe7d]">93%</p>
-                <p className="font-mono text-[11px] text-[#8a949e] uppercase">Avg. Proficiency</p>
+                <p className="font-display text-2xl font-bold text-[#38BDF8]">93%</p>
+                <p className="font-mono text-[11px] text-[#94A3B8] uppercase">Avg. Proficiency</p>
               </div>
-              <div className="h-8 w-px bg-[#1e261d]" />
+              <div className="h-8 w-px bg-[#1E2C4A]" />
               <div>
                 <p className="font-display text-2xl font-bold text-white">Full-Stack</p>
-                <p className="font-mono text-[11px] text-[#8a949e] uppercase">Web &amp; Mobile</p>
+                <p className="font-mono text-[11px] text-[#94A3B8] uppercase">Web &amp; Mobile</p>
               </div>
             </div>
           </Reveal>
         </div>
       </div>
-      <section className="section-pad bg-[#0e0e0e]" aria-label="Skills Grid">
+      <section className="section-pad bg-[#06080E]" aria-label="Skills Grid">
         <div className="container-page">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#1e261d]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#1E2C4A]">
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={() => setActive('all')}
                 className={`rounded-lg px-3.5 py-1.5 text-xs font-mono font-medium transition ${
                   active === 'all'
-                    ? 'bg-[#39A751] text-white shadow-sm'
-                    : 'border border-[#1e261d] bg-[#141714] text-[#8a949e] hover:border-[#39A751]/40 hover:text-white'
+                    ? 'bg-[#0284C7] text-white shadow-sm'
+                    : 'border border-[#1E2C4A] bg-[#0D1424] text-[#94A3B8] hover:border-[#0284C7]/40 hover:text-white'
                 }`}
               >
                 All Tools
@@ -346,8 +346,8 @@ function SkillsContent() {
                   onClick={() => setActive(c.id)}
                   className={`rounded-lg px-3.5 py-1.5 text-xs font-mono font-medium transition ${
                     active === c.id
-                      ? 'bg-[#39A751] text-white shadow-sm'
-                      : 'border border-[#1e261d] bg-[#141714] text-[#8a949e] hover:border-[#39A751]/40 hover:text-white'
+                      ? 'bg-[#0284C7] text-white shadow-sm'
+                      : 'border border-[#1E2C4A] bg-[#0D1424] text-[#94A3B8] hover:border-[#0284C7]/40 hover:text-white'
                   }`}
                 >
                   {c.name}
@@ -355,27 +355,27 @@ function SkillsContent() {
               ))}
             </div>
             <div className="relative w-full md:w-64">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#8a949e]" />
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#94A3B8]" />
               <input
                 type="text"
                 placeholder="Search technology..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-lg border border-[#1e261d] bg-[#141714] py-1.5 pl-9 pr-3 text-xs text-white placeholder-[#8a949e] focus:border-[#39A751] focus:outline-none"
+                className="w-full rounded-lg border border-[#1E2C4A] bg-[#0D1424] py-1.5 pl-9 pr-3 text-xs text-white placeholder-[#94A3B8] focus:border-[#0284C7] focus:outline-none"
               />
             </div>
           </div>
           <div className="mt-10 space-y-14">
             {visible.map((cat) => (
               <div key={cat.id} className="space-y-5">
-                <div className="flex items-center justify-between border-b border-[#1e261d]/50 pb-3">
+                <div className="flex items-center justify-between border-b border-[#1E2C4A]/50 pb-3">
                   <div className="flex items-center gap-2.5">
-                    <span className="h-2 w-2 rounded-full bg-[#52fe7d]" />
+                    <span className="h-2 w-2 rounded-full bg-[#38BDF8]" />
                     <h2 className="font-display text-lg font-bold text-white">
                       {cat.name}
                     </h2>
                   </div>
-                  <span className="font-mono text-xs text-[#8a949e]">
+                  <span className="font-mono text-xs text-[#94A3B8]">
                     {cat.items.length} Technologies
                   </span>
                 </div>
@@ -389,21 +389,21 @@ function SkillsContent() {
             ))}
 
             {visible.length === 0 && (
-              <div className="py-16 text-center text-[#8a949e]">
+              <div className="py-16 text-center text-[#94A3B8]">
                 <p className="text-sm">No skills found matching &ldquo;{search}&rdquo;.</p>
               </div>
             )}
           </div>
           <Reveal delay={200}>
-            <div className="mt-16 rounded-2xl border border-[#1e261d] bg-[#141714] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="mt-16 rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#52fe7d]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
                   Architectural Standard
                 </span>
                 <h3 className="mt-1 font-display text-lg font-bold text-white">
                   Need a custom technology or legacy migration?
                 </h3>
-                <p className="mt-1.5 text-xs text-[#8a949e] max-w-xl leading-relaxed">
+                <p className="mt-1.5 text-xs text-[#94A3B8] max-w-xl leading-relaxed">
                   I adapt to established team codebases quickly and provide technical evaluation before recommending architecture changes or modern framework upgrades.
                 </p>
               </div>

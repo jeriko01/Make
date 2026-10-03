@@ -77,33 +77,33 @@ const WHY_ITEMS = [
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border-b border-[#1e261d] last:border-none">
+    <div className="border-b border-[#1E2C4A] last:border-none">
       <button
         type="button"
         onClick={() => setOpen(v => !v)}
-        className="flex w-full items-start justify-between gap-4 py-4 text-left focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-[#39A751]"
+        className="flex w-full items-start justify-between gap-4 py-4 text-left focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-[#0284C7]"
         aria-expanded={open}
       >
-        <span className="text-sm font-medium text-white transition-colors hover:text-[#52fe7d]">{q}</span>
-        <ChevronDown className={`mt-0.5 h-4 w-4 shrink-0 text-[#52fe7d] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <span className="text-sm font-medium text-white transition-colors hover:text-[#38BDF8]">{q}</span>
+        <ChevronDown className={`mt-0.5 h-4 w-4 shrink-0 text-[#38BDF8] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-48' : 'max-h-0'}`}>
-        <p className="pb-4 text-xs leading-relaxed text-[#8a949e]">{a}</p>
+        <p className="pb-4 text-xs leading-relaxed text-[#94A3B8]">{a}</p>
       </div>
     </div>
   )
 }
 
 function Field({ id, label, error, textarea, required, hint, ...props }) {
-  const base = `w-full rounded-xl border bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-[#4a5568] outline-none transition focus:ring-2 focus:ring-[#39A751]/60 ${
-    error ? 'border-red-500/60' : 'border-[#1e261d] focus:border-[#39A751]/60'
+  const base = `w-full rounded-xl border bg-[#06080E] px-4 py-3 text-sm text-white placeholder-[#4a5568] outline-none transition focus:ring-2 focus:ring-[#0284C7]/60 ${
+    error ? 'border-red-500/60' : 'border-[#1E2C4A] focus:border-[#0284C7]/60'
   }`
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#d2d7dc]">
-        {label}{required && <span className="ml-1 text-[#52fe7d]" aria-hidden="true">*</span>}
+      <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1]">
+        {label}{required && <span className="ml-1 text-[#38BDF8]" aria-hidden="true">*</span>}
       </label>
-      {hint && <p className="mb-2 text-xs text-[#8a949e]">{hint}</p>}
+      {hint && <p className="mb-2 text-xs text-[#94A3B8]">{hint}</p>}
       {textarea
         ? <textarea id={id} rows={5} className={base} aria-invalid={!!error} aria-required={required} {...props} />
         : <input id={id} className={base} aria-invalid={!!error} aria-required={required} {...props} />
@@ -120,13 +120,13 @@ function Field({ id, label, error, textarea, required, hint, ...props }) {
 function SelectField({ id, label, error, required, options, ...props }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#d2d7dc]">
-        {label}{required && <span className="ml-1 text-[#52fe7d]" aria-hidden="true">*</span>}
+      <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1]">
+        {label}{required && <span className="ml-1 text-[#38BDF8]" aria-hidden="true">*</span>}
       </label>
       <select
         id={id}
-        className={`w-full appearance-none rounded-xl border bg-[#0e0e0e] px-4 py-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-[#39A751]/60 ${
-          error ? 'border-red-500/60' : 'border-[#1e261d] focus:border-[#39A751]/60'
+        className={`w-full appearance-none rounded-xl border bg-[#06080E] px-4 py-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-[#0284C7]/60 ${
+          error ? 'border-red-500/60' : 'border-[#1E2C4A] focus:border-[#0284C7]/60'
         }`}
         aria-invalid={!!error}
         aria-required={required}
@@ -197,12 +197,12 @@ function InquiryForm() {
 
   if (formStatus === 'success') {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-[#39A751]/40 bg-[#0e1a0e] p-12 text-center" role="status">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#39A751]/40 bg-[#1a2a1a]">
-          <CheckCircle2 className="h-8 w-8 text-[#52fe7d]" />
+      <div className="flex flex-col items-center rounded-2xl border border-[#0284C7]/40 bg-[#0e1a0e] p-12 text-center" role="status">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#0284C7]/40 bg-[#1a2a1a]">
+          <CheckCircle2 className="h-8 w-8 text-[#38BDF8]" />
         </div>
         <h3 className="mt-5 font-display text-2xl font-bold text-white">Inquiry received</h3>
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-[#8a949e]">
+        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-[#94A3B8]">
           Thanks for reaching out. I will review your requirements and reply by email — typically within one business day.
         </p>
         <div className="mt-7 flex flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-sm">
@@ -229,12 +229,12 @@ function InquiryForm() {
     <form onSubmit={handleSubmit} noValidate aria-label="Project inquiry form" className="space-y-5">
 
       {values.service && (
-        <div className="flex items-center justify-between rounded-xl border border-[#39A751]/35 bg-[#1a2a1a] px-4 py-3 text-xs">
-          <div className="flex items-center gap-2 text-[#52fe7d]">
+        <div className="flex items-center justify-between rounded-xl border border-[#0284C7]/35 bg-[#1a2a1a] px-4 py-3 text-xs">
+          <div className="flex items-center gap-2 text-[#38BDF8]">
             <Zap className="h-3.5 w-3.5" />
             <span>Selected: <strong>{SERVICE_OPTIONS.find(o => o.value === values.service)?.label || values.service}</strong></span>
           </div>
-          <button type="button" onClick={() => setValues(v => ({ ...v, service: '' }))} className="text-[#8a949e] underline hover:text-white transition text-xs">
+          <button type="button" onClick={() => setValues(v => ({ ...v, service: '' }))} className="text-[#94A3B8] underline hover:text-white transition text-xs">
             Change
           </button>
         </div>
@@ -286,7 +286,7 @@ function InquiryForm() {
       <button
         type="submit"
         disabled={formStatus === 'submitting'}
-        className="btn-lime w-full gap-2.5 py-4 text-sm font-bold shadow-xl shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all"
+        className="btn-lime w-full gap-2.5 py-4 text-sm font-bold shadow-xl shadow-[#0284C7]/20 hover:shadow-[#0284C7]/35 transition-all"
       >
         {formStatus === 'submitting' ? (
           <>
@@ -314,29 +314,29 @@ function SupportContent() {
   return (
     <>
       <div
-        className="relative overflow-hidden border-b border-[#1e261d] pt-32 pb-24"
+        className="relative overflow-hidden border-b border-[#1E2C4A] pt-32 pb-24"
         style={{
           backgroundImage: 'url(/images/support-hero-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/82" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e0e]" />
-        <div className="pointer-events-none absolute right-0 top-0 h-[450px] w-[450px] translate-x-1/3 rounded-full bg-[#39A751]/8 blur-[130px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/82" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[450px] w-[450px] translate-x-1/3 rounded-full bg-[#0284C7]/8 blur-[130px]" />
 
         <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#52fe7d] lowercase">
+            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
               support &amp; inquiries
             </p>
 
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               Let&apos;s build something{' '}
-              <span className="text-[#52fe7d]">together.</span>
+              <span className="text-[#38BDF8]">together.</span>
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#8a949e] sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#94A3B8] sm:text-lg">
               Share your project vision, scope, or technical challenge. I reply with architecture recommendations, recommended stack, and estimated milestones.
             </p>
 
@@ -345,10 +345,10 @@ function SupportContent() {
                 const IconComp = item.icon
                 return (
                   <Reveal key={item.title} delay={i * 50}>
-                    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#1e261d] bg-[#111511]/80 p-4 text-center backdrop-blur-sm">
-                      <IconComp className="h-5 w-5 text-[#52fe7d]" />
+                    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#1E2C4A] bg-[#111511]/80 p-4 text-center backdrop-blur-sm">
+                      <IconComp className="h-5 w-5 text-[#38BDF8]" />
                       <p className="text-xs font-bold text-white">{item.title}</p>
-                      <p className="text-[10px] leading-snug text-[#8a949e]">{item.desc}</p>
+                      <p className="text-[10px] leading-snug text-[#94A3B8]">{item.desc}</p>
                     </div>
                   </Reveal>
                 )
@@ -358,47 +358,47 @@ function SupportContent() {
         </div>
       </div>
 
-      <section className="section-pad bg-[#0e0e0e]" aria-label="Contact and inquiry">
+      <section className="section-pad bg-[#06080E]" aria-label="Contact and inquiry">
         <div className="container-page grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
 
           <div className="space-y-5">
 
             <Reveal>
-              <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Direct Contact</p>
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Direct Contact</p>
                 <h2 className="mt-2 font-display text-lg font-bold text-white">Get in touch</h2>
 
                 <div className="mt-5 space-y-4">
                   <a
                     href={`mailto:${email}`}
-                    className="group flex items-center gap-3 rounded-xl border border-[#1e261d] bg-[#0e0e0e] p-3.5 transition hover:border-[#39A751]/50 hover:bg-[#1a2a1a]"
+                    className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5 transition hover:border-[#0284C7]/50 hover:bg-[#1a2a1a]"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#39A751]/25 bg-[#1a2a1a] text-[#52fe7d] transition group-hover:bg-[#39A751] group-hover:text-white">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#1a2a1a] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
                       <Mail className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-[10px] text-[#8a949e]">Email</p>
-                      <p className="text-xs font-semibold text-white group-hover:text-[#52fe7d] transition">{email}</p>
+                      <p className="text-[10px] text-[#94A3B8]">Email</p>
+                      <p className="text-xs font-semibold text-white group-hover:text-[#38BDF8] transition">{email}</p>
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-3 rounded-xl border border-[#1e261d] bg-[#0e0e0e] p-3.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1e261d] bg-[#111511] text-[#52fe7d]">
+                  <div className="flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#111511] text-[#38BDF8]">
                       <MapPin className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-[10px] text-[#8a949e]">Location</p>
+                      <p className="text-[10px] text-[#94A3B8]">Location</p>
                       <p className="text-xs font-semibold text-white">{location}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-xl border border-[#39A751]/25 bg-[#1a2a1a] px-4 py-3">
+                <div className="mt-5 rounded-xl border border-[#0284C7]/25 bg-[#1a2a1a] px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-[#52fe7d] shadow-[0_0_6px_rgba(82,254,125,0.8)]" />
-                    <p className="text-xs font-bold text-[#52fe7d]">Currently accepting new projects</p>
+                    <span className="h-2 w-2 rounded-full bg-[#38BDF8] shadow-[0_0_6px_rgba(82,254,125,0.8)]" />
+                    <p className="text-xs font-bold text-[#38BDF8]">Currently accepting new projects</p>
                   </div>
-                  <p className="mt-1.5 text-[11px] leading-relaxed text-[#8a949e]">
+                  <p className="mt-1.5 text-[11px] leading-relaxed text-[#94A3B8]">
                     Replies within 24 business hours with concrete technical recommendations.
                   </p>
                 </div>
@@ -406,8 +406,8 @@ function SupportContent() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Common Questions</p>
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-6">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Common Questions</p>
                 <h2 className="mt-2 mb-1 font-display text-base font-bold text-white">Quick answers</h2>
                 {SUPPORT_FAQ.map((item) => (
                   <FAQItem key={item.q} q={item.q} a={item.a} />
@@ -416,12 +416,12 @@ function SupportContent() {
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="rounded-2xl border border-[#1e261d] bg-[#111511] p-5">
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#111511] p-5">
                 <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-[#52fe7d]" />
+                  <Shield className="h-4 w-4 text-[#38BDF8]" />
                   <p className="text-xs font-bold text-white">Confidentiality</p>
                 </div>
-                <p className="mt-2 text-xs leading-relaxed text-[#8a949e]">
+                <p className="mt-2 text-xs leading-relaxed text-[#94A3B8]">
                   NDAs are signed prior to reviewing any proprietary designs, codebases, or intellectual property.
                 </p>
               </div>
@@ -430,15 +430,15 @@ function SupportContent() {
 
           <Reveal delay={60}>
             <div
-              className="relative overflow-hidden rounded-2xl border border-[#1e261d] bg-[#111511] p-7 sm:p-9"
+              className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#111511] p-7 sm:p-9"
               style={{ boxShadow: '0 0 0 1px rgba(57,167,81,0.08), 0 30px 60px rgba(0,0,0,0.6), 0 -1px 0 0 rgba(82,254,125,0.12)' }}
             >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52fe7d]/40 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/40 to-transparent" />
 
-              <div className="mb-7 border-b border-[#1e261d] pb-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#52fe7d]">Project Inquiry</p>
+              <div className="mb-7 border-b border-[#1E2C4A] pb-6">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Project Inquiry</p>
                 <h2 className="mt-2 font-display text-2xl font-bold text-white">Tell me about your project</h2>
-                <p className="mt-1.5 text-sm text-[#8a949e]">
+                <p className="mt-1.5 text-sm text-[#94A3B8]">
                   Fill in the details below and I&apos;ll come back with a concrete technical response.
                 </p>
               </div>

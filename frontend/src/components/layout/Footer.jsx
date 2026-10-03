@@ -51,7 +51,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-[#1e261d] bg-[#0e0e0e] text-[#d2d7dc]">
+    <footer className="border-t border-[#1E2C4A] bg-[#06080E] text-[#CBD5E1]">
       <div className="container-page py-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
 
@@ -61,7 +61,7 @@ export default function Footer() {
               <MakeLogo size="md" />
             </Link>
 
-            <p className="mt-4 max-w-sm text-xs leading-relaxed text-[#8a949e]">
+            <p className="mt-4 max-w-sm text-xs leading-relaxed text-[#94A3B8]">
               {profile.short_bio ||
                 'Engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.'}
             </p>
@@ -69,14 +69,14 @@ export default function Footer() {
             <div className="mt-6 space-y-2">
               <a
                 href={`mailto:${profile.email || info.email || 'hello@make.dev'}`}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#52fe7d] hover:underline"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#38BDF8] hover:underline"
               >
                 <Mail className="h-3.5 w-3.5" />
                 <span>{profile.email || info.email || 'hello@make.dev'}</span>
               </a>
 
-              <div className="flex items-center gap-2 text-xs text-[#8a949e]">
-                <MapPin className="h-3.5 w-3.5 text-[#39A751]" />
+              <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+                <MapPin className="h-3.5 w-3.5 text-[#0284C7]" />
                 <span>{profile.location || info.location || 'Available Worldwide · Remote'}</span>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Footer() {
                 <li key={to}>
                   <Link
                     to={to}
-                    className="text-xs text-[#8a949e] hover:text-white transition"
+                    className="text-xs text-[#94A3B8] hover:text-white transition"
                   >
                     {label}
                   </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
                 <li key={to}>
                   <Link
                     to={to}
-                    className="text-xs text-[#8a949e] hover:text-[#52fe7d] transition"
+                    className="text-xs text-[#94A3B8] hover:text-[#38BDF8] transition"
                   >
                     {label}
                   </Link>
@@ -128,9 +128,9 @@ export default function Footer() {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs text-[#8a949e] hover:text-white transition"
+                      className="inline-flex items-center gap-2 text-xs text-[#94A3B8] hover:text-white transition"
                     >
-                      <Icon className="h-3.5 w-3.5 text-[#39A751]" />
+                      <Icon className="h-3.5 w-3.5 text-[#0284C7]" />
                       <span>{s.label}</span>
                     </a>
                   </li>
@@ -140,11 +140,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-[#1e261d] pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 border-t border-[#1E2C4A] pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="hidden md:block flex-1" />
 
           <div className="text-center order-2 md:order-1 flex-shrink-0">
-            <p className="text-xs text-[#8a949e]">© {year} Make. All rights reserved.</p>
+            <p className="text-xs text-[#94A3B8]">© {year} Make. All rights reserved.</p>
           </div>
 
           <div className="flex-1 flex items-center justify-center md:justify-end gap-3 order-1 md:order-2 w-full md:w-auto">
@@ -164,7 +164,7 @@ export default function Footer() {
               onClick={scrollToTop}
               aria-label="Back to top"
               title="Back to top"
-              className="inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-xl bg-[#52fe7d]/10 border border-[#52fe7d]/30 text-[#52fe7d] hover:bg-[#52fe7d] hover:text-[#0b140e] hover:border-[#52fe7d] hover:shadow-[0_0_20px_rgba(82,254,125,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 ease-out group cursor-pointer"
+              className="inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-[#38BDF8] hover:bg-[#38BDF8] hover:text-[#0b140e] hover:border-[#38BDF8] hover:shadow-[0_0_20px_rgba(82,254,125,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 ease-out group cursor-pointer"
             >
               <ArrowUp className="w-6 h-6 stroke-[2.2] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
             </button>

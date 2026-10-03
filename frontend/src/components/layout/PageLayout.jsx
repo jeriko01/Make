@@ -52,10 +52,10 @@ export default function PageLayout({ title, description, children, className = '
   }, [title, description])
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0e0e0e] text-[#d2d7dc]">
+    <div className="flex min-h-screen flex-col bg-[#06080E] text-[#CBD5E1]">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#39A751] focus:px-4 focus:py-2 focus:text-white focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#0284C7] focus:px-4 focus:py-2 focus:text-white focus:font-semibold"
       >
         Skip to content
       </a>
