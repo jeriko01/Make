@@ -12,7 +12,7 @@ export default function MakeLogo({ className = '', iconOnly = false, size = 'md'
       {/* ── Icon Mark ── */}
       <div className={`relative ${s.icon} flex-shrink-0`}>
         {/* Outer glow */}
-        <div className="absolute -inset-[3px] rounded-xl bg-[#39A751] opacity-0 blur-[6px] transition-all duration-300 group-hover:opacity-30" />
+        <div className="absolute -inset-[3px] rounded-xl bg-[#38BDF8] opacity-0 blur-[6px] transition-all duration-300 group-hover:opacity-35" />
 
         <svg
           viewBox="0 0 40 40"
@@ -24,13 +24,13 @@ export default function MakeLogo({ className = '', iconOnly = false, size = 'md'
           <defs>
             {/* Background gradient */}
             <linearGradient id="mkBg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#192b19" />
-              <stop offset="100%" stopColor="#0e0e0e" />
+              <stop offset="0%" stopColor="#0E1E38" />
+              <stop offset="100%" stopColor="#06080E" />
             </linearGradient>
             {/* M stroke gradient */}
             <linearGradient id="mkStroke" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#52fe7d" />
-              <stop offset="100%" stopColor="#39A751" />
+              <stop offset="0%" stopColor="#7DD3FC" />
+              <stop offset="100%" stopColor="#0284C7" />
             </linearGradient>
           </defs>
 
@@ -38,8 +38,8 @@ export default function MakeLogo({ className = '', iconOnly = false, size = 'md'
           <rect
             x="1" y="1" width="38" height="38" rx="10"
             fill="url(#mkBg)"
-            stroke="#39A751"
-            strokeOpacity="0.55"
+            stroke="#1E2C4A"
+            strokeOpacity="0.8"
             strokeWidth="1"
           />
 
@@ -58,7 +58,7 @@ export default function MakeLogo({ className = '', iconOnly = false, size = 'md'
       {/* ── Wordmark ── */}
       {!iconOnly && (
         <span
-          className={`font-display ${s.text} font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#52fe7d]`}
+          className={`font-display ${s.text} font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#38BDF8]`}
           style={{ letterSpacing: '-0.02em' }}
         >
           Make

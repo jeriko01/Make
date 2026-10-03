@@ -19,15 +19,15 @@ export default function CollaborateCTA({
   return (
     <section
       aria-label="Start a project"
-      className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]/60 relative overflow-hidden"
+      className="section-pad bg-[#06080E] border-t border-[#1E2C4A]/60 relative overflow-hidden"
     >
       <div className="container-page">
         <Reveal>
           <div
-            className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#233522] bg-[#0c100c] p-8 sm:p-11 md:p-12 text-center shadow-2xl transition-all duration-300 hover:border-[#39A751]/50"
+            className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-8 sm:p-11 md:p-12 text-center shadow-2xl transition-all duration-300 hover:border-[#38BDF8]/50"
             style={{
               boxShadow:
-                '0 -1px 0 0 rgba(82, 255, 125, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 25px 60px -15px rgba(0, 0, 0, 0.9)',
+                '0 -1px 0 0 rgba(56, 189, 248, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 25px 60px -15px rgba(0, 0, 0, 0.9)',
             }}
           >
             {/* ── Crisp & Clearly Visible Background Image ── */}
@@ -38,8 +38,8 @@ export default function CollaborateCTA({
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-85 brightness-110 contrast-110"
             />
             {/* Soft Ambient Overlay for Text Readability */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0a0d0a]/70 via-[#0a0d0a]/50 to-[#0a0d0a]/90" />
-            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-48 w-80 rounded-full bg-[#39A751]/20 blur-2xl" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#06080E]/70 via-[#06080E]/50 to-[#06080E]/90" />
+            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-48 w-80 rounded-full bg-[#38BDF8]/20 blur-2xl" />
 
             {/* ── Content ── */}
             <div className="relative z-10 flex flex-col items-center">
@@ -51,7 +51,7 @@ export default function CollaborateCTA({
                   </h2>
                 ) : (
                   <>
-                    <span className="block font-display text-sm sm:text-base font-semibold text-[#52fe7d] tracking-tight">
+                    <span className="block font-display text-sm sm:text-base font-semibold text-[#38BDF8] tracking-tight">
                       {topHeading}
                     </span>
                     <h2 className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
@@ -62,7 +62,7 @@ export default function CollaborateCTA({
               </div>
 
               {/* Short & Concise Paragraph */}
-              <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#d2d7dc] max-w-md mx-auto">
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#CBD5E1] max-w-md mx-auto">
                 {body}
               </p>
 
@@ -71,7 +71,7 @@ export default function CollaborateCTA({
                 {primaryBtnText && (
                   <Link
                     to={primaryBtnTo}
-                    className="btn-lime w-full sm:w-auto px-7 py-3 text-sm font-bold shadow-lg shadow-[#39A751]/30 hover:shadow-[#39A751]/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                    className="btn-lime w-full sm:w-auto px-7 py-3 text-sm font-bold shadow-lg shadow-[#38BDF8]/25 hover:shadow-[#38BDF8]/45 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                   >
                     <span>{primaryBtnText}</span>
                     <ArrowRight className="h-4 w-4" />

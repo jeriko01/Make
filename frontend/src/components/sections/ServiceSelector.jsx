@@ -76,19 +76,19 @@ export default function ServiceSelector() {
     <section
       id="service-selector"
       aria-label="Engineering offerings"
-      className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]/80 relative overflow-hidden"
+      className="section-pad bg-[#06080E] border-t border-[#1E2C4A]/80 relative overflow-hidden"
     >
       <div className="container-page relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#39A751]/30 bg-[#1e2b1a]/70 px-3.5 py-1 text-xs font-mono font-semibold tracking-wide text-[#52fe7d] shadow-sm backdrop-blur-md mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#52fe7d] animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#38BDF8]/30 bg-[#131F37]/80 px-3.5 py-1 text-xs font-mono font-semibold tracking-wide text-[#38BDF8] shadow-sm backdrop-blur-md mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
               <span>SPECIALIZED ENGINEERING</span>
             </div>
             <h2 className="section-heading">
               Focused capabilities, built for production.
             </h2>
-            <p className="mt-3.5 mx-auto max-w-xl text-sm sm:text-base text-[#8a949e] leading-relaxed">
+            <p className="mt-3.5 mx-auto max-w-xl text-sm sm:text-base text-[#94A3B8] leading-relaxed">
               From early-stage product prototypes to enterprise cloud infrastructure — select an engineering domain to start your project inquiry.
             </p>
           </Reveal>
@@ -101,32 +101,32 @@ export default function ServiceSelector() {
               <Reveal key={item.slug} delay={i * 35}>
                 <Link
                   to={`/support?service=${item.slug}`}
-                  className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1e261d] bg-[#121512] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#39A751]/50 hover:bg-[#151915] hover:shadow-xl hover:shadow-[#39A751]/10 focus-visible:ring-2 focus-visible:ring-[#39A751]"
+                  className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#38BDF8]/50 hover:bg-[#111A30] hover:shadow-xl hover:shadow-[#38BDF8]/10 focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
                   style={{
-                    boxShadow: '0 4px 20px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+                    boxShadow: '0 4px 20px -5px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                   }}
                 >
                   <div>
                     {/* Top Row: Icon + Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#182216] border border-[#39A751]/30 text-[#52fe7d] transition-all group-hover:scale-105 group-hover:bg-[#39A751] group-hover:text-white">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#131F37] border border-[#38BDF8]/30 text-[#38BDF8] transition-all group-hover:scale-105 group-hover:bg-[#0284C7] group-hover:text-white">
                         <IconComp className="h-5 w-5" />
                       </div>
-                      <span className="rounded-md border border-[#1e261d] bg-[#0c100c] px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-[#8a949e] group-hover:border-[#39A751]/30 group-hover:text-[#52fe7d] transition-colors">
+                      <span className="rounded-md border border-[#1E2C4A] bg-[#06080E] px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-[#94A3B8] group-hover:border-[#38BDF8]/30 group-hover:text-[#38BDF8] transition-colors">
                         {item.badge}
                       </span>
                     </div>
 
-                    <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#52fe7d] transition-colors">
+                    <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-xs leading-relaxed text-[#8a949e] group-hover:text-[#a8b3be] transition-colors">
+                    <p className="mt-2 text-xs leading-relaxed text-[#94A3B8] group-hover:text-[#CBD5E1] transition-colors">
                       {item.desc}
                     </p>
                   </div>
 
-                  <div className="mt-5 flex items-center gap-1.5 pt-3.5 border-t border-[#1e261d]/80 text-xs font-semibold text-[#52fe7d] transition-colors">
+                  <div className="mt-5 flex items-center gap-1.5 pt-3.5 border-t border-[#1E2C4A]/80 text-xs font-semibold text-[#38BDF8] transition-colors">
                     <span>Discuss scope</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -140,7 +140,7 @@ export default function ServiceSelector() {
           <div className="mt-10 flex items-center justify-center">
             <Link
               to="/services"
-              className="btn-outline gap-2 px-6 py-3 text-sm font-medium hover:border-[#39A751] transition"
+              className="btn-outline gap-2 px-6 py-3 text-sm font-medium hover:border-[#38BDF8] transition"
             >
               <span>Explore full service breakdowns & deliverables</span>
               <ArrowRight className="h-4 w-4" />

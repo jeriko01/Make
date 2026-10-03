@@ -40,7 +40,7 @@ export default function Hero() {
     <section
       id="home"
       aria-label="Hero"
-      className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#0e0e0e] pt-24 lg:pt-28"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#06080E] pt-24 lg:pt-28"
       style={{
         backgroundImage: 'url(/images/skills-hero-bg.jpg)',
         backgroundSize: 'cover',
@@ -48,16 +48,16 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[#0e0e0e]/80" />
-      <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#39A751]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#52fe7d]/6 blur-[100px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[#06080E]/85" />
+      <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#0284C7]/15 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-48 top-20 h-[400px] w-[400px] rounded-full bg-[#38BDF8]/10 blur-[100px]" />
 
       <div className="container-page relative z-10 my-auto py-10 lg:py-14">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
 
           <div className="order-1 lg:order-1">
             <Reveal>
-              <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase">
+              <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase">
                 make · web &amp; mobile application engineer
               </p>
             </Reveal>
@@ -65,12 +65,12 @@ export default function Hero() {
             <Reveal delay={70}>
               <h1 className="mt-5 font-display text-2xl sm:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold leading-[1.12] tracking-tight text-white">
                 Web and mobile products,{' '}
-                <span className="text-[#52fe7d]">built to work.</span>
+                <span className="text-[#38BDF8]">built to work.</span>
               </h1>
             </Reveal>
 
             <Reveal delay={150}>
-              <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-[#8a949e] sm:text-[17px]">
+              <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-[#94A3B8] sm:text-[17px]">
                 {hero.description ||
                   'I turn product ideas into clear, dependable applications—from the first screen to the API and data behind it.'}
               </p>
@@ -80,7 +80,7 @@ export default function Hero() {
               <div className="mt-8 flex flex-row items-center gap-2.5 sm:gap-3.5">
                 <Link
                   to={hero.primary_cta_href || '/projects'}
-                  className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#39A751]/20 hover:shadow-[#39A751]/35 transition-all text-center whitespace-nowrap"
+                  className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-lg shadow-[#38BDF8]/20 hover:shadow-[#38BDF8]/35 transition-all text-center whitespace-nowrap"
                 >
                   <span>{hero.primary_cta_label || 'Explore my work'}</span>
                   <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
@@ -105,7 +105,7 @@ export default function Hero() {
                 ].map(({ num, label }) => (
                   <div key={label}>
                     <p className="font-display text-lg sm:text-xl font-black text-white">{num}</p>
-                    <p className="text-[10px] sm:text-[11px] text-[#8a949e] font-medium">{label}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#94A3B8] font-medium">{label}</p>
                   </div>
                 ))}
               </div>
@@ -114,9 +114,9 @@ export default function Hero() {
 
           <Reveal delay={120} className="order-2 mx-auto w-full max-w-[270px] sm:max-w-[320px] lg:max-w-[360px] lg:order-2 lg:mx-0 lg:ml-auto">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#39A751]/20 via-transparent to-[#52fe7d]/10 blur-xl" />
+              <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#0284C7]/25 via-transparent to-[#38BDF8]/15 blur-xl" />
 
-              <div className="relative overflow-hidden rounded-2xl border border-[#1e261d]/80 shadow-2xl shadow-black/60">
+              <div className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] shadow-2xl shadow-black/70">
                 {profile.avatar_url ? (
                   <img
                     src={profile.avatar_url}
@@ -127,7 +127,7 @@ export default function Hero() {
                   />
                 ) : (
                   <div
-                    className="flex items-center justify-center bg-gradient-to-b from-[#161d15] to-[#0e0e0e]"
+                    className="flex items-center justify-center bg-gradient-to-b from-[#0D1424] to-[#06080E]"
                     style={{ aspectRatio: '2/3' }}
                     role="img"
                     aria-label="Portrait placeholder"
@@ -138,7 +138,7 @@ export default function Hero() {
                   </div>
                 )}
 
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#0e0e0e]/50 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#06080E]/60 to-transparent" />
               </div>
             </div>
           </Reveal>
@@ -146,7 +146,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div id="capability-strip" className="relative z-10 border-t border-[#1e261d]/80 bg-[#0a0d0a]/90 backdrop-blur-md">
+      <div id="capability-strip" className="relative z-10 border-t border-[#1E2C4A]/80 bg-[#06080E]/90 backdrop-blur-md">
         <div className="container-page py-4 sm:py-5">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {CAPABILITIES.map((cap) => {
@@ -154,14 +154,14 @@ export default function Hero() {
               return (
                 <div
                   key={cap.title}
-                  className="group flex items-center gap-3 rounded-xl border border-[#1e261d] bg-[#121512]/60 p-3 sm:p-3.5 transition-all duration-200 hover:border-[#39A751]/40 hover:bg-[#161a16] hover:shadow-lg hover:shadow-[#39A751]/5"
+                  className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#0D1424]/75 p-3 sm:p-3.5 transition-all duration-200 hover:border-[#38BDF8]/40 hover:bg-[#111A30] hover:shadow-lg hover:shadow-[#38BDF8]/5"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#182216] border border-[#39A751]/30 text-[#52fe7d] transition-all group-hover:scale-105 group-hover:bg-[#1e2b1a] group-hover:border-[#52fe7d]/50">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#131F37] border border-[#38BDF8]/30 text-[#38BDF8] transition-all group-hover:scale-105 group-hover:bg-[#0284C7] group-hover:text-white group-hover:border-[#38BDF8]/50">
                     <IconComp className="h-4 w-4" />
                   </span>
                   <div className="min-w-0">
-                    <h3 className="font-display text-xs font-bold text-white tracking-tight truncate group-hover:text-[#52fe7d] transition-colors">{cap.title}</h3>
-                    <p className="text-[10px] font-medium text-[#8a949e] truncate">{cap.detail}</p>
+                    <h3 className="font-display text-xs font-bold text-white tracking-tight truncate group-hover:text-[#38BDF8] transition-colors">{cap.title}</h3>
+                    <p className="text-[10px] font-medium text-[#94A3B8] truncate">{cap.detail}</p>
                   </div>
                 </div>
               )
