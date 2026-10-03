@@ -42,7 +42,7 @@ export default function Hero() {
       aria-label="Hero"
       className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-[#06080E] pt-24 lg:pt-28"
       style={{
-        backgroundImage: 'url(/images/hero-software-build.jpg)',
+        backgroundImage: 'url(/images/skills-hero-bg.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',
