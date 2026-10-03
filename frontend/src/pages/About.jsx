@@ -326,8 +326,14 @@ function AboutContent() {
         </section>
       )}
       <CollaborateCTA
-        heading="Let's build something exceptional together"
-        body="Have an upcoming project, contract, or architecture need? Let's connect and discuss the technical roadmap."
+        topHeading="Solo engineer advantage"
+        mainHeading="Work directly with the builder."
+        body="No agency middle layers or communication loss. You get direct access, rapid iterations, and complete technical transparency from day one."
+        bgImage="/images/cta-about-bg.jpg"
+        primaryBtnText="Start a conversation"
+        primaryBtnTo="/support"
+        secondaryBtnText="Explore project gallery"
+        secondaryBtnTo="/projects"
       />
     </>
   )

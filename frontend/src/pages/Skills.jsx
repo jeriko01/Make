@@ -420,8 +420,14 @@ function SkillsContent() {
         </div>
       </section>
       <CollaborateCTA
-        heading="Need these technologies on your team?"
-        body="Whether you need a senior full-stack engineer for an end-to-end product build or specialized React / FastAPI development, let's talk."
+        topHeading="Senior tech execution"
+        mainHeading="Bring modern speed & reliability."
+        body="From automated CI/CD pipelines to clean React and FastAPI architectures, I help you ship stable, scalable software with high velocity."
+        bgImage="/images/cta-skills-bg.jpg"
+        primaryBtnText="Build your stack"
+        primaryBtnTo="/support"
+        secondaryBtnText="View case studies"
+        secondaryBtnTo="/projects"
       />
     </>
   )

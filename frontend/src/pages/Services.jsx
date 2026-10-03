@@ -268,10 +268,15 @@ function ServicesContent() {
 
       <ProjectPlanner />
 
-      {/* ── CTA ── */}
       <CollaborateCTA
-        heading="Have a custom product in mind?"
-        body="Select a service above to jump directly into the inquiry form, or describe your project and we'll figure out the right scope together."
+        topHeading="Tailored engineering"
+        mainHeading="Need a custom solution built?"
+        body="Whether building a new product from scratch or scaling an existing system, I engineer reliable software tailored to your exact business goals."
+        bgImage="/images/cta-services-bg.jpg"
+        primaryBtnText="Request a proposal"
+        primaryBtnTo="/support"
+        secondaryBtnText="Check tech stack"
+        secondaryBtnTo="/skills"
       />
     </>
   )

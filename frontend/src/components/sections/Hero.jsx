@@ -1,33 +1,33 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ExternalLink, Globe, Smartphone, Server, Database } from 'lucide-react'
+import { ArrowRight, ExternalLink, Code2, Smartphone, Server, Cpu } from 'lucide-react'
 import { useSiteData } from '../../context/SiteDataContext'
 import Reveal from '../common/Reveal'
 
 /** Credibility / Capability strip items */
 const CAPABILITIES = [
   {
-    icon: Globe,
-    title: 'Web',
-    detail: 'React · TypeScript · Tailwind CSS',
-    desc: 'Responsive, accessible web applications',
+    icon: Code2,
+    title: 'Frontend Systems',
+    detail: 'React · TypeScript · Tailwind',
+    desc: 'High-performance interactive interfaces',
   },
   {
     icon: Smartphone,
-    title: 'Mobile',
-    detail: 'React Native · Flutter · Native',
-    desc: 'Cross-platform iOS & Android apps',
+    title: 'Mobile Engineering',
+    detail: 'React Native · iOS · Android',
+    desc: 'Smooth native-feel cross-platform apps',
   },
   {
     icon: Server,
-    title: 'APIs',
-    detail: 'Python · FastAPI · REST',
-    desc: 'Clean, dependable backend services',
+    title: 'Backend & APIs',
+    detail: 'FastAPI · Python · REST',
+    desc: 'Robust async architectures & logic',
   },
   {
-    icon: Database,
-    title: 'Data',
-    detail: 'Supabase · PostgreSQL',
-    desc: 'Relational data modeling & auth',
+    icon: Cpu,
+    title: 'Data & DevOps',
+    detail: 'PostgreSQL · Docker · Supabase',
+    desc: 'Scalable data models & deployment',
   },
 ]
 
@@ -146,22 +146,22 @@ export default function Hero() {
         </div>
       </div>
 
-      <div id="capability-strip" className="relative z-10 border-t border-[#1e261d] bg-[#0b0f0b]">
-        <div className="container-page py-5">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+      <div id="capability-strip" className="relative z-10 border-t border-[#1e261d]/80 bg-[#0a0d0a]/90 backdrop-blur-md">
+        <div className="container-page py-4 sm:py-5">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {CAPABILITIES.map((cap) => {
               const IconComp = cap.icon
               return (
                 <div
                   key={cap.title}
-                  className="flex items-center gap-3 rounded-xl border border-[#1e261d]/60 bg-[#141714]/40 p-3.5 transition hover:border-[#39A751]/25 hover:bg-[#141714]"
+                  className="group flex items-center gap-3 rounded-xl border border-[#1e261d] bg-[#121512]/60 p-3 sm:p-3.5 transition-all duration-200 hover:border-[#39A751]/40 hover:bg-[#161a16] hover:shadow-lg hover:shadow-[#39A751]/5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1e2b1a] border border-[#39A751]/30 text-[#52fe7d]">
-                    <IconComp className="h-3.5 w-3.5" />
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#182216] border border-[#39A751]/30 text-[#52fe7d] transition-all group-hover:scale-105 group-hover:bg-[#1e2b1a] group-hover:border-[#52fe7d]/50">
+                    <IconComp className="h-4 w-4" />
                   </span>
-                  <div>
-                    <h3 className="font-display text-xs font-bold text-white">{cap.title}</h3>
-                    <p className="text-[10px] font-medium text-[#52fe7d]">{cap.detail}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-xs font-bold text-white tracking-tight truncate group-hover:text-[#52fe7d] transition-colors">{cap.title}</h3>
+                    <p className="text-[10px] font-medium text-[#8a949e] truncate">{cap.detail}</p>
                   </div>
                 </div>
               )

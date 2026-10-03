@@ -1,83 +1,91 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Reveal from '../common/Reveal'
 
 /**
- * CollaborateCTA — Final project inquiry CTA block.
+ * CollaborateCTA — Modern, compact & punchy DevOps-grade project CTA.
  */
-export default function CollaborateCTA({ heading, body }) {
+export default function CollaborateCTA({
+  heading,
+  topHeading = 'Have a project in mind?',
+  mainHeading = 'Let’s build it right.',
+  body = 'I engineer high-performance web and mobile applications built for scale and reliability.',
+  bgImage = '/images/cta-home-bg.jpg',
+  primaryBtnText = 'Start a project',
+  primaryBtnTo = '/support',
+  secondaryBtnText = 'Explore all work',
+  secondaryBtnTo = '/projects',
+}) {
   return (
     <section
       aria-label="Start a project"
-      className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]"
+      className="section-pad bg-[#0e0e0e] border-t border-[#1e261d]/60 relative overflow-hidden"
     >
       <div className="container-page">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-[#1e261d] bg-[#141714] p-8 sm:p-12 md:p-16 shadow-2xl"
-               style={{
-                 boxShadow: '0 -1px 0 0 #52ff7d29, 0 0 0 1px rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.7)'
-               }}>
+          <div
+            className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#233522] bg-[#0c100c] p-8 sm:p-11 md:p-12 text-center shadow-2xl transition-all duration-300 hover:border-[#39A751]/50"
+            style={{
+              boxShadow:
+                '0 -1px 0 0 rgba(82, 255, 125, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 25px 60px -15px rgba(0, 0, 0, 0.9)',
+            }}
+          >
+            {/* ── Crisp & Clearly Visible Background Image ── */}
+            <img
+              src={bgImage}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-85 brightness-110 contrast-110"
+            />
+            {/* Soft Ambient Overlay for Text Readability */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0a0d0a]/70 via-[#0a0d0a]/50 to-[#0a0d0a]/90" />
+            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-48 w-80 rounded-full bg-[#39A751]/20 blur-2xl" />
 
-            <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[#39A751]/10 blur-3xl" />
-            <div className="pointer-events-none absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-[#52fe7d]/5 blur-3xl" />
-
-            <div className="relative z-10 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-              <div>
-                <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#52fe7d] lowercase mb-2">
-                  start a project
-                </p>
-
-                <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                  {heading || 'Ready to build your next web or mobile product?'}
-                </h2>
-
-                <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#d2d7dc] max-w-xl">
-                  {body ||
-                    'Share what you need built. I will review your goals and respond with a clear breakdown, recommended tech architecture, and actionable next steps.'}
-                </p>
-
-                <div className="mt-8 space-y-3">
-                  {[
-                    'Direct communication with the engineer building your product',
-                    'Clean TypeScript & Python architecture with full code ownership',
-                    'Predictable milestone delivery with working software from sprint one',
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1e2b1a] text-[#52fe7d]">
-                        <CheckCircle2 className="h-4 w-4" />
-                      </span>
-                      <span className="text-xs sm:text-sm font-medium text-[#d2d7dc]">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+            {/* ── Content ── */}
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Stacked Proportional Headings */}
+              <div className="space-y-1 max-w-xl mx-auto">
+                {heading ? (
+                  <h2 className="font-display text-2xl sm:text-3xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                    {heading}
+                  </h2>
+                ) : (
+                  <>
+                    <span className="block font-display text-sm sm:text-base font-semibold text-[#52fe7d] tracking-tight">
+                      {topHeading}
+                    </span>
+                    <h2 className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                      {mainHeading}
+                    </h2>
+                  </>
+                )}
               </div>
 
-              <div className="flex flex-col items-start lg:items-center justify-center gap-4 rounded-xl border border-[#1e261d] bg-[#0e0e0e]/80 p-8 text-center backdrop-blur-md">
-                <p className="font-display text-lg font-bold text-white">
-                  Let&apos;s build something dependable
-                </p>
-                <p className="text-xs text-[#8a949e] max-w-xs">
-                  No commitment required. Inquiries are answered within one business day.
-                </p>
+              {/* Short & Concise Paragraph */}
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#d2d7dc] max-w-md mx-auto">
+                {body}
+              </p>
 
-                <div className="mt-2 w-full space-y-3">
+              {/* Side-by-Side Action Buttons */}
+              <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md mx-auto">
+                {primaryBtnText && (
                   <Link
-                    to="/support"
-                    className="btn-lime w-full gap-2 py-3.5 text-base shadow-lg shadow-[#39A751]/25 hover:shadow-[#39A751]/40"
+                    to={primaryBtnTo}
+                    className="btn-lime w-full sm:w-auto px-7 py-3 text-sm font-bold shadow-lg shadow-[#39A751]/30 hover:shadow-[#39A751]/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                   >
-                    <span>Let&apos;s collaborate</span>
+                    <span>{primaryBtnText}</span>
                     <ArrowRight className="h-4 w-4" />
                   </Link>
+                )}
 
+                {secondaryBtnText && (
                   <Link
-                    to="/projects"
-                    className="btn-outline w-full gap-2 py-3 text-sm"
+                    to={secondaryBtnTo}
+                    className="btn-outline w-full sm:w-auto px-6 py-3 text-sm font-medium hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                   >
-                    <span>Explore project gallery</span>
+                    <span>{secondaryBtnText}</span>
                   </Link>
-                </div>
+                )}
               </div>
             </div>
           </div>

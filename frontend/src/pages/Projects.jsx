@@ -85,8 +85,14 @@ export default function ProjectsPage() {
         </div>
         <ProjectsGallery showFilters featured={false} />
         <CollaborateCTA
-          heading="Have a similar product to build?"
-          body="Tell me about your target users and timeline. I'll provide an architectural breakdown and estimated milestone plan."
+          topHeading="Ready for similar results?"
+          mainHeading="Let’s launch your vision next."
+          body="Share your product goals and timeline. I’ll provide a structured architecture breakdown, transparent milestones, and clean code."
+          bgImage="/images/cta-projects-bg.jpg"
+          primaryBtnText="Kickstart your project"
+          primaryBtnTo="/support"
+          secondaryBtnText="View services"
+          secondaryBtnTo="/services"
         />
       </PageLayout>
     </SiteDataProvider>
