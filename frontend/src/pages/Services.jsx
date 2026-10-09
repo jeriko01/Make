@@ -140,10 +140,7 @@ function ServicesContent() {
           backgroundPosition: 'center top',
         }}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/78" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
-        <div className="pointer-events-none absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-[#0284C7]/10 blur-[130px]" />
-        <div className="pointer-events-none absolute right-0 top-1/3 h-[300px] w-[300px] rounded-full bg-[#38BDF8]/5 blur-[100px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/50" />
 
         <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
           <Reveal>

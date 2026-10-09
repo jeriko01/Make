@@ -1,25 +1,35 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import Reveal from '../common/Reveal'
+import { useLanguage } from '../../context/LanguageContext'
 
 /**
  * CollaborateCTA — Modern, compact & punchy DevOps-grade project CTA.
  */
 export default function CollaborateCTA({
   heading,
-  topHeading = 'Have a project in mind?',
-  mainHeading = 'Let’s build it right.',
-  body = 'I engineer high-performance web and mobile applications built for scale and reliability.',
-  bgImage = '/images/cta-home-bg.jpg',
-  primaryBtnText = 'Start a project',
+  topHeading,
+  mainHeading,
+  body,
+  bgImage = '/images/cta-cloud-bg.jpg',
+  primaryBtnText,
   primaryBtnTo = '/support',
-  secondaryBtnText = 'Explore all work',
+  secondaryBtnText,
   secondaryBtnTo = '/projects',
 }) {
+  const { lang } = useLanguage()
+
+  const defaultTop = lang === 'so' ? 'Ma haysaa mashruuc cusub?' : 'Have a project in mind?'
+  const defaultMain = lang === 'so' ? 'Aan u dhisno si heer caalami ah.' : 'Let’s build it right.'
+  const defaultBody = lang === 'so'
+    ? 'Waxaan dhisaa nidaamyo web, mobile, iyo cloud ah oo ammaan ah, degdeg badan, oo u adkeysan kara koboc degdeg ah.'
+    : 'I engineer high-performance web and mobile applications built for scale and reliability.'
+  const defaultPrimary = lang === 'so' ? 'Bilow Mashruuc' : 'Start a project'
+  const defaultSecondary = lang === 'so' ? 'Mashaariicda Kale' : 'Explore all work'
   return (
     <section
       aria-label="Start a project"
-      className="section-pad bg-[#06080E] border-t border-[#1E2C4A]/60 relative overflow-hidden"
+      className="section-pad bg-[#06080E] relative overflow-hidden"
     >
       <div className="container-page">
         <Reveal>
@@ -37,9 +47,8 @@ export default function CollaborateCTA({
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-85 brightness-110 contrast-110"
             />
-            {/* Soft Ambient Overlay for Text Readability */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#06080E]/70 via-[#06080E]/50 to-[#06080E]/90" />
-            <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-48 w-80 rounded-full bg-[#38BDF8]/20 blur-2xl" />
+            {/* Subtle dark overlay just enough for text readability */}
+            <div className="pointer-events-none absolute inset-0 bg-[#06080E]/55" />
 
             {/* ── Content ── */}
             <div className="relative z-10 flex flex-col items-center">
@@ -52,10 +61,10 @@ export default function CollaborateCTA({
                 ) : (
                   <>
                     <span className="block font-display text-sm sm:text-base font-semibold text-[#38BDF8] tracking-tight">
-                      {topHeading}
+                      {topHeading || defaultTop}
                     </span>
                     <h2 className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                      {mainHeading}
+                      {mainHeading || defaultMain}
                     </h2>
                   </>
                 )}
@@ -63,29 +72,25 @@ export default function CollaborateCTA({
 
               {/* Short & Concise Paragraph */}
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#CBD5E1] max-w-md mx-auto">
-                {body}
+                {body || defaultBody}
               </p>
 
               {/* Side-by-Side Action Buttons */}
-              <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md mx-auto">
-                {primaryBtnText && (
-                  <Link
-                    to={primaryBtnTo}
-                    className="btn-lime w-full sm:w-auto px-7 py-3 text-sm font-bold shadow-lg shadow-[#38BDF8]/25 hover:shadow-[#38BDF8]/45 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-                  >
-                    <span>{primaryBtnText}</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
+              <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-sm mx-auto">
+                <Link
+                  to={primaryBtnTo}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#38BDF8]/60 bg-transparent px-7 py-3 text-sm font-semibold text-[#38BDF8] hover:bg-[#38BDF8]/10 hover:border-[#38BDF8] hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto"
+                >
+                  <span>{primaryBtnText || defaultPrimary}</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
 
-                {secondaryBtnText && (
-                  <Link
-                    to={secondaryBtnTo}
-                    className="btn-outline w-full sm:w-auto px-6 py-3 text-sm font-medium hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-                  >
-                    <span>{secondaryBtnText}</span>
-                  </Link>
-                )}
+                <Link
+                  to={secondaryBtnTo}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#38BDF8]/60 bg-transparent px-7 py-3 text-sm font-semibold text-[#38BDF8] hover:bg-[#38BDF8]/10 hover:border-[#38BDF8] hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto"
+                >
+                  <span>{secondaryBtnText || defaultSecondary}</span>
+                </Link>
               </div>
             </div>
           </div>

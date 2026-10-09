@@ -288,9 +288,7 @@ function SkillsContent() {
           className="absolute inset-0 bg-cover bg-center scale-105 pointer-events-none"
           style={{ backgroundImage: `url('/images/skills-hero-bg.jpg')`, opacity: 0.45 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#06080E]/60 via-[#06080E]/75 to-[#06080E] pointer-events-none" />
-        <div className="pointer-events-none absolute -left-48 top-0 h-[450px] w-[450px] rounded-full bg-[#0284C7]/10 blur-[130px]" />
-        <div className="pointer-events-none absolute -right-48 top-10 h-[400px] w-[400px] rounded-full bg-[#38BDF8]/5 blur-[120px]" />
+
 
         <div className="container-page relative z-10 text-center mx-auto max-w-3xl">
           <Reveal>

@@ -14,13 +14,14 @@ import {
   Code2,
 } from 'lucide-react'
 import { useSiteData } from '../../context/SiteDataContext'
+import { useLanguage } from '../../context/LanguageContext'
 import Reveal from '../common/Reveal'
 
 const FILTER_TABS = [
-  { id: 'all',       label: 'All Projects' },
-  { id: 'web',       label: 'Web' },
-  { id: 'mobile',    label: 'Mobile' },
-  { id: 'fullstack', label: 'Full-Stack' },
+  { id: 'all',       label: 'All Projects', labelSo: 'Dhammaan' },
+  { id: 'web',       label: 'Web Systems',  labelSo: 'Web Systems' },
+  { id: 'mobile',    label: 'Mobile Apps',  labelSo: 'Mobile Apps' },
+  { id: 'fullstack', label: 'Cloud & APIs', labelSo: 'Cloud & APIs' },
 ]
 
 function PreviewModal({ project, onClose }) {
@@ -330,6 +331,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
     return list
   }, [data, featured, activeFilter, limit])
 
+  const { lang } = useLanguage()
   const allProjects = data?.projects?.projects || []
   const hasPlaceholders = allProjects.some((p) => p.is_placeholder)
 
@@ -345,21 +347,22 @@ export default function Projects({ featured = false, limit, showFilters = !featu
       <section
         id="projects"
         aria-label={featured ? 'Featured projects' : 'Project gallery'}
-        className="section-pad border-t border-[#1E2C4A] bg-[#06080E]"
+        className="section-pad bg-[#06080E]"
       >
         <div className="container-page">
 
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <Reveal>
-              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
-                {featured ? 'selected work' : 'portfolio'}
+              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] uppercase">
+                {lang === 'so' ? 'Mashaariicda La Doortay' : 'Selected Architectures'}
               </p>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
-                {featured ? 'Featured applications' : 'Project gallery'}
+                {lang === 'so' ? 'Nidaamyada & Mashaariicda Shida' : 'Featured Production Applications'}
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8]">
-                Real projects built with modern frontend and backend architectures.
-                Click any card to open an in-browser live preview.
+                {lang === 'so'
+                  ? 'Mashaariic dhab ah oo loogu talagalay shirkado heer caalami ah oo leh uptime sarreeya iyo qaab-dhismeed ammaan ah.'
+                  : 'Mission-critical web, mobile, and cloud software engineered for resilience, speed, and real enterprise scale.'}
               </p>
             </Reveal>
           </div>
@@ -391,7 +394,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
                     }`}
                     aria-pressed={activeFilter === tab.id}
                   >
-                    {tab.label}
+                    {lang === 'so' ? tab.labelSo : tab.label}
                   </button>
                 ))}
               </div>
@@ -423,7 +426,7 @@ export default function Projects({ featured = false, limit, showFilters = !featu
             <Reveal delay={200}>
               <div className="mt-10 text-center">
                 <Link to="/projects" className="btn-outline inline-flex items-center gap-2 text-sm">
-                  <span>View full project gallery</span>
+                  <span>{lang === 'so' ? 'Daawo Dhammaan Mashaariicda' : 'View full project gallery'}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

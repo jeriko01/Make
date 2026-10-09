@@ -5,7 +5,6 @@ import About from '../components/sections/About'
 import Projects from '../components/sections/Projects'
 import ProjectPlanner from '../components/sections/ProjectPlanner'
 import ProcessSection from '../components/sections/ProcessSection'
-import TechStackSection from '../components/sections/TechStackSection'
 import PrinciplesSection from '../components/sections/PrinciplesSection'
 import FAQSection from '../components/sections/FAQSection'
 import CollaborateCTA from '../components/sections/CollaborateCTA'
@@ -18,12 +17,11 @@ function HomeContent() {
   return (
     <>
       <Hero />
+      <ProjectPlanner />
+      <Projects featured limit={3} />
       <ServiceSelector />
       <About brief />
-      <Projects featured limit={3} />
-      <ProjectPlanner />
       <ProcessSection />
-      <TechStackSection />
       <PrinciplesSection />
       <FAQSection limit={5} />
       <CollaborateCTA />

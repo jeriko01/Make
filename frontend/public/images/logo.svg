@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" fill="none">
+  <defs>
+    <linearGradient id="mkLogoBgImg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#0B1528" />
+      <stop offset="100%" stopColor="#06080E" />
+    </linearGradient>
+    <linearGradient id="mkLogoStrokeImg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#7DD3FC" />
+      <stop offset="100%" stopColor="#0284C7" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4, 4)">
+    <rect x="0" y="0" width="40" height="40" rx="10" fill="url(#mkLogoBgImg)" stroke="#1E2C4A" stroke-width="1.5" />
+    <path d="M10 29 L10 14 L20 23 L30 14 L30 29" stroke="url(#mkLogoStrokeImg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+
+  <text x="56" y="30" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-size="22" font-weight="800" fill="#FFFFFF" letter-spacing="-0.03em">
+    Make
+  </text>
+  <circle cx="114" cy="27" r="2.5" fill="#38BDF8" />
+</svg>

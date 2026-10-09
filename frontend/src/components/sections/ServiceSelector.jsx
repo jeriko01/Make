@@ -11,6 +11,7 @@ import {
   Cpu,
 } from 'lucide-react'
 import Reveal from '../common/Reveal'
+import { useLanguage } from '../../context/LanguageContext'
 
 const SERVICE_ITEMS = [
   {
@@ -72,24 +73,28 @@ const SERVICE_ITEMS = [
 ]
 
 export default function ServiceSelector() {
+  const { lang } = useLanguage()
+
   return (
     <section
       id="service-selector"
       aria-label="Engineering offerings"
-      className="section-pad bg-[#06080E] border-t border-[#1E2C4A]/80 relative overflow-hidden"
+      className="section-pad bg-[#06080E] relative overflow-hidden"
     >
       <div className="container-page relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#38BDF8]/30 bg-[#131F37]/80 px-3.5 py-1 text-xs font-mono font-semibold tracking-wide text-[#38BDF8] shadow-sm backdrop-blur-md mb-3">
               <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-              <span>SPECIALIZED ENGINEERING</span>
+              <span>{lang === 'so' ? 'ADEEGYADA GUUD' : 'SPECIALIZED ENGINEERING'}</span>
             </div>
             <h2 className="section-heading">
-              Focused capabilities, built for production.
+              {lang === 'so' ? 'Adeegyada Dhismaha & Xalka Tiknoolajiyadda' : 'Focused capabilities, built for production.'}
             </h2>
             <p className="mt-3.5 mx-auto max-w-xl text-sm sm:text-base text-[#94A3B8] leading-relaxed">
-              From early-stage product prototypes to enterprise cloud infrastructure — select an engineering domain to start your project inquiry.
+              {lang === 'so'
+                ? 'Laga bilaabo aasaaska hore ilaa heer enterprise cloud ah — dooro nooca adeegga aad u baahan tahay.'
+                : 'From early-stage product prototypes to enterprise cloud infrastructure — select an engineering domain to start your project inquiry.'}
             </p>
           </Reveal>
         </div>

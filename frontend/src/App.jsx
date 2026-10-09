@@ -23,6 +23,8 @@ function PageSpinner() {
   )
 }
 
+import { LanguageProvider } from './context/LanguageContext'
+
 export default function App() {
   const [loaded, setLoaded] = useState(() => sessionStorage.getItem('mk_loaded') === '1')
 
@@ -32,7 +34,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <LanguageProvider>
       {!loaded && <Preloader onDone={handleDone} />}
       <Suspense fallback={<PageSpinner />}>
         <Routes>
@@ -48,6 +50,6 @@ export default function App() {
           <Route path="*"         element={<NotFound />} />
         </Routes>
       </Suspense>
-    </>
+    </LanguageProvider>
   )
 }

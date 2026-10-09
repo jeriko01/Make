@@ -1,11 +1,11 @@
 {
-  "name": "Make — Web & Mobile Application Studio",
+  "name": "Make — Senior DevOps & Full-Stack Platform Studio",
   "short_name": "Make",
-  "description": "Senior web and mobile engineering studio building dependable, high-performance applications.",
+  "description": "Senior DevOps & Full-Stack engineering studio building high-performance, resilient applications.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0e0e0e",
-  "theme_color": "#0e0e0e",
+  "background_color": "#06080E",
+  "theme_color": "#06080E",
   "icons": [
     {
       "src": "/favicon.svg",

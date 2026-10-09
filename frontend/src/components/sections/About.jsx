@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useSiteData } from '../../context/SiteDataContext'
+import { useLanguage } from '../../context/LanguageContext'
 import Reveal from '../common/Reveal'
 import Icon from '../common/Icon'
 
@@ -10,6 +11,7 @@ import Icon from '../common/Icon'
  * When used standalone (About page), shows the full bio and principles.
  */
 export default function About({ brief = false }) {
+  const { lang } = useLanguage()
   const { data } = useSiteData()
   const profile = data?.profile || {}
   const about = data?.about || { cards: [], stats: [] }
@@ -18,19 +20,23 @@ export default function About({ brief = false }) {
     <section
       id="about"
       aria-label={brief ? 'Capabilities overview' : 'About Make'}
-      className="section-pad bg-[#06080E] border-t border-[#1E2C4A]"
+      className="section-pad bg-[#06080E]"
     >
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-2">capabilities</p>
+            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] uppercase mb-2">
+              {lang === 'so' ? 'Khibradda & Awoodda' : 'Capabilities'}
+            </p>
             <h2 className="section-heading">
               {brief
-                ? 'Engineering dependable systems across the stack'
-                : 'About Make'}
+                ? (lang === 'so' ? 'Dhisidda Nidaamyo Adag oo Heer Caalami ah' : 'Engineering dependable systems across the stack')
+                : (lang === 'so' ? 'Faahfaahin Naga Saabsan' : 'About Make')}
             </h2>
             <p className="mt-4 mx-auto max-w-xl text-base text-[#CBD5E1] leading-relaxed">
-              {profile.short_bio || profile.long_bio || 'Senior engineer specializing in web and mobile applications.'}
+              {lang === 'so'
+                ? 'Khabiir Senior DevOps & Full-Stack Platform Engineer ah oo leh in ka badan 10 sano oo khibrad dhisidda xalka web, mobile, iyo cloud ah.'
+                : (profile.short_bio || profile.long_bio || 'Senior engineer specializing in web and mobile applications.')}
             </p>
             {brief && (
               <div className="mt-6 flex justify-center">
@@ -38,7 +44,7 @@ export default function About({ brief = false }) {
                   to="/about"
                   className="btn-outline inline-flex items-center gap-2 text-sm"
                 >
-                  <span>More about Make & engineering values</span>
+                  <span>{lang === 'so' ? 'Akhri Khibradda Buuxda & Qiyamka' : 'More about Make & engineering values'}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

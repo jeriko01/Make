@@ -34,9 +34,7 @@ export default function ProjectsPage() {
             backgroundPosition: 'center top',
           }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[#06080E]/82" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
-          <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/3 rounded-full bg-[#0284C7]/8 blur-[120px]" />
+          <div className="pointer-events-none absolute inset-0 bg-[#06080E]/50" />
 
           <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
             <Reveal>

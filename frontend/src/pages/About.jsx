@@ -114,9 +114,7 @@ function AboutContent() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/80" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
-        <div className="pointer-events-none absolute -left-48 top-0 h-[500px] w-[500px] rounded-full bg-[#0284C7]/8 blur-[130px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/50" />
 
         <div className="container-page relative z-10 grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <Reveal>

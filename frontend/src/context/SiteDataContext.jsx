@@ -14,7 +14,7 @@ const FALLBACK_SITE_DATA = {
       'I turn product ideas into clear, dependable applications—from the first screen to the API and data behind it. I work across the full stack: React on the frontend, Python/FastAPI on the backend, and React Native or Flutter for mobile. I care about code that is readable, architecture that is maintainable, and products that feel right to the people who use them.',
     location: 'Available Worldwide · Remote',
     email: 'hello@make.dev',
-    avatar_url: '/images/avatar.jpg',
+    avatar_url: '/images/avatar.png',
     initials: 'MK',
   },
   hero: {

@@ -7,7 +7,7 @@ export default function Preloader({ onDone }) {
   useEffect(() => {
     let frame
     const start = performance.now()
-    const duration = 30000
+    const duration = 15000 // 15 seconds
 
     const tick = (now) => {
       const elapsed = now - start
@@ -54,7 +54,7 @@ export default function Preloader({ onDone }) {
             position: 'absolute',
             inset: '-16px',
             borderRadius: '28px',
-            background: 'radial-gradient(ellipse at center, rgba(82,254,125,0.2) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.2) 0%, transparent 70%)',
             animation: 'mkPulse 2.4s ease-in-out infinite',
           }} />
 
@@ -66,15 +66,15 @@ export default function Preloader({ onDone }) {
           >
             <defs>
               <linearGradient id="plBg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#192b19" />
+                <stop offset="0%" stopColor="#0B1528" />
                 <stop offset="100%" stopColor="#06080E" />
               </linearGradient>
               <linearGradient id="plStroke" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#38BDF8" />
+                <stop offset="0%" stopColor="#7DD3FC" />
                 <stop offset="100%" stopColor="#0284C7" />
               </linearGradient>
             </defs>
-            <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#plBg)" stroke="#0284C7" strokeOpacity="0.55" strokeWidth="1" />
+            <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#plBg)" stroke="#1E2C4A" strokeOpacity="0.85" strokeWidth="1" />
             <path
               d="M9 28 L9 13 L20 22 L31 13 L31 28"
               stroke="url(#plStroke)"
@@ -99,7 +99,7 @@ export default function Preloader({ onDone }) {
               borderRadius: '999px',
               width: `${progress}%`,
               background: 'linear-gradient(90deg, #0284C7, #38BDF8)',
-              boxShadow: '0 0 10px rgba(82,254,125,0.5)',
+              boxShadow: '0 0 10px rgba(56,189,248,0.5)',
               transition: 'width 0.1s linear',
             }} />
           </div>
