@@ -5,6 +5,11 @@
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "backend": "backend\\.venv\\Scripts\\python.exe backend/run_https.py",
+    "dev:all": "concurrently -n backend,frontend -c blue,green \"npm run backend\" \"npm run dev\"",
+    "messages": "backend\\.venv\\Scripts\\python.exe scripts/check_messages.py",
     "build": "npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
   }
 }

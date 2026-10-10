@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Mail, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react'
-import { api } from '../../lib/api'
+import { submitContact } from '../../lib/contact'
 import { useSiteData } from '../../context/SiteDataContext'
 import { SectionHeading, Spinner } from '../common/ui'
 import Reveal from '../common/Reveal'
@@ -38,7 +38,7 @@ export default function Contact() {
     setStatus('submitting')
     setServerError('')
     try {
-      await api.post('/contact', values)
+      await submitContact(values)
       setStatus('success')
       setValues(EMPTY)
     } catch (err) {

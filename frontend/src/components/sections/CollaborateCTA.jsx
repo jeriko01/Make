@@ -8,7 +8,6 @@ import { useLanguage } from '../../context/LanguageContext'
  */
 export default function CollaborateCTA({
   heading,
-  topHeading,
   mainHeading,
   body,
   bgImage = '/images/cta-cloud-bg.jpg',
@@ -19,11 +18,7 @@ export default function CollaborateCTA({
 }) {
   const { lang } = useLanguage()
 
-  const defaultTop = lang === 'so' ? 'Ma haysaa mashruuc cusub?' : 'Have a project in mind?'
   const defaultMain = lang === 'so' ? 'Aan u dhisno si heer caalami ah.' : 'Let’s build it right.'
-  const defaultBody = lang === 'so'
-    ? 'Waxaan dhisaa nidaamyo web, mobile, iyo cloud ah oo ammaan ah, degdeg badan, oo u adkeysan kara koboc degdeg ah.'
-    : 'I engineer high-performance web and mobile applications built for scale and reliability.'
   const defaultPrimary = lang === 'so' ? 'Bilow Mashruuc' : 'Start a project'
   const defaultSecondary = lang === 'so' ? 'Mashaariicda Kale' : 'Explore all work'
   return (
@@ -62,7 +57,7 @@ export default function CollaborateCTA({
 
               {/* Short & Concise Paragraph — 2 deliberate stacked lines */}
               <p className="mt-3 text-[14px] sm:text-[15px] leading-relaxed text-[#CBD5E1] max-w-lg mx-auto">
-                {lang === 'so' ? (
+                {body || (lang === 'so' ? (
                   <>
                     <span className="block">Waxaan dhisaa nidaamyo web, mobile, iyo cloud ah oo ammaan ah,</span>
                     <span className="block">degdeg badan, oo u adkeysan kara koboc dhab ah oo degdeg ah.</span>
@@ -72,7 +67,7 @@ export default function CollaborateCTA({
                     <span className="block">I engineer high-performance web, mobile, and cloud systems</span>
                     <span className="block">architected for resilient scale and zero downtime.</span>
                   </>
-                )}
+                ))}
               </p>
 
               {/* Side-by-Side Action Buttons */}

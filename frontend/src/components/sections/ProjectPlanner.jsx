@@ -6,13 +6,8 @@ import {
   Building,
   SmartphoneNfc,
   X,
-  Server,
-  Layers,
-  Zap,
   Clock,
-  Lock,
   CreditCard,
-  FileText,
 } from 'lucide-react'
 import Reveal from '../common/Reveal'
 import { useLanguage } from '../../context/LanguageContext'

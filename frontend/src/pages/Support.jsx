@@ -4,7 +4,7 @@ import {
   Mail, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown,
   Clock, Shield, MessageSquare, Globe, ArrowRight, Zap,
 } from 'lucide-react'
-import { api } from '../lib/api'
+import { submitContact } from '../lib/contact'
 import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
 import PageLayout from '../components/layout/PageLayout'
 import Reveal from '../components/common/Reveal'
@@ -164,16 +164,10 @@ function InquiryForm() {
   const [errors, setErrors] = useState({})
   const [formStatus, setFormStatus] = useState('idle')
   const [serverError, setServerError] = useState('')
-  const [backendReady, setBackendReady] = useState(null)
-
   useEffect(() => {
     const svc = searchParams.get('service')
     if (svc) setValues(v => ({ ...v, service: SLUG_ALIASES[svc] || svc }))
   }, [searchParams])
-
-  useEffect(() => {
-    api.get('/health').then(() => setBackendReady(true)).catch(() => setBackendReady(false))
-  }, [])
 
   const set = (k) => (ev) => setValues(v => ({ ...v, [k]: ev.target.value }))
 
@@ -186,7 +180,7 @@ function InquiryForm() {
     setFormStatus('submitting')
     setServerError('')
     try {
-      await api.post('/contact', {
+      await submitContact({
         name:    values.name,
         email:   values.email,
         subject: `Service inquiry: ${serviceOptions.find(o => o.value === values.service)?.label || values.service}`,
@@ -197,11 +191,7 @@ function InquiryForm() {
       setValues(EMPTY_FORM)
     } catch (err) {
       setFormStatus('error')
-      setServerError(
-        err.status === 503 || !backendReady
-          ? 'Backend connection not configured. Please email Make directly.'
-          : (err.message || 'Something went wrong. Please try again.')
-      )
+      setServerError(err.message || 'Something went wrong. Please try again.')
     }
   }
 

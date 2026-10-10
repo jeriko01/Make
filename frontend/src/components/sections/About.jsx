@@ -13,7 +13,6 @@ import Icon from '../common/Icon'
 export default function About({ brief = false }) {
   const { lang } = useLanguage()
   const { data } = useSiteData()
-  const profile = data?.profile || {}
   const about = data?.about || { cards: [], stats: [] }
 
   return (
