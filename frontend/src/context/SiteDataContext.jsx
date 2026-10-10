@@ -6,16 +6,16 @@ const SiteDataContext = createContext(null)
 // Default initial state used for immediate render prior to API hydration.
 const FALLBACK_SITE_DATA = {
   profile: {
-    full_name: 'Make',
+    full_name: 'Eng make',
     title: 'Senior Web & Mobile Engineering Studio',
     tagline: 'High-performance web and mobile products, built to work.',
-    short_bio: 'Engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.',
+    short_bio: 'I design and engineer full-stack web & mobile products — fast APIs, resilient cloud architectures, and production-ready applications.',
     long_bio:
       'I turn product ideas into clear, dependable applications—from the first screen to the API and data behind it. I work across the full stack: React on the frontend, Python/FastAPI on the backend, and React Native or Flutter for mobile. I care about code that is readable, architecture that is maintainable, and products that feel right to the people who use them.',
     location: 'Available Worldwide · Remote',
-    email: 'hello@make.dev',
+    email: 'engmake1.1@gmail.com',
     avatar_url: '/images/avatar.png',
-    initials: 'MK',
+    initials: 'EM',
   },
   hero: {
     eyebrow: 'SENIOR WEB & MOBILE ENGINEERING STUDIO',

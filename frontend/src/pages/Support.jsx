@@ -146,9 +146,19 @@ function SelectField({ id, label, error, required, options, ...props }) {
 }
 
 function InquiryForm() {
+  const { data } = useSiteData()
   const [searchParams] = useSearchParams()
   const rawServiceParam = searchParams.get('service') || ''
   const resolvedService = SLUG_ALIASES[rawServiceParam] || rawServiceParam
+
+  const dbServices = data?.services && data.services.length > 0
+    ? data.services.map(s => ({ value: s.slug || s.title?.toLowerCase().replace(/\s+/g, '-'), label: s.title }))
+    : []
+
+  const serviceOptions = [
+    { value: '', label: 'Select a service…' },
+    ...(dbServices.length > 0 ? dbServices : SERVICE_OPTIONS.slice(1))
+  ]
 
   const [values, setValues] = useState(() => ({ ...EMPTY_FORM, service: resolvedService }))
   const [errors, setErrors] = useState({})
@@ -179,7 +189,7 @@ function InquiryForm() {
       await api.post('/contact', {
         name:    values.name,
         email:   values.email,
-        subject: `Service inquiry: ${SERVICE_OPTIONS.find(o => o.value === values.service)?.label || values.service}`,
+        subject: `Service inquiry: ${serviceOptions.find(o => o.value === values.service)?.label || values.service}`,
         message: `Service: ${values.service}\nPlatform: ${values.platform || 'Not specified'}\nTimeline: ${values.timeline || 'Not specified'}\nBudget: ${values.budget || 'Not specified'}\n\n${values.description}`,
         website: values.website,
       })

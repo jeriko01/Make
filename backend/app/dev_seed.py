@@ -9,10 +9,10 @@ from __future__ import annotations
 def populate_dev_store(store) -> None:
     # 1. Profile singleton
     store.update_singleton("profile", {
-        "full_name": "Make",
+        "full_name": "Eng make",
         "title": "Senior Web & Mobile Engineering Studio",
         "tagline": "High-performance web and mobile products, built to work.",
-        "short_bio": "Engineering studio building dependable web and mobile products from interactive frontend to API and scalable data layer.",
+        "short_bio": "I design and engineer full-stack web & mobile products — fast APIs, resilient cloud architectures, and production-ready applications.",
         "long_bio": (
             "I turn product ideas into clear, dependable applications—from the first screen to the API "
             "and data behind it. I work across the full stack: React on the frontend, Python/FastAPI "
@@ -20,8 +20,8 @@ def populate_dev_store(store) -> None:
             "maintainable architecture, and digital products that feel right to the people who use them."
         ),
         "avatar_url": "/images/avatar.jpg",
-        "location": "Available Worldwide (Remote)",
-        "email": "hello@make.dev",
+        "location": "Available Worldwide · Remote",
+        "email": "engmake1.1@gmail.com",
         "years_experience_label": "Senior",
     })
 
@@ -326,11 +326,11 @@ def populate_dev_store(store) -> None:
 
     # 12. Contact info & SEO
     store.update_singleton("contact_info", {
-        "email": "hello@example.com",
-        "location": "Available Worldwide (Remote)",
+        "email": "engmake1.1@gmail.com",
+        "location": "Available Worldwide · Remote",
         "availability": "Currently accepting new client projects and development roles.",
     })
     store.update_singleton("seo_metadata", {
-        "title": "Sharmaarke — Web & Mobile App Developer",
-        "description": "Portfolio of Sharmaarke, a Web & Mobile App Developer building fast, accessible websites and Android & iOS applications.",
+        "title": "Eng make — Senior Web & Mobile Engineer",
+        "description": "Portfolio of Eng make, building fast, accessible web applications and Android & iOS applications.",
     })
