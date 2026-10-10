@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "backend": "backend\\.venv\\Scripts\\python.exe backend/run_https.py",
+    "messages": "backend\\.venv\\Scripts\\python.exe -c \"import sqlite3; c=sqlite3.connect('Database/make.db').cursor(); rows=c.execute('SELECT name, email, subject, message, created_at FROM contact_messages ORDER BY created_at DESC').fetchall(); print(f'\\nTotal Inquiries: {len(rows)}'); [print(f'\\n----------------------------------------\\nFrom: {r[0]} ({r[1]})\\nDate: {r[4]}\\nSubject: {r[2]}\\nMessage:\\n{r[3]}') for r in rows]; print('----------------------------------------\\n')\"",
     "build": "npm --prefix frontend run build"
   }
 }
