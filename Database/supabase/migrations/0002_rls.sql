@@ -39,12 +39,21 @@ create policy p_contact_info_read on contact_info for select to anon using (true
 drop policy if exists p_seo_read on seo_metadata;
 create policy p_seo_read on seo_metadata for select to anon using (true);
 
+drop policy if exists p_hero_stats_read on hero_stats;
+create policy p_hero_stats_read on hero_stats for select to anon using (true);
+
+drop policy if exists p_about_cards_read on about_cards;
+create policy p_about_cards_read on about_cards for select to anon using (true);
+
+drop policy if exists p_about_stats_read on about_stats;
+create policy p_about_stats_read on about_stats for select to anon using (true);
+
 -- ---- Public (anon) SELECT policies: only published rows ----
 do $$
 declare t text;
 begin
   foreach t in array array[
-    'hero_stats','about_cards','about_stats','experience','skill_categories',
+    'experience','skill_categories',
     'skills','project_categories','projects','services','testimonials','social_links'
   ]
   loop

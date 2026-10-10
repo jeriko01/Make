@@ -20,16 +20,16 @@ truncate hero_stats, about_cards, about_stats, experience,
 
 -- ---- profile (singleton) ----
 update profile set
-  full_name = 'Sharmaarke',
-  title = 'Web & Mobile App Developer',
-  tagline = 'I build fast, reliable websites and mobile apps.',
-  short_bio = 'Web & mobile app developer focused on clean, performant products across web, Android, and iOS.',
-  long_bio = 'I''m Sharmaarke, a Web & Mobile App Developer with 3+ years building for the web and mobile. '
-           || 'I work across the stack — React on the front end, Python/FastAPI on the back end — and build '
-           || 'native and cross-platform mobile apps. I care about accessible, maintainable code and interfaces that feel effortless.',
-  location = 'Available worldwide (remote)',
-  email = 'hello@example.com',
-  years_experience_label = '3+ years'
+  full_name = 'Eng make',
+  title = 'Senior Web & Mobile Engineering Studio',
+  tagline = 'High-performance web and mobile products, built to work.',
+  short_bio = 'I design and engineer full-stack web & mobile products — fast APIs, resilient cloud architectures, and production-ready applications.',
+  long_bio = 'I turn product ideas into clear, dependable applications—from the first screen to the API '
+           || 'and data behind it. I work across the full stack: React on the frontend, Python/FastAPI '
+           || 'on the backend, and React Native or Flutter for mobile.',
+  location = 'Available Worldwide · Remote',
+  email = 'engmake1.1@gmail.com',
+  years_experience_label = 'Senior'
 where id = 1;
 
 -- ---- hero (singleton) ----
