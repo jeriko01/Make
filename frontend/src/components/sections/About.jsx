@@ -25,26 +25,31 @@ export default function About({ brief = false }) {
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] uppercase mb-2">
-              {lang === 'so' ? 'Khibradda & Awoodda' : 'Capabilities'}
-            </p>
-            <h2 className="section-heading">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
               {brief
-                ? (lang === 'so' ? 'Dhisidda Nidaamyo Adag oo Heer Caalami ah' : 'Engineering dependable systems across the stack')
+                ? (lang === 'so' ? 'Ku Qotoma 10+ Sano oo Khibrad ah' : 'Built on 10+ Years of Craft')
                 : (lang === 'so' ? 'Faahfaahin Naga Saabsan' : 'About Make')}
             </h2>
-            <p className="mt-4 mx-auto max-w-xl text-base text-[#CBD5E1] leading-relaxed">
-              {lang === 'so'
-                ? 'Khabiir Senior DevOps & Full-Stack Platform Engineer ah oo leh in ka badan 10 sano oo khibrad dhisidda xalka web, mobile, iyo cloud ah.'
-                : (profile.short_bio || profile.long_bio || 'Senior engineer specializing in web and mobile applications.')}
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Waxaan caawiyaa kooxaha iyo aasaasayaasha raba nidaamyo deggan</span>
+                  <span className="block">oo u adkaysta koboca ganacsiga iyagoo aan marna istaagin.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Helping founders and engineering teams eliminate downtime,</span>
+                  <span className="block">ship reliable code, and scale with confidence.</span>
+                </>
+              )}
             </p>
             {brief && (
               <div className="mt-6 flex justify-center">
                 <Link
-                  to="/about"
-                  className="btn-outline inline-flex items-center gap-2 text-sm"
+                  to="/about-us"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full border border-[#38BDF8]/40 hover:border-[#38BDF8] hover:bg-[#38BDF8]/10 text-[#38BDF8] transition-all"
                 >
-                  <span>{lang === 'so' ? 'Akhri Khibradda Buuxda & Qiyamka' : 'More about Make & engineering values'}</span>
+                  <span>{lang === 'so' ? 'Akhri Khibradda Buuxda' : 'Read Full Background'}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

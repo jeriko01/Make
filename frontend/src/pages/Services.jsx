@@ -144,11 +144,7 @@ function ServicesContent() {
 
         <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
-              services &amp; solutions
-            </p>
-
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
               Engineering services{' '}
               <span className="text-[#38BDF8]">built for real products</span>
             </h1>

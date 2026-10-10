@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Preloader from './components/common/Preloader'
 
 const Home     = lazy(() => import('./pages/Home'))
@@ -41,7 +41,8 @@ export default function App() {
           <Route path="/"         element={<Home />} />
           <Route path="/skills"   element={<Skills />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/about"    element={<About />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/about"    element={<Navigate to="/about-us" replace />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/support"  element={<Support />} />
 

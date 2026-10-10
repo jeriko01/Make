@@ -118,11 +118,7 @@ function AboutContent() {
 
         <div className="container-page relative z-10 grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
-              about make
-            </p>
-
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               Building software people{' '}
               <span className="text-[#38BDF8]">actually rely on.</span>
             </h1>
@@ -341,7 +337,7 @@ export default function About() {
   return (
     <SiteDataProvider>
       <PageLayout
-        title="About Make"
+        title="About Us"
         description="Learn about Make, a senior web and mobile engineering studio building dependable full-stack applications."
       >
         <AboutContent />

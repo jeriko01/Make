@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { to: '/',         label: 'Home',     exact: true },
   { to: '/skills',   label: 'Skills' },
   { to: '/services', label: 'Services' },
-  { to: '/about',    label: 'About' },
+  { to: '/about-us', label: 'About Us' },
   { to: '/projects', label: 'Projects' },
   { to: '/support',  label: 'Support' },
 ]
@@ -90,7 +90,7 @@ export default function Navbar() {
                       ? l.to === '/' ? 'Hoyga'
                         : l.to === '/skills' ? 'Xirfadaha'
                         : l.to === '/services' ? 'Adeegyada'
-                        : l.to === '/about' ? 'Nagu Saabsan'
+                        : l.to === '/about-us' ? 'Nagu Saabsan'
                         : l.to === '/projects' ? 'Mashaariicda'
                         : 'Taageero'
                       : l.label}
@@ -237,7 +237,7 @@ export default function Navbar() {
                       ? l.to === '/' ? 'Hoyga'
                         : l.to === '/skills' ? 'Xirfadaha'
                         : l.to === '/services' ? 'Adeegyada'
-                        : l.to === '/about' ? 'Nagu Saabsan'
+                        : l.to === '/about-us' ? 'Nagu Saabsan'
                         : l.to === '/projects' ? 'Mashaariicda'
                         : 'Taageero'
                       : l.label}

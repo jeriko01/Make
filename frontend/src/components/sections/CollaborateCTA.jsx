@@ -53,26 +53,26 @@ export default function CollaborateCTA({
             {/* ── Content ── */}
             <div className="relative z-10 flex flex-col items-center">
               {/* Stacked Proportional Headings */}
-              <div className="space-y-1 max-w-xl mx-auto">
-                {heading ? (
-                  <h2 className="font-display text-2xl sm:text-3xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
-                    {heading}
-                  </h2>
-                ) : (
-                  <>
-                    <span className="block font-display text-sm sm:text-base font-semibold text-[#38BDF8] tracking-tight">
-                      {topHeading || defaultTop}
-                    </span>
-                    <h2 className="font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                      {mainHeading || defaultMain}
-                    </h2>
-                  </>
-                )}
+              {/* Unified Clean Heading */}
+              <div className="max-w-xl mx-auto">
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold tracking-tight text-white leading-snug">
+                  {heading || mainHeading || defaultMain}
+                </h2>
               </div>
 
-              {/* Short & Concise Paragraph */}
-              <p className="mt-3 text-sm sm:text-base leading-relaxed text-[#CBD5E1] max-w-md mx-auto">
-                {body || defaultBody}
+              {/* Short & Concise Paragraph — 2 deliberate stacked lines */}
+              <p className="mt-3 text-[14px] sm:text-[15px] leading-relaxed text-[#CBD5E1] max-w-lg mx-auto">
+                {lang === 'so' ? (
+                  <>
+                    <span className="block">Waxaan dhisaa nidaamyo web, mobile, iyo cloud ah oo ammaan ah,</span>
+                    <span className="block">degdeg badan, oo u adkeysan kara koboc dhab ah oo degdeg ah.</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block">I engineer high-performance web, mobile, and cloud systems</span>
+                    <span className="block">architected for resilient scale and zero downtime.</span>
+                  </>
+                )}
               </p>
 
               {/* Side-by-Side Action Buttons */}

@@ -327,11 +327,7 @@ function SupportContent() {
 
         <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
           <Reveal>
-            <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] lowercase">
-              support &amp; inquiries
-            </p>
-
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               Let&apos;s build something{' '}
               <span className="text-[#38BDF8]">together.</span>
             </h1>
@@ -456,7 +452,7 @@ export default function SupportPage() {
   return (
     <SiteDataProvider>
       <PageLayout
-        title="Support & Project Inquiry"
+        title="Support"
         description="Contact Make to discuss your web application, mobile app, API integration, or maintenance requirements."
       >
         <SupportContent />

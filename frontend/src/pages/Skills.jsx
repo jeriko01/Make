@@ -292,10 +292,6 @@ function SkillsContent() {
 
         <div className="container-page relative z-10 text-center mx-auto max-w-3xl">
           <Reveal>
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-3">
-              skills &amp; technologies
-            </p>
-
             <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Engineered with modern tools &amp; frameworks
             </h1>
@@ -435,7 +431,7 @@ export default function Skills() {
   return (
     <SiteDataProvider>
       <PageLayout
-        title="Skills & Technologies"
+        title="Skills"
         description="Technical stack of Make: React, TypeScript, Python, FastAPI, Supabase, PostgreSQL, React Native, and Flutter."
       >
         <SkillsContent />

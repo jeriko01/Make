@@ -1,7 +1,9 @@
 import Reveal from '../common/Reveal'
 import { useSiteData } from '../../context/SiteDataContext'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function PrinciplesSection() {
+  const { lang } = useLanguage()
   const { data } = useSiteData()
   const principles = data?.about?.principles || []
 
@@ -15,13 +17,22 @@ export default function PrinciplesSection() {
     >
       <div className="container-page">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-2">standards</p>
-            <h2 className="mt-3 section-heading">
-              Engineering principles
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
+              {lang === 'so' ? 'Halbeegyada & Falsafada Tayada' : 'Standards That Guide Every Build'}
             </h2>
-            <p className="mt-4 mx-auto max-w-xl text-[#CBD5E1] text-base leading-relaxed">
-              These are not generic slogans—they are the practical standards that directly influence code structure, delivery speed, and system reliability.
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Xeerarka dhabta ah ee tooska u haga amniga koodhka,</span>
+                  <span className="block">xawaaraha shaqada, iyo adkeysiga nidaamkaaga.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Practical engineering standards that directly govern</span>
+                  <span className="block">codebase resilience, delivery speed, and zero-downtime reliability.</span>
+                </>
+              )}
             </p>
           </div>
         </Reveal>

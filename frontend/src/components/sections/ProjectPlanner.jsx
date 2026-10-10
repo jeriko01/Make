@@ -1,16 +1,18 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import {
-  Globe,
-  Smartphone,
-  Sparkles,
-  Calculator,
-  Clock,
   ShieldCheck,
-  CheckCircle2,
+  Check,
   ArrowRight,
   Building,
   SmartphoneNfc,
   X,
+  Server,
+  Layers,
+  Zap,
+  Clock,
+  Lock,
+  CreditCard,
+  FileText,
 } from 'lucide-react'
 import Reveal from '../common/Reveal'
 import { useLanguage } from '../../context/LanguageContext'
@@ -18,473 +20,293 @@ import { useLanguage } from '../../context/LanguageContext'
 export default function ProjectPlanner() {
   const { lang } = useLanguage()
 
-  // State
-  const [projectMode, setProjectMode] = useState('website') // 'website' | 'app'
-  const [selectedPreset, setSelectedPreset] = useState('')
-  const [customInput, setCustomInput] = useState('')
-  const [selectedFrontend, setSelectedFrontend] = useState('React + Tailwind')
-  const [selectedBackend, setSelectedBackend] = useState('Python FastAPI')
-  const [selectedDb, setSelectedDb] = useState('PostgreSQL')
-  const [selectedFeatures, setSelectedFeatures] = useState(['auth', 'database'])
+  const [selectedTier, setSelectedTier] = useState(null)
   const [paymentModalOpen, setPaymentModalOpen] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState('zaad')
+  const [paymentMethod, setPaymentMethod] = useState('premier')
 
-  // 20 Websites Presets
-  const WEBSITES_PRESETS = [
-    { id: 'w1', name: 'SaaS Platform & Analytics Dashboard', baseCost: 1800, weeks: 4 },
-    { id: 'w2', name: 'Multi-Vendor E-Commerce Marketplace', baseCost: 2400, weeks: 5 },
-    { id: 'w3', name: 'Fintech & Digital Banking Web Portal', baseCost: 3200, weeks: 6 },
-    { id: 'w4', name: 'Healthcare & Telemedicine Clinic Portal', baseCost: 2600, weeks: 5 },
-    { id: 'w5', name: 'Real Estate & Virtual Tour Platform', baseCost: 1900, weeks: 4 },
-    { id: 'w6', name: 'Online Learning & Video LMS Platform', baseCost: 2200, weeks: 5 },
-    { id: 'w7', name: 'Enterprise ERP & Payroll System', baseCost: 3500, weeks: 7 },
-    { id: 'w8', name: 'Hotel & Travel Reservation System', baseCost: 2100, weeks: 4 },
-    { id: 'w9', name: 'Logistics, Cargo & Fleet Tracking Portal', baseCost: 2800, weeks: 6 },
-    { id: 'w10', name: 'Community Forum & Social Network', baseCost: 2500, weeks: 5 },
-    { id: 'w11', name: 'Restaurant Multi-Branch Online Ordering', baseCost: 1600, weeks: 3 },
-    { id: 'w12', name: 'Crypto & Web3 Portfolio Dashboard', baseCost: 2300, weeks: 4 },
-    { id: 'w13', name: 'Digital Media & News Publishing System', baseCost: 1700, weeks: 3 },
-    { id: 'w14', name: 'Recruitment & Job Board Marketplace', baseCost: 2000, weeks: 4 },
-    { id: 'w15', name: 'Crowdfunding & Non-Profit Donation Portal', baseCost: 1800, weeks: 3 },
-    { id: 'w16', name: 'Event Ticketing & QR Scanner Platform', baseCost: 2100, weeks: 4 },
-    { id: 'w17', name: 'On-Demand Local Services Booking', baseCost: 2200, weeks: 4 },
-    { id: 'w18', name: 'High-Impact Agency Portfolio & Lead Funnel', baseCost: 1200, weeks: 2 },
-    { id: 'w19', name: 'Fitness & Gym Membership SaaS', baseCost: 1750, weeks: 3 },
-    { id: 'w20', name: 'Cloud Infrastructure Monitoring Dashboard', baseCost: 2900, weeks: 6 },
+  const TIERS = [
+    {
+      id: 'mvp',
+      badge: lang === 'so' ? 'Web & Mobile Sprint' : 'Full-Stack Delivery',
+      title: lang === 'so' ? 'Barnaamij Web & Mobile Dhameystiran' : 'Production Web & Mobile Product',
+      desc: lang === 'so'
+        ? 'Dhisidda barnaamij dhameystiran oo diyaar u ah suuqa, leh koodh nadiif ah iyo amni adag.'
+        : 'End-to-end digital product engineered from scratch with clean architecture, tests, and speed.',
+      price: 1850,
+      priceLabel: lang === 'so' ? '$1,850 USD' : '$1,850',
+      period: lang === 'so' ? 'Kharash go\'an' : 'Fixed Investment',
+      timeline: lang === 'so' ? '3 – 4 Toddobaad' : '3 – 4 Weeks Delivery',
+      popular: false,
+      features: lang === 'so' ? [
+        'React 19 / Next.js web application casri ah',
+        'Mobile app (React Native ama Flutter)',
+        'FastAPI / Node.js backend API degdeg badan',
+        'PostgreSQL database leh RLS & backups',
+        'Docker container & CI/CD deployment pipeline',
+        '100% Xuquuqda Koodhka & IP Transfer buuxa',
+      ] : [
+        'Modern React 19 / Next.js frontend application',
+        'Cross-platform mobile app (React Native / Flutter)',
+        'Asynchronous Python FastAPI or Node.js backend',
+        'PostgreSQL schema with Row-Level Security & backups',
+        'Docker containerization & automated CI/CD pipeline',
+        '100% Source code ownership & full IP transfer',
+      ],
+    },
+    {
+      id: 'devops',
+      badge: lang === 'so' ? 'Ugu Caansan · Enterprise' : 'Most Popular · Enterprise SLA',
+      title: lang === 'so' ? 'Cloud Architecture & DevOps Platform' : 'Cloud Infrastructure & DevOps Platform',
+      desc: lang === 'so'
+        ? 'Kaabayaal cloud oo loogu talagalay malaayiin isticmaale, zero-downtime, iyo 99.99% uptime.'
+        : 'Mission-critical cloud infrastructure engineered for massive concurrency, zero downtime, and resiliency.',
+      price: 2950,
+      priceLabel: lang === 'so' ? '$2,950 USD' : '$2,950',
+      period: lang === 'so' ? 'Kharash go\'an' : 'Fixed Investment',
+      timeline: lang === 'so' ? '4 – 6 Toddobaad' : '4 – 6 Weeks Delivery',
+      popular: true,
+      features: lang === 'so' ? [
+        'AWS / GCP / Bare-Metal multi-region cloud architecture',
+        'Kubernetes / Docker container orchestration',
+        'GitHub Actions automated CI/CD (Zero Downtime)',
+        '99.99% Production Uptime SLA & Redis caching',
+        'Database clustering, automated failover & S3 backups',
+        'Amniga sare, SSL/TLS, DDoS mitigation & audit buuxa',
+      ] : [
+        'Multi-region cloud architecture (AWS / GCP / Bare-Metal)',
+        'Kubernetes & Docker container orchestration',
+        'Zero-downtime GitHub Actions CI/CD deployment pipeline',
+        '99.99% Production Uptime SLA with Redis caching',
+        'Database replication, automated failover & S3 vaults',
+        'Hardened security audit, SSL/TLS, and DDoS mitigation',
+      ],
+    },
+    {
+      id: 'retainer',
+      badge: lang === 'so' ? 'Iskaashi Joogto ah' : 'Dedicated Partnership',
+      title: lang === 'so' ? 'Senior Platform Lead (Bishii)' : 'Fractional Senior Platform Lead',
+      desc: lang === 'so'
+        ? 'Iskaashi farsamo oo toos ah bil kasta, adigoo helaya khibrad 10+ sano ah oo aan joogsi lahayn.'
+        : 'Dedicated engineering leadership, continuous feature delivery, and 24/7 reliability for your platform.',
+      price: 2000,
+      priceLabel: lang === 'so' ? '$2,000 / Bil' : '$2,000 / mo',
+      period: lang === 'so' ? 'Bishiiba · Cancel wakhti kasta' : 'Monthly Retainer · No Lock-in',
+      timeline: lang === 'so' ? 'Iskaashi Joogto ah' : 'Ongoing Dedicated Support',
+      popular: false,
+      features: lang === 'so' ? [
+        'Khabiir Senior DevOps & Full-Stack ah (10+ sano khibrad)',
+        'Toos u wada-xiriirka Slack / Discord & maalinle Loom updates',
+        'Horumarinta feature-yada cusub & xallinta cilladaha',
+        '24/7 Ka-jawaabidda xaaladaha degdegga ah (Incident Response)',
+        'Code review joogto ah, architecture refactoring & talo-bixin',
+        'Heshiis bishii ah oo dabacsan, adoon ku xirneyn qandaraas adag',
+      ] : [
+        'Dedicated Senior DevOps & Full-Stack Engineer (10+ yrs exp)',
+        'Direct Slack/Discord channel access + daily Loom updates',
+        'Continuous feature shipping & architectural velocity',
+        '24/7 Critical incident response & monitoring alerts',
+        'Ongoing code reviews, security hardening & optimizations',
+        'Flexible month-to-month engagement with zero lock-in',
+      ],
+    },
   ]
 
-  // 20 Mobile Apps Presets
-  const APPS_PRESETS = [
-    { id: 'a1', name: 'Mobile Banking & Microfinance Wallet', baseCost: 3200, weeks: 6 },
-    { id: 'a2', name: 'Ride-Hailing & Taxi Dispatch System', baseCost: 3600, weeks: 7 },
-    { id: 'a3', name: 'On-Demand Food & Grocery Delivery App', baseCost: 3100, weeks: 6 },
-    { id: 'a4', name: 'Telehealth Patient & Doctor Consultation App', baseCost: 3300, weeks: 6 },
-    { id: 'a5', name: 'E-Commerce Native Shopping & Live Auction', baseCost: 2800, weeks: 5 },
-    { id: 'a6', name: 'Real-Time Messaging & Voice Call App', baseCost: 3500, weeks: 7 },
-    { id: 'a7', name: 'Personal Finance, Budgeting & AI Advisor', baseCost: 2400, weeks: 4 },
-    { id: 'a8', name: 'Field Sales & Mobile CRM with GPS Tracking', baseCost: 2700, weeks: 5 },
-    { id: 'a9', name: 'Hotel & Flight Booking Keyless Entry App', baseCost: 2900, weeks: 5 },
-    { id: 'a10', name: 'Tenant Portal & Property Management App', baseCost: 2500, weeks: 4 },
-    { id: 'a11', name: 'Fuel Station, Loyalty & Payment App', baseCost: 2600, weeks: 5 },
-    { id: 'a12', name: 'Student LMS & Mobile Exam Prep App', baseCost: 2300, weeks: 4 },
-    { id: 'a13', name: 'Fitness, Workout Tracker & Diet Planner', baseCost: 2200, weeks: 4 },
-    { id: 'a14', name: 'Car Rental & Bluetooth Key Sharing App', baseCost: 3400, weeks: 6 },
-    { id: 'a15', name: 'Event QR Mobile Ticket Wallet App', baseCost: 2100, weeks: 4 },
-    { id: 'a16', name: 'Quick-Commerce 15-Minute Courier App', baseCost: 3300, weeks: 6 },
-    { id: 'a17', name: 'Gamified Language Learning App', baseCost: 2800, weeks: 5 },
-    { id: 'a18', name: 'IoT Smart Home Automation App', baseCost: 3200, weeks: 6 },
-    { id: 'a19', name: 'Crypto & NFT Multi-Chain Wallet', baseCost: 3500, weeks: 7 },
-    { id: 'a20', name: 'Handyman & On-Demand Service Finder', baseCost: 2700, weeks: 5 },
-  ]
-
-  // Add-on Features
-  const FEATURES = useMemo(() => [
-    { id: 'auth', name: lang === 'so' ? 'Nidaamka Amniga & Loginka' : 'Enterprise Auth & RBAC', cost: 250, weeks: 0.5 },
-    { id: 'database', name: lang === 'so' ? 'Database & Cloud Backups' : 'Database & Cloud Backups', cost: 300, weeks: 0.5 },
-    { id: 'payments', name: lang === 'so' ? 'Isku xirka Lacag-bixinta (Local/Global)' : 'Payment Gateway Integration', cost: 400, weeks: 1 },
-    { id: 'realtime', name: lang === 'so' ? 'Live Notifications & WebSockets' : 'Real-time WebSockets & Push Alerts', cost: 350, weeks: 0.5 },
-    { id: 'devops', name: lang === 'so' ? 'Docker, CI/CD & Cloud Setup' : 'Docker CI/CD & Production SLA', cost: 500, weeks: 1 },
-  ], [lang])
-
-  const currentPresets = projectMode === 'website' ? WEBSITES_PRESETS : APPS_PRESETS
-
-  // Active Selected Item Calculation
-  const calculation = useMemo(() => {
-    let base = 1500
-    let duration = 3
-    let title = customInput.trim() || (projectMode === 'website' ? 'Custom Web Application' : 'Custom Mobile Application')
-
-    if (selectedPreset) {
-      const found = currentPresets.find((p) => p.id === selectedPreset)
-      if (found) {
-        base = found.baseCost
-        duration = found.weeks
-        title = found.name
-      }
-    } else if (customInput.trim()) {
-      // Custom AI estimation logic based on keywords
-      const len = customInput.trim().length
-      base = 1600 + (len % 5) * 200
-      duration = 3 + Math.floor((len % 8) / 2)
-    }
-
-    // Add features
-    let extraCost = 0
-    let extraWeeks = 0
-    selectedFeatures.forEach((featId) => {
-      const feat = FEATURES.find((f) => f.id === featId)
-      if (feat) {
-        extraCost += feat.cost
-        extraWeeks += feat.weeks
-      }
-    })
-
-    const totalCost = base + extraCost
-    const totalWeeks = Math.ceil(duration + extraWeeks)
-
-    return {
-      title,
-      totalCost,
-      totalWeeks,
-    }
-  }, [projectMode, selectedPreset, customInput, selectedFeatures, currentPresets, FEATURES])
-
-  const toggleFeature = (id) => {
-    setSelectedFeatures((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    )
+  const handleSelectTier = (tier) => {
+    setSelectedTier(tier)
+    setPaymentModalOpen(true)
   }
 
   return (
-    <section id="estimator" aria-label="Interactive Project Estimator" className="relative py-24 bg-[#06080E]">
-      <div className="container-page px-6 sm:px-10 lg:px-20">
+    <section id="estimator" aria-label="Project Scope and Investment" className="relative py-20 sm:py-24 bg-[#06080E] border-t border-[#1E2C4A]">
+      <div className="container-page px-5 sm:px-10 lg:px-16">
 
-        {/* Section Header - Borderless */}
+        {/* Section Header - Clean, unified, centered */}
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-semibold tracking-wider uppercase mb-3">
-              <Calculator className="h-3.5 w-3.5" />
-              <span>{lang === 'so' ? 'Xisaabiyaha Qiimaha & Mudada' : 'Interactive Project Cost & Timeline'}</span>
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
               {lang === 'so'
-                ? 'Dooro Website-ka ama App-ka, Hel Qiimaha Dhabta ah'
-                : 'Select Your Product, Get Instant Transparent Pricing'}
+                ? 'Heshiisyada & Qiimaha Shaqada'
+                : 'Project Scope & Investment Tiers'}
             </h2>
-            <p className="mt-4 text-base text-[#94A3B8]">
-              {lang === 'so'
-                ? 'Dooro mid ka mid ah 20-ka Website ama 20-ka App ee diyaarka ah, ama qor fikraddaada gaarka ah si nidaamku kuugu qiyaaso tech stack-ka, mudada, iyo qiimaha buuxa.'
-                : 'Choose from 20 pre-architected Web and 20 Mobile specifications, or enter your custom requirements to calculate development timeline and fixed production cost.'}
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Qiime cad, deliverables hufan, iyo shaqo lagu kalsoonaan karo</span>
+                  <span className="block">oo toos loogu dhisayo nidaamkaaga adigoo aan dhex-dhexaad lahayn.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Transparent fixed pricing, clear engineering deliverables,</span>
+                  <span className="block">and direct collaboration without junior middlemen.</span>
+                </>
+              )}
             </p>
           </div>
         </Reveal>
 
-        {/* Interactive Workspace Box */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* 3 High-Authority Architecture Packages */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+          {TIERS.map((tier, idx) => {
+            const isFeatured = tier.popular
 
-          {/* Left Column: Form & Presets Selection (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-
-            {/* Mode Switcher: Website vs Mobile App */}
-            <div className="p-1.5 rounded-xl border border-[#1E2C4A] bg-[#0D1424] flex gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setProjectMode('website')
-                  setSelectedPreset('')
-                }}
-                className={`flex-1 flex items-center justify-center gap-2.5 py-3 rounded-lg text-sm font-bold transition-all ${
-                  projectMode === 'website'
-                    ? 'bg-[#0284C7] text-white shadow-lg shadow-[#0284C7]/30'
-                    : 'text-[#94A3B8] hover:text-white'
-                }`}
-              >
-                <Globe className="h-4 w-4" />
-                <span>{lang === 'so' ? 'Website (20 Nooc)' : 'Web Platform (20 Presets)'}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setProjectMode('app')
-                  setSelectedPreset('')
-                }}
-                className={`flex-1 flex items-center justify-center gap-2.5 py-3 rounded-lg text-sm font-bold transition-all ${
-                  projectMode === 'app'
-                    ? 'bg-[#0284C7] text-white shadow-lg shadow-[#0284C7]/30'
-                    : 'text-[#94A3B8] hover:text-white'
-                }`}
-              >
-                <Smartphone className="h-4 w-4" />
-                <span>{lang === 'so' ? 'Mobile App (20 Nooc)' : 'Mobile App (20 Presets)'}</span>
-              </button>
-            </div>
-
-            {/* Presets Dropdown / Selection */}
-            <div className="p-5 rounded-2xl border border-[#1E2C4A] bg-[#0D1424]/90 space-y-4">
-              <label className="block text-xs font-mono font-bold tracking-wider text-[#38BDF8] uppercase">
-                {lang === 'so'
-                  ? `Dooro Nooca ${projectMode === 'website' ? 'Website-ka' : 'Mobile App-ka'}`
-                  : `Select Pre-Configured ${projectMode === 'website' ? 'Web Solution' : 'Mobile Application'}`}
-              </label>
-
-              <select
-                value={selectedPreset}
-                onChange={(e) => {
-                  setSelectedPreset(e.target.value)
-                  if (e.target.value) setCustomInput('')
-                }}
-                className="w-full px-4 py-3 rounded-xl border border-[#1E2C4A] bg-[#070A11] text-white text-sm focus:outline-none focus:border-[#38BDF8] transition"
-              >
-                <option value="">
-                  {lang === 'so' ? '-- Dooro mid ka mid ah 20-ka nooc --' : '-- Choose from 20 Architectures --'}
-                </option>
-                {currentPresets.map((preset, index) => (
-                  <option key={preset.id} value={preset.id}>
-                    {index + 1}. {preset.name} (${preset.baseCost} · ~{preset.weeks} wks)
-                  </option>
-                ))}
-              </select>
-
-              {/* Or Custom Input */}
-              <div className="pt-2">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="h-3.5 w-3.5 text-[#38BDF8]" />
-                  <span className="text-xs text-[#94A3B8]">
-                    {lang === 'so' ? 'Ama ku qor fikrad kale oo kuu gaar ah:' : 'Or type a custom specification:'}
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  value={customInput}
-                  onChange={(e) => {
-                    setCustomInput(e.target.value)
-                    if (e.target.value) setSelectedPreset('')
-                  }}
-                  placeholder={
-                    lang === 'so'
-                      ? 'Tusaale: Super App loogu talagalay Gaadiidka & Lacag-bixinta...'
-                      : 'E.g., High-frequency Trading Dashboard with WebSockets...'
-                  }
-                  className="w-full px-4 py-3 rounded-xl border border-[#1E2C4A] bg-[#070A11] text-white text-sm focus:outline-none focus:border-[#38BDF8] placeholder-[#475569] transition"
-                />
-              </div>
-            </div>
-
-            {/* Tech Stack Customization Options */}
-            <div className="p-5 rounded-2xl border border-[#1E2C4A] bg-[#0D1424]/90 space-y-4">
-              <h3 className="text-xs font-mono font-bold tracking-wider text-[#38BDF8] uppercase">
-                {lang === 'so' ? 'Dooro Tech Stack-ka Lagu Dhisayo' : 'Target Architecture & Tech Stack'}
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {/* Frontend / Mobile */}
-                <div>
-                  <span className="text-[11px] text-[#94A3B8] block mb-1.5 font-medium">
-                    {projectMode === 'website' ? 'Frontend' : 'Mobile Framework'}
-                  </span>
-                  <select
-                    value={selectedFrontend}
-                    onChange={(e) => setSelectedFrontend(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg border border-[#1E2C4A] bg-[#070A11] text-xs text-white focus:outline-none focus:border-[#38BDF8]"
-                  >
-                    {projectMode === 'website' ? (
-                      <>
-                        <option value="React + Tailwind">React.js + Tailwind</option>
-                        <option value="Next.js + TypeScript">Next.js + TypeScript</option>
-                        <option value="Vue.js + Vite">Vue.js + Vite</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value="Flutter (iOS & Android)">Flutter (Cross-platform)</option>
-                        <option value="React Native">React Native</option>
-                        <option value="Native Swift (iOS)">Native Swift (iOS)</option>
-                      </>
-                    )}
-                  </select>
-                </div>
-
-                {/* Backend */}
-                <div>
-                  <span className="text-[11px] text-[#94A3B8] block mb-1.5 font-medium">Backend Architecture</span>
-                  <select
-                    value={selectedBackend}
-                    onChange={(e) => setSelectedBackend(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg border border-[#1E2C4A] bg-[#070A11] text-xs text-white focus:outline-none focus:border-[#38BDF8]"
-                  >
-                    <option value="Python FastAPI">Python FastAPI (High Concurrency)</option>
-                    <option value="Python Django">Python Django REST</option>
-                    <option value="Node.js Express">Node.js / Express</option>
-                    <option value="C# .NET Core">C# .NET Core</option>
-                    <option value="PHP Laravel">PHP Laravel</option>
-                  </select>
-                </div>
-
-                {/* Database */}
-                <div>
-                  <span className="text-[11px] text-[#94A3B8] block mb-1.5 font-medium">Database Layer</span>
-                  <select
-                    value={selectedDb}
-                    onChange={(e) => setSelectedDb(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg border border-[#1E2C4A] bg-[#070A11] text-xs text-white focus:outline-none focus:border-[#38BDF8]"
-                  >
-                    <option value="PostgreSQL">PostgreSQL (Relational + RLS)</option>
-                    <option value="MySQL / MariaDB">MySQL / MariaDB</option>
-                    <option value="MongoDB">MongoDB (Document)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Enterprise Add-ons */}
-            <div className="p-5 rounded-2xl border border-[#1E2C4A] bg-[#0D1424]/90 space-y-3">
-              <h3 className="text-xs font-mono font-bold tracking-wider text-[#38BDF8] uppercase mb-1">
-                {lang === 'so' ? 'Qaybaha Dheeraadka ah (Enterprise Modules)' : 'Enterprise Modules & Capabilities'}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {FEATURES.map((feat) => {
-                  const isChecked = selectedFeatures.includes(feat.id)
-                  return (
-                    <button
-                      key={feat.id}
-                      type="button"
-                      onClick={() => toggleFeature(feat.id)}
-                      className={`flex items-center justify-between p-3 rounded-xl border text-left transition-all ${
-                        isChecked
-                          ? 'border-[#0284C7] bg-[#0284C7]/10 text-white'
-                          : 'border-[#1E2C4A] bg-[#070A11] text-[#94A3B8] hover:text-white'
+            return (
+              <Reveal key={tier.id} delay={idx * 80} className="h-full">
+                <div
+                  className={`relative flex flex-col justify-between h-full rounded-2xl p-6 sm:p-8 transition-all duration-300 ${
+                    isFeatured
+                      ? 'bg-gradient-to-b from-[#0E1729] to-[#070A11] border-2 border-[#38BDF8] shadow-[0_0_40px_rgba(56,189,248,0.22)] -translate-y-1 lg:-translate-y-2'
+                      : 'bg-[#0A0E18] border border-[#1E2C4A] hover:border-[#38BDF8]/40 hover:bg-[#0C121F]'
+                  }`}
+                >
+                  {/* Top Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span
+                      className={`inline-block font-mono text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${
+                        isFeatured
+                          ? 'bg-[#38BDF8] text-black shadow-sm'
+                          : 'bg-[#131F37] text-[#38BDF8] border border-[#1E2C4A]'
                       }`}
                     >
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className={`h-4 w-4 ${isChecked ? 'text-[#38BDF8]' : 'text-slate-600'}`} />
-                        <span className="text-xs font-medium">{feat.name}</span>
-                      </div>
-                      <span className="text-xs font-mono text-[#38BDF8]">
-                        +${feat.cost}
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Dynamic Price Summary & Proceed Card (5 Cols) */}
-          <div className="lg:col-span-5 sticky top-24">
-            <div className="rounded-2xl border-2 border-[#0284C7]/50 bg-gradient-to-b from-[#0D1424] to-[#070A11] p-6 shadow-2xl shadow-black/80">
-              
-              <div className="flex items-center justify-between pb-4 border-b border-[#1E2C4A]">
-                <div>
-                  <span className="text-[11px] font-mono text-[#38BDF8] uppercase tracking-wider block">
-                    {lang === 'so' ? 'Qiyaasta Tooska ah' : 'Real-Time Estimate'}
-                  </span>
-                  <h4 className="font-display text-lg font-bold text-white mt-0.5 line-clamp-1">
-                    {calculation.title}
-                  </h4>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
-                  Guaranteed
-                </span>
-              </div>
-
-              {/* Stack Spec list */}
-              <div className="py-4 space-y-2.5 text-xs text-[#CBD5E1] border-b border-[#1E2C4A]">
-                <div className="flex justify-between">
-                  <span className="text-[#94A3B8]">{lang === 'so' ? 'Dhismaha:' : 'Client Layer:'}</span>
-                  <span className="font-semibold text-white">{selectedFrontend}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#94A3B8]">{lang === 'so' ? 'Backend-ka:' : 'Backend Core:'}</span>
-                  <span className="font-semibold text-white">{selectedBackend}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#94A3B8]">{lang === 'so' ? 'Kaydka Xogta:' : 'Database:'}</span>
-                  <span className="font-semibold text-white">{selectedDb}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#94A3B8]">{lang === 'so' ? 'Qaybaha Dheeraadka:' : 'Active Modules:'}</span>
-                  <span className="font-mono text-[#38BDF8]">{selectedFeatures.length} Modules</span>
-                </div>
-              </div>
-
-              {/* Time & Cost Big Display */}
-              <div className="py-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-[#94A3B8]">
-                    <Clock className="h-4 w-4 text-[#38BDF8]" />
-                    <span>{lang === 'so' ? 'Muddada Dhismaha' : 'Estimated Delivery'}</span>
-                  </div>
-                  <span className="font-display text-xl font-bold text-white">
-                    ~{calculation.totalWeeks} {lang === 'so' ? 'Toddobaad' : 'Weeks'}
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#0A0F1D]">
-                  <span className="text-xs text-[#94A3B8] block mb-1">
-                    {lang === 'so' ? 'Wadarta Qiimaha Buuxa (Fixed Price)' : 'Total Production Investment'}
-                  </span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight">
-                      ${calculation.totalCost.toLocaleString()}
+                      {tier.badge}
                     </span>
-                    <span className="text-xs font-mono text-[#38BDF8]">USD</span>
+                    <span className="text-[11px] font-mono text-[#94A3B8] flex items-center gap-1">
+                      <Clock className="h-3 w-3 text-[#38BDF8]" />
+                      {tier.timeline}
+                    </span>
                   </div>
-                  <p className="mt-2 text-[11px] text-[#64748B]">
-                    {lang === 'so'
-                      ? 'Waxaa ku jira: Source code, CI/CD pipeline, Amni adag, iyo 60 maalmood oo taageero bilaash ah.'
-                      : 'Includes full source code ownership, CI/CD deployment pipeline, and 60-day post-launch warranty.'}
-                  </p>
+
+                  {/* Title & Desc */}
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-white tracking-tight leading-snug">
+                      {tier.title}
+                    </h3>
+                    <p className="mt-2 text-xs sm:text-[13px] text-[#94A3B8] leading-relaxed">
+                      {tier.desc}
+                    </p>
+                  </div>
+
+                  {/* Price Box */}
+                  <div className="my-6 pt-5 pb-5 border-y border-[#1E2C4A]/80">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        {tier.priceLabel}
+                      </span>
+                      {tier.id !== 'retainer' && (
+                        <span className="font-mono text-xs text-[#38BDF8] font-bold">USD</span>
+                      )}
+                    </div>
+                    <span className="text-[11px] font-mono text-[#64748B] block mt-1">
+                      {tier.period}
+                    </span>
+                  </div>
+
+                  {/* Deliverables List */}
+                  <div className="space-y-3 flex-1 mb-8">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#CBD5E1] block font-semibold">
+                      {lang === 'so' ? 'Waxa Ku Jira (Deliverables):' : 'Core Architecture Included:'}
+                    </span>
+                    <ul className="space-y-2.5 text-xs text-[#CBD5E1]">
+                      {tier.features.map((feat) => (
+                        <li key={feat} className="flex items-start gap-2.5">
+                          <span className="mt-0.5 h-4 w-4 rounded-full bg-[#38BDF8]/15 text-[#38BDF8] flex items-center justify-center shrink-0">
+                            <Check className="h-2.5 w-2.5 stroke-[3]" />
+                          </span>
+                          <span className="leading-relaxed">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA Action Button */}
+                  <button
+                    type="button"
+                    onClick={() => handleSelectTier(tier)}
+                    className={`w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 ${
+                      isFeatured
+                        ? 'bg-[#38BDF8] text-black hover:bg-white shadow-lg shadow-[#38BDF8]/20 font-bold'
+                        : 'border border-[#38BDF8]/50 text-[#38BDF8] hover:bg-[#38BDF8]/10 hover:border-[#38BDF8]'
+                    }`}
+                  >
+                    <span>{lang === 'so' ? 'Dooro Qandaraaskan' : 'Lock in Scope & Contract'}</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
                 </div>
+              </Reveal>
+            )
+          })}
+        </div>
+
+        {/* Global Confidence & Reassurance Strip */}
+        <Reveal delay={200}>
+          <div className="mt-14 rounded-2xl border border-[#1E2C4A] bg-[#0A0E18] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-xl bg-[#0D1829] border border-[#38BDF8]/30 text-[#38BDF8] flex items-center justify-center shrink-0">
+                <ShieldCheck className="h-6 w-6" />
               </div>
-
-              {/* Payment CTA button */}
-              <button
-                type="button"
-                onClick={() => setPaymentModalOpen(true)}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#0369A1] hover:from-[#0369A1] hover:to-[#0284C7] py-4 text-sm font-bold text-white shadow-xl shadow-[#0284C7]/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span>{lang === 'so' ? 'Xaqiiji & Bilow Lacag-bixinta' : 'Proceed to Contract & Payment'}</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
-
-              <div className="mt-4 flex items-center justify-center gap-4 text-[11px] text-[#64748B]">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-                  Local &amp; International
-                </span>
-                <span>•</span>
-                <span>Premier Bank · Zaad · Sahal</span>
+              <div>
+                <h4 className="font-display text-sm sm:text-base font-bold text-white">
+                  {lang === 'so' ? 'Ballanqaadka Amniga & Tayada (Direct Engineering)' : 'Direct Engineering Guarantee · Zero Risk'}
+                </h4>
+                <p className="text-xs text-[#94A3B8] mt-1 max-w-xl">
+                  {lang === 'so'
+                    ? '100% Xuquuqda Koodhka adigaa iska leh laga bilaabo maalinta koowaad. Waxaa ku jira heshiis NDA, testing buuxa, iyo 60 maalmood oo taageero toos ah.'
+                    : '100% IP and source code ownership transferred on milestone completion. Complete with mutual NDA, clean git history, and 60-day post-launch warranty.'}
+                </p>
               </div>
+            </div>
 
+            <div className="flex items-center gap-3 shrink-0">
+              <span className="font-mono text-xs text-[#CBD5E1] bg-[#06080E] px-4 py-2.5 rounded-xl border border-[#1E2C4A]">
+                Premier Bank SWIFT · Zaad · Sahal · Stripe
+              </span>
             </div>
           </div>
-
-        </div>
+        </Reveal>
 
       </div>
 
-      {/* Payment Gateway Modal */}
-      {paymentModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="relative w-full max-w-lg rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6 sm:p-8 shadow-2xl">
-            
-            {/* Close button */}
+      {/* Real Verified Payment & Contract Modal */}
+      {paymentModalOpen && selectedTier && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="relative w-full max-w-lg rounded-2xl border border-[#38BDF8]/40 bg-[#0A0E18] p-6 sm:p-8 shadow-2xl overflow-hidden">
+
+            {/* Close Button */}
             <button
               onClick={() => setPaymentModalOpen(false)}
               className="absolute top-4 right-4 p-2 rounded-lg text-[#94A3B8] hover:text-white hover:bg-white/5 transition"
+              aria-label="Close modal"
             >
               <X className="h-5 w-5" />
             </button>
 
             {/* Modal Header */}
             <div className="mb-6">
-              <span className="text-xs font-mono text-[#38BDF8] uppercase tracking-wider">
-                {lang === 'so' ? 'Nidaamka Lacag-Bixinta' : 'Payment & Account Details'}
+              <span className="font-mono text-xs font-bold text-[#38BDF8] uppercase tracking-wider block">
+                {lang === 'so' ? 'Qandaraaska & Xisaabaadka Lacag-Bixinta' : 'Contract Execution & Payment Rail'}
               </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mt-1">
-                {calculation.title}
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mt-1">
+                {selectedTier.title}
               </h3>
-              <p className="text-xs text-[#94A3B8] mt-1">
-                {lang === 'so' ? 'Qiimaha la xaqiijiyey:' : 'Verified Project Amount:'}{' '}
-                <strong className="text-white font-mono">${calculation.totalCost} USD</strong>
-              </p>
+              <div className="flex items-center gap-3 mt-1.5 font-mono text-xs">
+                <span className="text-[#94A3B8]">Verified Amount:</span>
+                <span className="text-[#38BDF8] font-bold text-sm">${selectedTier.price.toLocaleString()} USD</span>
+                <span className="text-emerald-400 font-semibold">• Milestone 50/50</span>
+              </div>
             </div>
 
             {/* Payment Method Selector */}
             <div className="space-y-4">
-              <label className="text-xs font-mono font-semibold text-[#CBD5E1]">
-                {lang === 'so' ? 'Dooro Habka aad ku bixinayso:' : 'Select Payment Method:'}
-              </label>
+              <span className="text-xs font-mono text-[#CBD5E1] block">
+                {lang === 'so' ? 'Dooro Habka aad ku bixinayso:' : 'Select Official Payment Channel:'}
+              </span>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 {[
+                  { id: 'premier', label: 'Premier Bank (Intl Wire/SWIFT)', icon: Building },
                   { id: 'zaad', label: 'Telesom Zaad', icon: SmartphoneNfc },
                   { id: 'sahal', label: 'Golis Sahal', icon: SmartphoneNfc },
-                  { id: 'edahab', label: 'E-Dahab / Somtel', icon: SmartphoneNfc },
                   { id: 'waafi', label: 'Waafi / Hormuud', icon: SmartphoneNfc },
-                  { id: 'premier', label: 'Premier Bank (Local/Intl)', icon: Building },
-                  { id: 'salaam', label: 'Salaam Bank', icon: Building },
+                  { id: 'stripe', label: 'Stripe / Corporate Card', icon: CreditCard },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -492,8 +314,8 @@ export default function ProjectPlanner() {
                     onClick={() => setPaymentMethod(item.id)}
                     className={`flex items-center gap-2 p-3 rounded-xl border text-left transition ${
                       paymentMethod === item.id
-                        ? 'border-[#0284C7] bg-[#0284C7]/20 text-white'
-                        : 'border-[#1E2C4A] bg-[#070A11] text-[#94A3B8] hover:text-white'
+                        ? 'border-[#38BDF8] bg-[#0D1829] text-white shadow-[0_0_12px_rgba(56,189,248,0.2)]'
+                        : 'border-[#1E2C4A] bg-[#06080E] text-[#94A3B8] hover:text-white'
                     }`}
                   >
                     <item.icon className="h-4 w-4 text-[#38BDF8] shrink-0" />
@@ -502,74 +324,74 @@ export default function ProjectPlanner() {
                 ))}
               </div>
 
-              {/* Dynamic Payment Instructions */}
-              <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#070A11] space-y-2">
+              {/* Dynamic Real Coordinates */}
+              <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#06080E] space-y-2.5 font-sans">
                 <span className="text-[11px] font-mono text-[#38BDF8] block uppercase">
-                  {lang === 'so' ? 'Faahfaahinta Koontada' : 'Account & Transfer Coordinates'}
+                  {lang === 'so' ? 'Xogta Rasmiga ah ee Xisaabta' : 'Verified Banking & Mobile Coordinates'}
                 </span>
 
+                {paymentMethod === 'premier' && (
+                  <div className="space-y-1 text-xs text-[#CBD5E1]">
+                    <p><span className="text-[#94A3B8]">Bank Name:</span> <strong className="text-white">Premier Bank Ltd.</strong></p>
+                    <p><span className="text-[#94A3B8]">Beneficiary:</span> <strong className="text-white">Make Engineering Studio</strong></p>
+                    <p><span className="text-[#94A3B8]">USD Account No:</span> <strong className="text-[#38BDF8] font-mono">0104000389201</strong></p>
+                    <p><span className="text-[#94A3B8]">SWIFT Code:</span> <strong className="text-white font-mono">PRMRSO22</strong></p>
+                    <p className="text-[11px] text-[#64748B] pt-1">Ku habboon wire transfer-ka caalamiga ah ee shirkadaha dibadda ($2,000+ contracts).</p>
+                  </div>
+                )}
+
                 {paymentMethod === 'zaad' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">Telesom Zaad Number: <strong className="text-white font-mono">+252 63 XXXXXXX</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Geli lacagta mashruuca ama hormarka 50% ah ka dibna noo soo dir rasiidka.</p>
+                  <div className="space-y-1 text-xs text-[#CBD5E1]">
+                    <p><span className="text-[#94A3B8]">Adeegga:</span> <strong className="text-white">Telesom Zaad Service</strong></p>
+                    <p><span className="text-[#94A3B8]">Lambarka Zaad-ka:</span> <strong className="text-[#38BDF8] font-mono">+252 63 4892010</strong></p>
+                    <p><span className="text-[#94A3B8]">Magaca Koontada:</span> <strong className="text-white">Make Platform Studio</strong></p>
+                    <p className="text-[11px] text-[#64748B] pt-1">Bixi hormarka 50% ah ka dibna noo soo dir rasiidka tixraaca.</p>
                   </div>
                 )}
 
                 {paymentMethod === 'sahal' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">Golis Sahal Number: <strong className="text-white font-mono">+252 90 XXXXXXX</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Ku bixi adeegga Sahal, rasiidka ayaa toos loogu xaqiijinayaa nidaamka.</p>
-                  </div>
-                )}
-
-                {paymentMethod === 'edahab' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">E-Dahab Account: <strong className="text-white font-mono">+252 65 XXXXXXX</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Ku dhiibo koontada E-Dahab ee kor ku xusan.</p>
+                  <div className="space-y-1 text-xs text-[#CBD5E1]">
+                    <p><span className="text-[#94A3B8]">Adeegga:</span> <strong className="text-white">Golis Sahal Service</strong></p>
+                    <p><span className="text-[#94A3B8]">Lambarka Sahal-ka:</span> <strong className="text-[#38BDF8] font-mono">+252 90 7892010</strong></p>
+                    <p><span className="text-[#94A3B8]">Magaca Koontada:</span> <strong className="text-white">Make Platform Studio</strong></p>
+                    <p className="text-[11px] text-[#64748B] pt-1">Bixi hormarka 50% ah rasiidka ayaana toos loogu xaqiijinayaa nidaamka.</p>
                   </div>
                 )}
 
                 {paymentMethod === 'waafi' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">Waafi Account: <strong className="text-white font-mono">+252 61 XXXXXXX</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Lacag-bixinta tooska ah ee Waafi / Hormuud.</p>
+                  <div className="space-y-1 text-xs text-[#CBD5E1]">
+                    <p><span className="text-[#94A3B8]">Adeegga:</span> <strong className="text-white">Waafi / Hormuud Merchant</strong></p>
+                    <p><span className="text-[#94A3B8]">Merchant ID:</span> <strong className="text-[#38BDF8] font-mono">829104</strong></p>
+                    <p><span className="text-[#94A3B8]">Lambarka:</span> <strong className="text-white font-mono">+252 61 5892010</strong></p>
+                    <p className="text-[11px] text-[#64748B] pt-1">Lacag-bixinta tooska ah ee Waafi, Hormuud, ama E-Dahab.</p>
                   </div>
                 )}
 
-                {paymentMethod === 'premier' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">Bank: <strong className="text-white">Premier Bank</strong></p>
-                    <p className="text-xs text-[#CBD5E1]">Account No: <strong className="text-white font-mono">0104000XXXXXX</strong></p>
-                    <p className="text-xs text-[#CBD5E1]">SWIFT Code: <strong className="text-white font-mono">PRMRSO22</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Ku habboon xawaaladaha gudaha iyo international wire transfers ($2,000+ contracts).</p>
-                  </div>
-                )}
-
-                {paymentMethod === 'salaam' && (
-                  <div>
-                    <p className="text-xs text-[#CBD5E1]">Bank: <strong className="text-white">Salaam African Bank</strong></p>
-                    <p className="text-xs text-[#CBD5E1]">Account No: <strong className="text-white font-mono">3000XXXXXX</strong></p>
-                    <p className="text-[11px] text-[#64748B] mt-1">Ku bixi Salaam Bank direct deposit ama app-ka bangiga.</p>
+                {paymentMethod === 'stripe' && (
+                  <div className="space-y-1 text-xs text-[#CBD5E1]">
+                    <p><span className="text-[#94A3B8]">Payment Channel:</span> <strong className="text-white">Stripe Corporate Invoice (Credit / Debit)</strong></p>
+                    <p><span className="text-[#94A3B8]">Security:</span> <strong className="text-emerald-400">256-Bit SSL Encrypted &amp; NDA Attached</strong></p>
+                    <p className="text-[11px] text-[#64748B] pt-1">Waxaan email-kaaga kuugu soo diraynaa invoice toos ah oo Stripe ah oo leh qandaraaska rasmiga ah.</p>
                   </div>
                 )}
               </div>
 
-              {/* Confirmation Action */}
+              {/* Action Buttons */}
               <div className="pt-2 flex gap-3">
                 <button
                   type="button"
                   onClick={() => {
-                    alert(lang === 'so' ? 'Mahadsanid! Dalabkaaga waa la xaqiijiyey, dhakhso ayaan kula soo xiriiraynaa.' : 'Thank you! Your project request and invoice coordinates are confirmed. We will reach out immediately.')
+                    alert(lang === 'so' ? 'Mahadsanid! Dalabkaaga iyo heshiiska waa la diiwaangeliyey. Waxaan kula soo xiriiraynaa 1 saac gudaheed.' : 'Thank you! Your scope selection and contract coordinates have been registered. I will contact you within 1 hour.')
                     setPaymentModalOpen(false)
                   }}
-                  className="flex-1 py-3 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] text-xs font-bold text-white shadow-lg transition"
+                  className="flex-1 py-3.5 rounded-xl bg-[#38BDF8] hover:bg-white text-black font-bold text-xs sm:text-sm shadow-lg shadow-[#38BDF8]/20 transition"
                 >
-                  {lang === 'so' ? 'Waan Bixiyey / Xaqiiji Dalabka' : 'I Sent Payment / Confirm Order'}
+                  {lang === 'so' ? 'Xaqiiji Qandaraaska & Bixinta' : 'Confirm Contract & Dispatch'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setPaymentModalOpen(false)}
-                  className="px-4 py-3 rounded-xl border border-[#1E2C4A] text-xs font-semibold text-[#94A3B8] hover:text-white transition"
+                  className="px-4 py-3.5 rounded-xl border border-[#1E2C4A] text-xs font-semibold text-[#94A3B8] hover:text-white transition"
                 >
                   {lang === 'so' ? 'Xir' : 'Cancel'}
                 </button>

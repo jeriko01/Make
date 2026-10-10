@@ -3,7 +3,6 @@ import Hero from '../components/sections/Hero'
 import ServiceSelector from '../components/sections/ServiceSelector'
 import About from '../components/sections/About'
 import Projects from '../components/sections/Projects'
-import ProjectPlanner from '../components/sections/ProjectPlanner'
 import ProcessSection from '../components/sections/ProcessSection'
 import PrinciplesSection from '../components/sections/PrinciplesSection'
 import FAQSection from '../components/sections/FAQSection'
@@ -17,7 +16,6 @@ function HomeContent() {
   return (
     <>
       <Hero />
-      <ProjectPlanner />
       <Projects featured limit={3} />
       <ServiceSelector />
       <About brief />

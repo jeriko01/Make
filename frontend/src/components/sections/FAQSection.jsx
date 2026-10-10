@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useSiteData } from '../../context/SiteDataContext'
+import { useLanguage } from '../../context/LanguageContext'
 import Reveal from '../common/Reveal'
 
 function FAQItem({ question, answer }) {
@@ -38,6 +39,7 @@ function FAQItem({ question, answer }) {
 }
 
 export default function FAQSection({ limit = 5 }) {
+  const { lang } = useLanguage()
   const { data } = useSiteData()
   const faq = (data?.faq || []).slice(0, limit)
 
@@ -52,17 +54,28 @@ export default function FAQSection({ limit = 5 }) {
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-2">support &amp; faq</p>
-            <h2 className="mt-3 section-heading">Clear answers before we start</h2>
-            <p className="mt-4 mx-auto max-w-xl text-[#CBD5E1] text-base leading-relaxed">
-              Transparent expectations regarding scope, technical stack choices, communication cadence, and project delivery.
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
+              {lang === 'so' ? 'Su\'aalaha Badanaa La Isweydiiyo' : 'Frequently Asked Questions'}
+            </h2>
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Jawaabo toos ah oo ku saabsan sida aan u wada shaqaynayno,</span>
+                  <span className="block">saacadaha remote-ka, amniga koodhka, iyo wareejinta mashruuca.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Direct answers regarding communication cadence,</span>
+                  <span className="block">timezone overlap, code ownership, and delivery timelines.</span>
+                </>
+              )}
             </p>
             <div className="mt-6 flex justify-center">
               <Link
                 to="/support"
-                className="btn-outline inline-flex items-center gap-2 text-sm"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full border border-[#38BDF8]/40 hover:border-[#38BDF8] hover:bg-[#38BDF8]/10 text-[#38BDF8] transition-all"
               >
-                <span>Have a specific inquiry? Contact support</span>
+                <span>{lang === 'so' ? 'Weydii Su\'aal Toos ah' : 'Ask a Direct Question'}</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

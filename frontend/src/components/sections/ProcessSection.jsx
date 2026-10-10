@@ -1,7 +1,9 @@
 import Reveal from '../common/Reveal'
 import { useSiteData } from '../../context/SiteDataContext'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function ProcessSection() {
+  const { lang } = useLanguage()
   const { data } = useSiteData()
   const steps = data?.process || []
 
@@ -15,11 +17,22 @@ export default function ProcessSection() {
     >
       <div className="container-page">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-mono text-xs sm:text-sm font-semibold tracking-wider text-[#38BDF8] lowercase mb-2">workflow</p>
-            <h2 className="mt-3 section-heading">How I work</h2>
-            <p className="mt-4 mx-auto max-w-xl text-[#CBD5E1] text-base leading-relaxed">
-              Four disciplined phases, zero ambiguity. Every engagement follows a dependable, collaborative cycle from day one to handoff.
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
+              {lang === 'so' ? 'Sida Aan U Wada Shaqeyno' : 'How We Deliver Together'}
+            </h2>
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Afar weji oo cad, qorshaysan, oo bilaa mugdi ah</span>
+                  <span className="block">laga bilaabo maabka koowaad ilaa wareejinta koodhka.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">A clear four-phase delivery cycle with complete transparency</span>
+                  <span className="block">from architecture planning to final launch.</span>
+                </>
+              )}
             </p>
           </div>
         </Reveal>

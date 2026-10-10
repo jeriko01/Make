@@ -84,17 +84,21 @@ export default function ServiceSelector() {
       <div className="container-page relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#38BDF8]/30 bg-[#131F37]/80 px-3.5 py-1 text-xs font-mono font-semibold tracking-wide text-[#38BDF8] shadow-sm backdrop-blur-md mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-              <span>{lang === 'so' ? 'ADEEGYADA GUUD' : 'SPECIALIZED ENGINEERING'}</span>
-            </div>
-            <h2 className="section-heading">
-              {lang === 'so' ? 'Adeegyada Dhismaha & Xalka Tiknoolajiyadda' : 'Focused capabilities, built for production.'}
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
+              {lang === 'so' ? 'Waxa Aan Dhisno & Xalka Farsamo' : 'What I Build & Engineer'}
             </h2>
-            <p className="mt-3.5 mx-auto max-w-xl text-sm sm:text-base text-[#94A3B8] leading-relaxed">
-              {lang === 'so'
-                ? 'Laga bilaabo aasaaska hore ilaa heer enterprise cloud ah — dooro nooca adeegga aad u baahan tahay.'
-                : 'From early-stage product prototypes to enterprise cloud infrastructure — select an engineering domain to start your project inquiry.'}
+            <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
+              {lang === 'so' ? (
+                <>
+                  <span className="block">Laga bilaabo kaabayaasha server-yada cloud-ka</span>
+                  <span className="block">ilaa barnaamijyada casriga ah ee web-ka iyo apps-ka mobile-ka.</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">From high-throughput cloud infrastructure</span>
+                  <span className="block">to fluid web and mobile digital products.</span>
+                </>
+              )}
             </p>
           </Reveal>
         </div>

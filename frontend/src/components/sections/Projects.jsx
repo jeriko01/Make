@@ -351,18 +351,23 @@ export default function Projects({ featured = false, limit, showFilters = !featu
       >
         <div className="container-page">
 
-          <div className="mx-auto mb-10 max-w-2xl text-center">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
             <Reveal>
-              <p className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] uppercase">
-                {lang === 'so' ? 'Mashaariicda La Doortay' : 'Selected Architectures'}
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
-                {lang === 'so' ? 'Nidaamyada & Mashaariicda Shida' : 'Featured Production Applications'}
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
+                {lang === 'so' ? 'Nidaamyo Dhab ah oo Shaqeynaya' : 'Real Production Systems'}
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8]">
-                {lang === 'so'
-                  ? 'Mashaariic dhab ah oo loogu talagalay shirkado heer caalami ah oo leh uptime sarreeya iyo qaab-dhismeed ammaan ah.'
-                  : 'Mission-critical web, mobile, and cloud software engineered for resilience, speed, and real enterprise scale.'}
+              <p className="mx-auto mt-3 max-w-lg text-[14px] sm:text-[15px] leading-relaxed text-[#94A3B8]">
+                {lang === 'so' ? (
+                  <>
+                    <span className="block">Barnaamijyo, kaabayaal cloud, iyo mobile apps loo dhisay</span>
+                    <span className="block">inay maareeyaan taraafiko dhab ah iyagoo aan marna jabin.</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block">Software platforms, cloud architectures, and mobile apps</span>
+                    <span className="block">engineered to handle real traffic without downtime.</span>
+                  </>
+                )}
               </p>
             </Reveal>
           </div>
@@ -424,9 +429,9 @@ export default function Projects({ featured = false, limit, showFilters = !featu
 
           {featured && (
             <Reveal delay={200}>
-              <div className="mt-10 text-center">
-                <Link to="/projects" className="btn-outline inline-flex items-center gap-2 text-sm">
-                  <span>{lang === 'so' ? 'Daawo Dhammaan Mashaariicda' : 'View full project gallery'}</span>
+              <div className="mt-12 text-center">
+                <Link to="/projects" className="btn-outline inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-6 py-3 rounded-full border border-[#38BDF8]/40 hover:border-[#38BDF8] hover:bg-[#38BDF8]/10 text-[#38BDF8] transition-all">
+                  <span>{lang === 'so' ? 'Daawo Mashaariicda oo Dhan' : 'Explore Live Case Studies'}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

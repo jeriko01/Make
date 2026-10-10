@@ -44,7 +44,7 @@ function NotFoundContent() {
               {[
                 { path: '/skills', label: 'Skills' },
                 { path: '/services', label: 'Services' },
-                { path: '/about', label: 'About' },
+                { path: '/about-us', label: 'About Us' },
                 { path: '/projects', label: 'Projects' },
                 { path: '/support', label: 'Support' },
               ].map(({ path, label }) => (
