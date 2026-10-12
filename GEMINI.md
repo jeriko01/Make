@@ -37,3 +37,14 @@
   - `npm run messages`: Wuxuu terminal-ka ku daabacaa fariimaha ku jira Supabase.
 - **URL**: Frontend-ku wuxuu ku socdaa HTTPS: `https://localhost:5173` (ma aha `http`).
 - **Tayada Koodhka**: ESLint 0 errors, `npm run build` guul, Pytest 38/38 guul, wax walbana waa la push-gareeyay GitHub (`origin/main`).
+
+## 7. Qorshaha Xiga ee Dhiman (Upcoming Roadmap)
+1. **AI Agent Chatbot (Sharmaarke Copilot / Technical Agent)**:
+   - Chatbot farsamo oo terminal/studio UI ah (Dark `#06080E`, Cyan `#38BDF8`).
+   - Macaamiisha kala shaandheeya (Budget, Tech Stack, Scope), waqtina badbaadiya.
+   - Si toos ah fariinta ugu keydiya Supabase (`contact_messages`), leh backend rate-limiting & zero generic responses.
+2. **Email Marketing & Notification System**:
+   - Nidaam email otomaatig ah oo fariin xaqiijin ah u diraya macmiilka marka uu soo diro inquiry.
+   - Email alert toos ah oo ku soo dhacaya email-ka milkiilaha (`engmake1.1@gmail.com`).
+   - Newsletter / Technical updates outreach setup.
+
