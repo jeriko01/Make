@@ -40,7 +40,7 @@ export default function PrinciplesSection() {
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {principles.map((p, i) => (
             <Reveal key={p.id} delay={i * 60}>
-              <div className="group rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#0284C7]/40 hover:bg-[#111A30] hover:shadow-lg hover:shadow-[#0284C7]/10">
+              <div className="group rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#38BDF8]/60 hover:bg-[#111A30] hover:shadow-[0_0_24px_rgba(56,189,248,0.2)]">
                 <div className="mb-4 h-1 w-8 rounded-full bg-[#0284C7] transition-all duration-300 group-hover:w-14 group-hover:bg-[#38BDF8]" />
                 <h3 className="font-display text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors">
                   {p.label}

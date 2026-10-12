@@ -110,7 +110,7 @@ export default function ServiceSelector() {
               <Reveal key={item.slug} delay={i * 35}>
                 <Link
                   to={`/support?service=${item.slug}`}
-                  className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#38BDF8]/50 hover:bg-[#111A30] hover:shadow-xl hover:shadow-[#38BDF8]/10 focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
+                  className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#38BDF8]/60 hover:bg-[#111A30] hover:shadow-[0_0_24px_rgba(56,189,248,0.2)] focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
                   style={{
                     boxShadow: '0 4px 20px -5px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                   }}

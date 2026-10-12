@@ -6,6 +6,7 @@
   "description": "Make — Sharmaarke's portfolio (public site + admin dashboard)",
   "scripts": {
     "dev": "vite",
+    "dev:all": "npm --prefix .. run dev:all",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"

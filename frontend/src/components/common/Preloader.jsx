@@ -7,7 +7,7 @@ export default function Preloader({ onDone }) {
   useEffect(() => {
     let frame
     const start = performance.now()
-    const duration = 15000 // 15 seconds
+    const duration = 600 // 0.6 seconds
 
     const tick = (now) => {
       const elapsed = now - start

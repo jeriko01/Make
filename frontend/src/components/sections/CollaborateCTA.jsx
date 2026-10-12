@@ -71,18 +71,18 @@ export default function CollaborateCTA({
               </p>
 
               {/* Side-by-Side Action Buttons */}
-              <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-sm mx-auto">
+              <div className="mt-7 flex flex-row items-center justify-center gap-3 w-auto flex-nowrap">
                 <Link
                   to={primaryBtnTo}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#38BDF8]/60 bg-transparent px-7 py-3 text-sm font-semibold text-[#38BDF8] hover:bg-[#38BDF8]/10 hover:border-[#38BDF8] hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto"
+                  className="btn-lime text-center whitespace-nowrap"
                 >
                   <span>{primaryBtnText || defaultPrimary}</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
                 </Link>
 
                 <Link
                   to={secondaryBtnTo}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#38BDF8]/60 bg-transparent px-7 py-3 text-sm font-semibold text-[#38BDF8] hover:bg-[#38BDF8]/10 hover:border-[#38BDF8] hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto"
+                  className="btn-outline text-center whitespace-nowrap"
                 >
                   <span>{secondaryBtnText || defaultSecondary}</span>
                 </Link>

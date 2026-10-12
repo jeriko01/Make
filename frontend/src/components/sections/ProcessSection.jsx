@@ -40,7 +40,7 @@ export default function ProcessSection() {
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
             <Reveal key={step.id} delay={i * 70}>
-              <div className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#0284C7]/40 hover:bg-[#111A30] hover:shadow-lg hover:shadow-[#0284C7]/10">
+              <div className="group relative flex h-full flex-col justify-between rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#38BDF8]/60 hover:bg-[#111A30] hover:shadow-[0_0_24px_rgba(56,189,248,0.2)]">
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-display text-4xl font-black text-[#1E2C4A] transition-colors group-hover:text-[#0284C7]/60">

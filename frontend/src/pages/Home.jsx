@@ -5,6 +5,7 @@ import About from '../components/sections/About'
 import Projects from '../components/sections/Projects'
 import ProcessSection from '../components/sections/ProcessSection'
 import PrinciplesSection from '../components/sections/PrinciplesSection'
+import TestimonialsSection from '../components/sections/TestimonialsSection'
 import FAQSection from '../components/sections/FAQSection'
 import CollaborateCTA from '../components/sections/CollaborateCTA'
 import { SiteDataProvider } from '../context/SiteDataContext'
@@ -21,6 +22,7 @@ function HomeContent() {
       <About brief />
       <ProcessSection />
       <PrinciplesSection />
+      <TestimonialsSection />
       <FAQSection limit={5} />
       <CollaborateCTA />
     </>

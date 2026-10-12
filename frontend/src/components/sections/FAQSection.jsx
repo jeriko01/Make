@@ -22,7 +22,7 @@ function FAQItem({ question, answer }) {
         <span className="font-display text-sm sm:text-base font-bold text-white hover:text-[#38BDF8] transition-colors">
           {question}
         </span>
-        <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#06080E] text-[#38BDF8] transition-transform duration-200 ${open ? 'rotate-180 bg-[#0284C7] text-white' : ''}`}>
+        <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#06080E] text-[#38BDF8] transition-transform duration-300 ease-out ${open ? 'rotate-180 bg-[#0284C7] text-white' : ''}`}>
           <ChevronDown className="h-4 w-4" />
         </span>
       </button>
@@ -30,7 +30,7 @@ function FAQItem({ question, answer }) {
         id={`faq-panel-${id}`}
         role="region"
         aria-labelledby={`faq-btn-${id}`}
-        className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-96' : 'max-h-0'}`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-1 pointer-events-none'}`}
       >
         <p className="pb-5 text-xs sm:text-sm leading-relaxed text-[#CBD5E1]">{answer}</p>
       </div>

@@ -19,14 +19,20 @@ export default function About({ brief = false }) {
     <section
       id="about"
       aria-label={brief ? 'Capabilities overview' : 'About Make'}
-      className="section-pad bg-[#06080E]"
+      className="relative section-pad bg-[#06080E] overflow-hidden"
     >
-      <div className="container-page">
+      {/* Subtle Ambient Background Glow */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[600px] rounded-full bg-[#0284C7]/5 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="container-page relative z-10">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Reveal>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-snug">
               {brief
-                ? (lang === 'so' ? 'Ku Qotoma 10+ Sano oo Khibrad ah' : 'Built on 10+ Years of Craft')
+                ? (lang === 'so' ? 'Ku Qotoma 3+ Sano oo Khibrad ah' : 'Built on 3+ Years of Craft')
                 : (lang === 'so' ? 'Faahfaahin Naga Saabsan' : 'About Make')}
             </h2>
             <p className="mt-3 mx-auto max-w-lg text-[14px] sm:text-[15px] text-[#94A3B8] leading-relaxed">
@@ -55,23 +61,23 @@ export default function About({ brief = false }) {
             )}
           </Reveal>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {about.cards.map((c, i) => (
-              <Reveal key={c.id} delay={i * 70}>
-                <div className="group rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-6 transition-all duration-200 hover:border-[#0284C7]/40 hover:bg-[#111A30] hover:shadow-lg hover:shadow-[#0284C7]/10">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#131F37] border border-[#0284C7]/30 text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
-                    <Icon name={c.icon} className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 font-display font-bold text-white group-hover:text-[#38BDF8] transition-colors">
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
-                    {c.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          {about.cards.map((c, i) => (
+            <Reveal key={c.id} delay={i * 70} className="h-full">
+              <div className="group h-full flex flex-col rounded-xl border border-[#1E2C4A] bg-[#0D1424] p-6 transition-all duration-200 hover:border-[#0284C7]/40 hover:bg-[#111A30] hover:shadow-lg hover:shadow-[#0284C7]/10">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#131F37] border border-[#0284C7]/30 text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
+                  <Icon name={c.icon} className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 font-display font-bold text-white group-hover:text-[#38BDF8] transition-colors">
+                  {c.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#94A3B8] flex-1">
+                  {c.description}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
         </div>
       </section>
     )

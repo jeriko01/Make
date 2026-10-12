@@ -1,224 +1,299 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import {
-  Mail, MapPin, Send, CheckCircle2, AlertCircle, ChevronDown,
-  Clock, Shield, MessageSquare, Globe, ArrowRight, Zap,
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  ChevronDown,
+  ArrowRight,
+  Zap,
 } from 'lucide-react'
 import { submitContact } from '../lib/contact'
 import { SiteDataProvider, useSiteData } from '../context/SiteDataContext'
+import { useLanguage } from '../context/LanguageContext'
 import PageLayout from '../components/layout/PageLayout'
 import Reveal from '../components/common/Reveal'
 
+/* â”€â”€ Service Options (Dual-Language) â”€â”€ */
 const SERVICE_OPTIONS = [
-  { value: '',                   label: 'Select a service…' },
-  { value: 'business-websites',  label: 'Business Websites' },
-  { value: 'landing-pages',      label: 'Landing Pages' },
-  { value: 'ecommerce',          label: 'E-Commerce Solutions' },
-  { value: 'custom-web-apps',    label: 'Custom Web Applications' },
-  { value: 'dashboards-booking', label: 'Dashboards & Booking Systems' },
-  { value: 'mobile-apps',        label: 'Mobile Apps (iOS & Android)' },
-  { value: 'api-database',       label: 'API & Database Integration' },
-  { value: 'maintenance',        label: 'Maintenance & Improvements' },
+  { value: '', label: 'Select a serviceâ€¦', labelSo: 'Dooro nooca adeeggaâ€¦' },
+  { value: 'custom-web-apps', label: 'Custom Web Applications (React / TypeScript)', labelSo: 'Codsiyada Web-ka (React / TypeScript)' },
+  { value: 'backend-api', label: 'High-Performance APIs (FastAPI / Node.js)', labelSo: 'API-yada Xawaaraha Sare (FastAPI / Node)' },
+  { value: 'mobile-apps', label: 'Cross-Platform Mobile Apps (Flutter / React Native)', labelSo: 'Codsiyada Mobile-ka (Flutter / React Native)' },
+  { value: 'cloud-devops', label: 'DevOps & Cloud Infrastructure (Docker / CI-CD)', labelSo: 'DevOps & Kaabayaasha Cloud (Docker / CI-CD)' },
+  { value: 'database-optimization', label: 'Database Architecture & Performance (PostgreSQL)', labelSo: 'Qaab-dhismeedka Database-ka (PostgreSQL)' },
+  { value: 'architecture-review', label: 'Architecture Review & Code Modernization', labelSo: 'Dib-u-eegista Qaab-dhismeedka & Casriyayn' },
 ]
 
 const SLUG_ALIASES = {
-  'business-portfolio-website': 'business-websites',
-  'landing-ecommerce': 'landing-pages',
+  'business-portfolio-website': 'custom-web-apps',
+  'landing-ecommerce': 'custom-web-apps',
   'web-application': 'custom-web-apps',
   'mobile-app': 'mobile-apps',
-  'backend-api': 'api-database',
+  'backend-api': 'backend-api',
+  'cloud-devops': 'cloud-devops',
 }
 
 const PLATFORM_OPTIONS = [
-  { value: '',            label: 'Target platform (optional)' },
-  { value: 'web',         label: 'Web browser only' },
-  { value: 'ios',         label: 'iOS (Apple App Store)' },
-  { value: 'android',     label: 'Android (Google Play)' },
-  { value: 'both-mobile', label: 'Cross-platform (iOS + Android)' },
-  { value: 'api-only',    label: 'API / Backend service only' },
+  { value: '', label: 'Target platform (optional)', labelSo: 'Platform-ka aad beegsanayso (ikhtiyaari)' },
+  { value: 'web', label: 'Web browser only', labelSo: 'Web kaliya' },
+  { value: 'both-mobile', label: 'Cross-platform Mobile (iOS + Android)', labelSo: 'Mobile Labadaba (iOS + Android)' },
+  { value: 'fullstack', label: 'Full-Stack (Web + Mobile + Backend)', labelSo: 'Full-Stack (Web + Mobile + API)' },
+  { value: 'api-only', label: 'Backend / Cloud API service only', labelSo: 'Backend / Cloud API kaliya' },
 ]
 
 const EMPTY_FORM = {
-  name: '', email: '', service: '', platform: '',
-  description: '', timeline: '', budget: '', website: '',
+  name: '',
+  email: '',
+  service: '',
+  platform: '',
+  description: '',
+  timeline: '',
+  budget: '',
+  website: '',
 }
 
-function validate(v) {
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+function validate(v, lang) {
   const e = {}
-  if (!v.name.trim())        e.name        = 'Please enter your name.'
-  if (!v.email.trim())       e.email       = 'Please enter your email address.'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email))
-                             e.email       = 'Please enter a valid email address.'
-  if (!v.service)            e.service     = 'Please select a service.'
-  if (!v.description.trim()) e.description = 'Please describe your project briefly.'
-  else if (v.description.trim().length < 20)
-                             e.description = 'Please provide at least 20 characters.'
+  if (!v.name.trim()) {
+    e.name = lang === 'so' ? 'Fadlan geli magacaaga.' : 'Please enter your name.'
+  } else if (v.name.trim().length < 2) {
+    e.name = lang === 'so' ? 'Magacu waa inuu ka koobnaadaa ugu yaraan 2 xaraf.' : 'Name must be at least 2 characters.'
+  }
+
+  if (!v.email.trim()) {
+    e.email = lang === 'so' ? 'Fadlan geli email-kaaga.' : 'Please enter your email address.'
+  } else if (!EMAIL_REGEX.test(v.email.trim())) {
+    e.email =
+      lang === 'so'
+        ? 'Fadlan geli email sax ah (tusaale: magac@domain.com).'
+        : 'Please enter a valid email address (e.g. name@company.com).'
+  }
+
+  if (!v.service) {
+    e.service = lang === 'so' ? 'Fadlan dooro adeegga aad u baahan tahay.' : 'Please select a service required.'
+  }
+
+  if (!v.description.trim()) {
+    e.description = lang === 'so' ? 'Fadlan qor faahfaahinta mashruucaaga.' : 'Please describe your project briefly.'
+  } else if (v.description.trim().length < 15) {
+    e.description =
+      lang === 'so'
+        ? 'Fadlan qor ugu yaraan 15 xaraf si aan u fahanno baahidaada.'
+        : 'Please provide at least 15 characters describing your scope.'
+  }
+
   return e
 }
 
-const SUPPORT_FAQ = [
-  { q: 'How quickly will I receive a reply?',
-    a: 'I review inquiries and respond within one business day with technical thoughts, recommended stack, and next steps.' },
-  { q: 'Do you work with international clients?',
-    a: 'Yes. All engagements are remote with asynchronous updates and scheduled video milestones.' },
-  { q: 'What information helps in the initial inquiry?',
-    a: 'Briefly mention the core goal, who will use it, any preferred tech constraints or existing repositories, and your target timeline.' },
-  { q: 'Will my contact information be shared?',
-    a: 'Never. Your name and email are solely used to communicate regarding your project inquiry.' },
-]
-
-const WHY_ITEMS = [
-  { icon: Clock,          title: '< 24h Response',      desc: 'Every inquiry reviewed and replied to within one business day.' },
-  { icon: Globe,          title: 'Remote-First',         desc: 'Fully async-friendly with structured milestone check-ins.' },
-  { icon: Shield,         title: 'NDA Available',        desc: 'Happy to sign NDAs before reviewing proprietary work.' },
-  { icon: MessageSquare,  title: 'Direct Communication', desc: 'You talk directly to the engineer — no account manager.' },
-]
-
+/* â”€â”€ FAQ Item Component â”€â”€ */
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="border-b border-[#1E2C4A] last:border-none">
       <button
         type="button"
-        onClick={() => setOpen(v => !v)}
-        className="flex w-full items-start justify-between gap-4 py-4 text-left focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-[#0284C7]"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-start justify-between gap-4 py-3.5 text-left focus-visible:rounded-lg focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
         aria-expanded={open}
       >
-        <span className="text-sm font-medium text-white transition-colors hover:text-[#38BDF8]">{q}</span>
-        <ChevronDown className={`mt-0.5 h-4 w-4 shrink-0 text-[#38BDF8] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <span className="text-xs sm:text-[13px] font-medium text-white transition-colors hover:text-[#38BDF8]">
+          {q}
+        </span>
+        <ChevronDown
+          className={`mt-0.5 h-3.5 w-3.5 shrink-0 text-[#38BDF8] transition-transform duration-200 ${
+            open ? 'rotate-180' : ''
+          }`}
+        />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-48' : 'max-h-0'}`}>
-        <p className="pb-4 text-xs leading-relaxed text-[#94A3B8]">{a}</p>
+        <p className="pb-3 text-xs leading-relaxed text-[#94A3B8]">{a}</p>
       </div>
     </div>
   )
 }
 
-function Field({ id, label, error, textarea, required, hint, ...props }) {
-  const base = `w-full rounded-xl border bg-[#06080E] px-4 py-3 text-sm text-white placeholder-[#4a5568] outline-none transition focus:ring-2 focus:ring-[#0284C7]/60 ${
-    error ? 'border-red-500/60' : 'border-[#1E2C4A] focus:border-[#0284C7]/60'
+/* â”€â”€ Reusable Input Field â”€â”€ */
+function Field({ id, label, error, textarea, required, hint, touched, ...props }) {
+  const isInvalid = Boolean(error && touched)
+  const base = `w-full rounded-xl border px-4 py-3 text-sm text-white placeholder-[#475569] outline-none transition duration-200 focus:ring-1 ${
+    isInvalid
+      ? 'border-rose-500/80 bg-rose-950/15 focus:border-rose-500 focus:ring-rose-500/30'
+      : 'border-[#1E2C4A] bg-[#06080E] focus:border-[#38BDF8] focus:ring-[#38BDF8]'
   }`
   return (
     <div>
       <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1]">
-        {label}{required && <span className="ml-1 text-[#38BDF8]" aria-hidden="true">*</span>}
+        {label}
       </label>
       {hint && <p className="mb-2 text-xs text-[#94A3B8]">{hint}</p>}
-      {textarea
-        ? <textarea id={id} rows={5} className={base} aria-invalid={!!error} aria-required={required} {...props} />
-        : <input id={id} className={base} aria-invalid={!!error} aria-required={required} {...props} />
-      }
-      {error && (
-        <p id={`${id}-err`} role="alert" className="mt-1.5 flex items-center gap-1.5 text-xs text-red-400">
-          <AlertCircle className="h-3.5 w-3.5 shrink-0" />{error}
+      {textarea ? (
+        <textarea id={id} rows={4} className={base} aria-invalid={isInvalid} aria-required={required} {...props} />
+      ) : (
+        <input id={id} className={base} aria-invalid={isInvalid} aria-required={required} {...props} />
+      )}
+      {isInvalid && (
+        <p id={`${id}-err`} role="alert" className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-400">
+          <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+          {error}
         </p>
       )}
     </div>
   )
 }
 
-function SelectField({ id, label, error, required, options, ...props }) {
+/* â”€â”€ Reusable Select Field â”€â”€ */
+function SelectField({ id, label, error, required, options, lang, touched, ...props }) {
+  const isInvalid = Boolean(error && touched)
+  const base = `w-full appearance-none rounded-xl border px-4 py-3 text-sm text-white outline-none transition duration-200 focus:ring-1 ${
+    isInvalid
+      ? 'border-rose-500/80 bg-rose-950/15 focus:border-rose-500 focus:ring-rose-500/30'
+      : 'border-[#1E2C4A] bg-[#06080E] focus:border-[#38BDF8] focus:ring-[#38BDF8]'
+  }`
   return (
     <div>
       <label htmlFor={id} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#CBD5E1]">
-        {label}{required && <span className="ml-1 text-[#38BDF8]" aria-hidden="true">*</span>}
+        {label}
       </label>
       <select
         id={id}
-        className={`w-full appearance-none rounded-xl border bg-[#06080E] px-4 py-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-[#0284C7]/60 ${
-          error ? 'border-red-500/60' : 'border-[#1E2C4A] focus:border-[#0284C7]/60'
-        }`}
-        aria-invalid={!!error}
+        className={base}
+        aria-invalid={isInvalid}
         aria-required={required}
         {...props}
       >
         {options.map((o) => (
-          <option key={o.value} value={o.value} className="bg-[#0D1424] text-white">{o.label}</option>
+          <option key={o.value} value={o.value} className="bg-[#0A0F1A] text-white">
+            {lang === 'so' && o.labelSo ? o.labelSo : o.label}
+          </option>
         ))}
       </select>
-      {error && (
-        <p id={`${id}-err`} role="alert" className="mt-1.5 flex items-center gap-1.5 text-xs text-red-400">
-          <AlertCircle className="h-3.5 w-3.5 shrink-0" />{error}
+      {isInvalid && (
+        <p id={`${id}-err`} role="alert" className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-400">
+          <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+          {error}
         </p>
       )}
     </div>
   )
 }
 
+/* â”€â”€ Clean Project Inquiry Form â”€â”€ */
 function InquiryForm() {
-  const { data } = useSiteData()
+  const { lang } = useLanguage()
   const [searchParams] = useSearchParams()
+
   const rawServiceParam = searchParams.get('service') || ''
   const resolvedService = SLUG_ALIASES[rawServiceParam] || rawServiceParam
 
-  const dbServices = data?.services && data.services.length > 0
-    ? data.services.map(s => ({ value: s.slug || s.title?.toLowerCase().replace(/\s+/g, '-'), label: s.title }))
-    : []
-
-  const serviceOptions = [
-    { value: '', label: 'Select a service…' },
-    ...(dbServices.length > 0 ? dbServices : SERVICE_OPTIONS.slice(1))
-  ]
-
   const [values, setValues] = useState(() => ({ ...EMPTY_FORM, service: resolvedService }))
   const [errors, setErrors] = useState({})
+  const [touched, setTouched] = useState({})
   const [formStatus, setFormStatus] = useState('idle')
   const [serverError, setServerError] = useState('')
+
   useEffect(() => {
     const svc = searchParams.get('service')
-    if (svc) setValues(v => ({ ...v, service: SLUG_ALIASES[svc] || svc }))
+    if (svc) setValues((v) => ({ ...v, service: SLUG_ALIASES[svc] || svc }))
   }, [searchParams])
 
-  const set = (k) => (ev) => setValues(v => ({ ...v, [k]: ev.target.value }))
+  const handleBlur = (field) => () => {
+    setTouched((prev) => ({ ...prev, [field]: true }))
+    const currentErrors = validate(values, lang)
+    setErrors(currentErrors)
+  }
+
+  const set = (k) => (ev) => {
+    const val = ev.target.value
+    setValues((v) => ({ ...v, [k]: val }))
+    if (touched[k]) {
+      const currentErrors = validate({ ...values, [k]: val }, lang)
+      setErrors(currentErrors)
+    }
+  }
 
   async function handleSubmit(ev) {
     ev.preventDefault()
-    if (values.website) return
-    const errs = validate(values)
+    if (values.website) return // Honeypot check
+    
+    const errs = validate(values, lang)
     setErrors(errs)
-    if (Object.keys(errs).length > 0) return
+    setTouched({
+      name: true,
+      email: true,
+      service: true,
+      description: true,
+    })
+
+    if (Object.keys(errs).length > 0) {
+      const firstFieldId = Object.keys(errs)[0]
+      document.getElementById(firstFieldId)?.focus()
+      return
+    }
+
     setFormStatus('submitting')
     setServerError('')
     try {
+      const selectedServiceObj = SERVICE_OPTIONS.find((o) => o.value === values.service)
+      const serviceLabel = selectedServiceObj?.label || values.service
+
       await submitContact({
-        name:    values.name,
-        email:   values.email,
-        subject: `Service inquiry: ${serviceOptions.find(o => o.value === values.service)?.label || values.service}`,
-        message: `Service: ${values.service}\nPlatform: ${values.platform || 'Not specified'}\nTimeline: ${values.timeline || 'Not specified'}\nBudget: ${values.budget || 'Not specified'}\n\n${values.description}`,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        subject: `Project Inquiry: ${serviceLabel}`,
+        message: `Service: ${serviceLabel}\nPlatform: ${values.platform || 'Not specified'}\nTimeline: ${values.timeline || 'Not specified'}\nBudget: ${values.budget || 'Not specified'}\n\nProject Scope:\n${values.description.trim()}`,
         website: values.website,
       })
       setFormStatus('success')
       setValues(EMPTY_FORM)
+      setTouched({})
+      setErrors({})
     } catch (err) {
       setFormStatus('error')
-      setServerError(err.message || 'Something went wrong. Please try again.')
+      setServerError(
+        err.message ||
+          (lang === 'so'
+            ? 'Cilad baa dhacday. Fadlan mar kale isku day ama toos iila soo xiriir.'
+            : 'Something went wrong. Please try again or email directly.')
+      )
     }
   }
 
   if (formStatus === 'success') {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-[#0284C7]/40 bg-[#0e1a0e] p-12 text-center" role="status">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#0284C7]/40 bg-[#131F37]">
-          <CheckCircle2 className="h-8 w-8 text-[#38BDF8]" />
+      <div
+        className="flex flex-col items-center rounded-2xl border border-[#38BDF8]/40 bg-[#0A0F1A] p-8 sm:p-12 text-center"
+        role="status"
+      >
+        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#38BDF8]/40 bg-[#06080E] shadow-[0_0_20px_rgba(56,189,248,0.25)]">
+          <CheckCircle2 className="h-7 w-7 text-[#38BDF8]" />
         </div>
-        <h3 className="mt-5 font-display text-2xl font-bold text-white">Inquiry received</h3>
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-[#94A3B8]">
-          Thanks for reaching out. I will review your requirements and reply by email — typically within one business day.
+        <h3 className="mt-5 font-display text-2xl font-bold text-white">
+          {lang === 'so' ? 'Farriintaada waa la helay' : 'Inquiry Received'}
+        </h3>
+        <p className="mx-auto mt-2.5 max-w-sm text-xs sm:text-sm leading-relaxed text-[#94A3B8]">
+          {lang === 'so'
+            ? 'Waad ku mahadsan tahay la-soo-xiriirkaaga. Waxaan dib u eegi doonaa baahidaada, waxaana kuugu soo jawaabi doonaa 24 saacadood gudahood.'
+            : 'Thank you for reaching out. I review all inquiries thoroughly and will reply by email within 24 business hours.'}
         </p>
-        <div className="mt-7 flex flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-sm">
+        <div className="mt-7 flex flex-row items-center justify-center gap-3 w-full max-w-xs flex-nowrap">
           <button
             type="button"
             onClick={() => setFormStatus('idle')}
-            className="btn-outline flex-1 sm:flex-initial shrink-0 justify-center px-3 sm:px-5 py-2.5 text-xs sm:text-sm text-center whitespace-nowrap"
+            className="btn-outline text-center whitespace-nowrap px-4 py-2 text-xs"
           >
-            Send another inquiry
+            {lang === 'so' ? 'Dir Farriin Kale' : 'Send Another'}
           </button>
           <Link
             to="/projects"
-            className="btn-lime flex-1 sm:flex-initial shrink-0 justify-center items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 text-xs sm:text-sm font-bold text-center whitespace-nowrap"
+            className="btn-lime text-center whitespace-nowrap px-4 py-2 text-xs"
           >
-            <span>View projects</span>
-            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+            <span>{lang === 'so' ? 'Mashaariicda' : 'View Projects'}</span>
+            <ArrowRight className="h-3.5 w-3.5 shrink-0" />
           </Link>
         </div>
       </div>
@@ -226,77 +301,145 @@ function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Project inquiry form" className="space-y-5">
+    <form onSubmit={handleSubmit} noValidate aria-label="Project inquiry form" className="space-y-4 sm:space-y-5">
 
-      {values.service && (
-        <div className="flex items-center justify-between rounded-xl border border-[#0284C7]/35 bg-[#131F37] px-4 py-3 text-xs">
-          <div className="flex items-center gap-2 text-[#38BDF8]">
-            <Zap className="h-3.5 w-3.5" />
-            <span>Selected: <strong>{SERVICE_OPTIONS.find(o => o.value === values.service)?.label || values.service}</strong></span>
-          </div>
-          <button type="button" onClick={() => setValues(v => ({ ...v, service: '' }))} className="text-[#94A3B8] underline hover:text-white transition text-xs">
-            Change
-          </button>
-        </div>
-      )}
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="name" label="Your Name" required type="text" autoComplete="name"
-          placeholder="Jane Doe" value={values.name} onChange={set('name')} error={errors.name} />
-        <Field id="email" label="Email Address" required type="email" autoComplete="email"
-          placeholder="jane@company.com" value={values.email} onChange={set('email')} error={errors.email} />
+      {/* Name & Email */}
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <Field
+          id="name"
+          label={lang === 'so' ? 'Magac' : 'Name'}
+          required
+          type="text"
+          autoComplete="name"
+          placeholder={lang === 'so' ? 'Magacaaga' : 'Your full name'}
+          value={values.name}
+          onChange={set('name')}
+          onBlur={handleBlur('name')}
+          touched={touched.name}
+          error={errors.name}
+        />
+        <Field
+          id="email"
+          label="Email"
+          required
+          type="email"
+          autoComplete="email"
+          placeholder="you@company.com"
+          value={values.email}
+          onChange={set('email')}
+          onBlur={handleBlur('email')}
+          touched={touched.email}
+          error={errors.email}
+        />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <SelectField id="service" label="Service Required" required
-          options={SERVICE_OPTIONS} value={values.service} onChange={set('service')} error={errors.service} />
-        <SelectField id="platform" label="Target Platform"
-          options={PLATFORM_OPTIONS} value={values.platform} onChange={set('platform')} />
+      {/* Service & Platform */}
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <SelectField
+          id="service"
+          label={lang === 'so' ? 'Adeeg' : 'Service'}
+          required
+          options={SERVICE_OPTIONS}
+          lang={lang}
+          value={values.service}
+          onChange={set('service')}
+          onBlur={handleBlur('service')}
+          touched={touched.service}
+          error={errors.service}
+        />
+        <SelectField
+          id="platform"
+          label={lang === 'so' ? 'Platform' : 'Platform'}
+          options={PLATFORM_OPTIONS}
+          lang={lang}
+          value={values.platform}
+          onChange={set('platform')}
+          onBlur={handleBlur('platform')}
+          touched={touched.platform}
+        />
       </div>
 
-      <Field id="description" label="Project Description & Goals" required textarea
-        hint="What are you building? Who will use it? What's the main goal?"
-        placeholder="Describe your product requirements, existing codebase or designs, and target functionality…"
-        value={values.description} onChange={set('description')} error={errors.description} />
+      {/* Description */}
+      <Field
+        id="description"
+        label={lang === 'so' ? 'Mashruuca' : 'Project'}
+        required
+        textarea
+        placeholder={
+          lang === 'so'
+            ? 'Sharax gaaban â€” maxaad dhisayso, iyo baahida ugu weynâ€¦'
+            : "Brief scope â€” what you're building and the core requirementâ€¦"
+        }
+        value={values.description}
+        onChange={set('description')}
+        onBlur={handleBlur('description')}
+        touched={touched.description}
+        error={errors.description}
+      />
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="timeline" label="Target Timeline (optional)" type="text"
-          placeholder="e.g. 4–6 weeks, Q2 release" value={values.timeline} onChange={set('timeline')} />
-        <Field id="budget" label="Estimated Budget (optional)" type="text"
-          placeholder="e.g. $3,000 – $7,000" value={values.budget} onChange={set('budget')} />
+      {/* Timeline & Budget */}
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <Field
+          id="timeline"
+          label={lang === 'so' ? 'Waqtiga' : 'Timeline'}
+          type="text"
+          placeholder={lang === 'so' ? 'Tusaale: 3â€“6 toddobaad' : 'e.g. 4â€“6 weeks'}
+          value={values.timeline}
+          onChange={set('timeline')}
+          onBlur={handleBlur('timeline')}
+          touched={touched.timeline}
+        />
+        <Field
+          id="budget"
+          label={lang === 'so' ? 'Miisaaniyad' : 'Budget'}
+          type="text"
+          placeholder={lang === 'so' ? 'Tusaale: $2,000 â€“ $5,000' : '$2,000 â€“ $10,000'}
+          value={values.budget}
+          onChange={set('budget')}
+          onBlur={handleBlur('budget')}
+          touched={touched.budget}
+        />
       </div>
 
-      <div className="absolute -left-[9999px]" aria-hidden="true">
-        <label htmlFor="website">Leave empty</label>
-        <input id="website" type="text" tabIndex={-1} autoComplete="off"
-          value={values.website} onChange={set('website')} />
+      {/* Anti-spam honeypot â€” completely hidden from view */}
+      <div className="hidden sr-only" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={values.website}
+          onChange={set('website')}
+        />
       </div>
 
       {formStatus === 'error' && (
-        <div className="flex items-start gap-3 rounded-xl border border-red-500/30 bg-red-950/20 px-4 py-3" role="alert">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
-          <p className="text-xs text-red-300">{serverError}</p>
+        <div
+          className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-950/20 px-4 py-3"
+          role="alert"
+        >
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-400" />
+          <p className="text-xs text-rose-300">{serverError}</p>
         </div>
       )}
 
-      <p className="text-[11px] text-[#4a5568]">
-        Your details are strictly used to respond to this inquiry and are never shared with third parties.
-      </p>
-
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={formStatus === 'submitting'}
-        className="btn-lime w-full gap-2.5 py-4 text-sm font-bold shadow-xl shadow-[#0284C7]/20 hover:shadow-[#0284C7]/35 transition-all"
+        className="btn-lime w-full gap-2 py-3.5 text-sm font-bold shadow-xl shadow-[#0284C7]/20 hover:shadow-[#0284C7]/35 transition-all text-center justify-center cursor-pointer"
       >
         {formStatus === 'submitting' ? (
           <>
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-            <span>Sending inquiry…</span>
+            <span>{lang === 'so' ? 'Dirayaâ€¦' : 'Sendingâ€¦'}</span>
           </>
         ) : (
           <>
-            <Send className="h-4 w-4" />
-            <span>Send project inquiry</span>
+            <Send className="h-4 w-4 shrink-0" />
+            <span>{lang === 'so' ? 'Dir Farriin' : 'Send Message'}</span>
           </>
         )}
       </button>
@@ -305,143 +448,162 @@ function InquiryForm() {
 }
 
 function SupportContent() {
+  const { lang } = useLanguage()
   const { data } = useSiteData()
   const info = data?.contact_info || {}
   const profile = data?.profile || {}
-  const email = profile.email || info.email || 'hello@make.dev'
-  const location = profile.location || info.location || 'Available Worldwide · Remote'
+  const email = profile.email || info.email || 'engmake1.1@gmail.com'
+  const location = profile.location || info.location || 'Available Worldwide Â· Remote'
+
+  const faqItems = [
+    {
+      q: lang === 'so' ? "Intee in le'eg ayay qaadataa jawaabta?" : 'How quickly will I receive a reply?',
+      a:
+        lang === 'so'
+          ? 'Waxaan dib u eegaa farriin kasta anigoo ku soo jawaabaya 24 saacadood gudahood, leh talo farsamo oo cad iyo talaabooyinka xiga.'
+          : 'I review all incoming scopes and reply within 24 business hours with concrete architectural recommendations and next steps.',
+    },
+    {
+      q: lang === 'so' ? 'Miyaad la shaqaysaa macaamiisha caalamiga ah?' : 'Do you take international remote engagements?',
+      a:
+        lang === 'so'
+          ? 'Haa, 100% shaqadeydu waa remote oo loogu talagalay shirkadaha caalamiga ah, anigoo isticmaalaya habab async ah iyo la-kulanno video ah.'
+          : 'Yes. All contracts are structured remote engagements with asynchronous progress tracking and milestone check-ins.',
+    },
+    {
+      q: lang === 'so' ? 'Maxaa ku dhacaya xuquuqda koodhka (IP)?' : 'How is intellectual property handled?',
+      a:
+        lang === 'so'
+          ? '100% xuquuqda koodhka, repositories-ka, iyo dukumiintiyada waxaa si toos ah loogu wareejiyaa macmiilka marka mashruucu dhammaado.'
+          : '100% source code, repository commits, and infrastructure access are cleanly transferred to you on milestone completion.',
+    },
+  ]
 
   return (
     <>
-      <div
-        className="relative overflow-hidden border-b border-[#1E2C4A] pt-32 pb-24"
-        style={{
-          backgroundImage: 'url(/images/support-hero-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="pointer-events-none absolute inset-0 bg-[#06080E]/82" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#06080E]" />
-        <div className="pointer-events-none absolute right-0 top-0 h-[450px] w-[450px] translate-x-1/3 rounded-full bg-[#0284C7]/8 blur-[130px]" />
+      {/* ── SECTION 1: HERO — Full-Vibrancy Studio Image, Clean Spacing & Bold Text ── */}
+      <section className="relative min-h-[520px] sm:min-h-[580px] overflow-hidden border-b border-[#1E2C4A] bg-[#06080E] pt-36 sm:pt-44 pb-20 sm:pb-28">
+        {/* Real engineering studio background image — 100% visible, zero obscuring color */}
+        <img
+          src="/images/support-hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+        />
+        {/* Soft bottom edge blend to transition cleanly into section 2 */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#06080E] via-[#06080E]/60 to-transparent" />
 
-        <div className="container-page relative z-10 mx-auto max-w-3xl text-center">
+        <div className="container-page relative z-10 mx-auto max-w-4xl text-center px-4 sm:px-6">
           <Reveal>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-              Let&apos;s build something{' '}
-              <span className="text-[#38BDF8]">together.</span>
+            {/* Main Headline — High Contrast & Larger Scale */}
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.12] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              {lang === 'so' ? (
+                <>
+                  <span className="block text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">Aan ka wadahadalno</span>
+                  <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#38BDF8] via-cyan-200 to-white bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+                    qorshahaaga farsamo.
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="block text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">Direct engineering for</span>
+                  <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#38BDF8] via-cyan-200 to-white bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+                    serious projects.
+                  </span>
+                </>
+              )}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#94A3B8] sm:text-lg">
-              Share your project vision, scope, or technical challenge. I reply with architecture recommendations, recommended stack, and estimated milestones.
+            {/* Subtext — Senior, Readable & Properly Spaced */}
+            <p className="mx-auto mt-6 sm:mt-7 max-w-2xl text-base sm:text-lg leading-relaxed text-[#F1F5F9] font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+              {lang === 'so'
+                ? "Wadahadal toos ah, dhex-dhexaad la'aan. Haddii aad casriyeynayso nidaam jira ama aad dhisayso madal cusub, iila wadaag faahfaahintaada farsamo si aan u dejino talaabooyinka xiga."
+                : "No sales reps, no layers in between. Whether you're modernizing an existing infrastructure or building a new product from scratch, send over your scope and let's map out the execution."}
             </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {WHY_ITEMS.map((item, i) => {
-                const IconComp = item.icon
-                return (
-                  <Reveal key={item.title} delay={i * 50}>
-                    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#1E2C4A] bg-[#0D1424]/80 p-4 text-center backdrop-blur-sm">
-                      <IconComp className="h-5 w-5 text-[#38BDF8]" />
-                      <p className="text-xs font-bold text-white">{item.title}</p>
-                      <p className="text-[10px] leading-snug text-[#94A3B8]">{item.desc}</p>
-                    </div>
-                  </Reveal>
-                )
-              })}
-            </div>
           </Reveal>
         </div>
-      </div>
+      </section>
 
-      <section className="section-pad bg-[#06080E]" aria-label="Contact and inquiry">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-
-          <div className="space-y-5">
-
+      {/* â”€â”€ SECTION 2: STREAMLINED TWO-COLUMN INTERACTION â”€â”€ */}
+      <section className="section-pad bg-[#06080E]" aria-label="Contact and inquiry form">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          
+          {/* Left Column: Direct Info & Quick FAQ */}
+          <div className="space-y-6">
+            
+            {/* Card 1: Direct Contact Details â€” Zero nested box borders */}
             <Reveal>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Direct Contact</p>
-                <h2 className="mt-2 font-display text-lg font-bold text-white">Get in touch</h2>
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0A0F1A] p-6 sm:p-7 shadow-lg">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">
+                  {lang === 'so' ? 'Xiriir Toos ah' : 'Direct Contact'}
+                </span>
+                <h2 className="mt-1 font-display text-base sm:text-lg font-bold text-white">
+                  {lang === 'so' ? 'Ila Soo Xiriir' : 'Reach Out Directly'}
+                </h2>
 
-                <div className="mt-5 space-y-4">
+                <div className="mt-5 space-y-3">
+                  {/* Email */}
                   <a
                     href={`mailto:${email}`}
-                    className="group flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5 transition hover:border-[#0284C7]/50 hover:bg-[#131F37]"
+                    className="group flex items-center gap-2.5 transition"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0284C7]/25 bg-[#131F37] text-[#38BDF8] transition group-hover:bg-[#0284C7] group-hover:text-white">
-                      <Mail className="h-4 w-4" />
+                    <Mail className="h-4 w-4 shrink-0 text-[#38BDF8]" />
+                    <span className="font-mono text-xs sm:text-[13px] text-white group-hover:text-[#38BDF8] transition truncate">
+                      {email}
                     </span>
-                    <div>
-                      <p className="text-[10px] text-[#94A3B8]">Email</p>
-                      <p className="text-xs font-semibold text-white group-hover:text-[#38BDF8] transition">{email}</p>
-                    </div>
                   </a>
 
-                  <div className="flex items-center gap-3 rounded-xl border border-[#1E2C4A] bg-[#06080E] p-3.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1E2C4A] bg-[#0D1424] text-[#38BDF8]">
-                      <MapPin className="h-4 w-4" />
+                  {/* Location */}
+                  <div className="flex items-center gap-2.5">
+                    <MapPin className="h-4 w-4 shrink-0 text-[#38BDF8]" />
+                    <span className="text-xs sm:text-[13px] text-[#94A3B8]">
+                      {location}
                     </span>
-                    <div>
-                      <p className="text-[10px] text-[#94A3B8]">Location</p>
-                      <p className="text-xs font-semibold text-white">{location}</p>
-                    </div>
                   </div>
-                </div>
 
-                <div className="mt-5 rounded-xl border border-[#0284C7]/25 bg-[#131F37] px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-[#38BDF8] shadow-[0_0_6px_rgba(82,254,125,0.8)]" />
-                    <p className="text-xs font-bold text-[#38BDF8]">Currently accepting new projects</p>
+                  {/* Availability */}
+                  <div className="flex items-center gap-2.5">
+                    <Zap className="h-4 w-4 shrink-0 text-[#38BDF8]" />
+                    <span className="text-xs sm:text-[13px] font-semibold text-white">
+                      {lang === 'so' ? 'Diyaar u ah Qandaraasyo Cusub' : 'Accepting New Contracts'}
+                    </span>
                   </div>
-                  <p className="mt-1.5 text-[11px] leading-relaxed text-[#94A3B8]">
-                    Replies within 24 business hours with concrete technical recommendations.
-                  </p>
                 </div>
               </div>
             </Reveal>
 
+            {/* Card 2: Common Questions Accordion */}
             <Reveal delay={80}>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Common Questions</p>
-                <h2 className="mt-2 mb-1 font-display text-base font-bold text-white">Quick answers</h2>
-                {SUPPORT_FAQ.map((item) => (
+              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0A0F1A] p-6 sm:p-7 shadow-lg">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">
+                  {lang === 'so' ? 'Su\'aalaha Badan' : 'FAQ'}
+                </span>
+                <h3 className="mt-1 mb-2 font-display text-sm font-bold text-white">
+                  {lang === 'so' ? 'Jawaabo Degdeg ah' : 'Quick Answers'}
+                </h3>
+                {faqItems.map((item) => (
                   <FAQItem key={item.q} q={item.q} a={item.a} />
                 ))}
               </div>
             </Reveal>
 
-            <Reveal delay={120}>
-              <div className="rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-5">
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-[#38BDF8]" />
-                  <p className="text-xs font-bold text-white">Confidentiality</p>
-                </div>
-                <p className="mt-2 text-xs leading-relaxed text-[#94A3B8]">
-                  NDAs are signed prior to reviewing any proprietary designs, codebases, or intellectual property.
-                </p>
-              </div>
-            </Reveal>
           </div>
 
+          {/* Right Column: High-Conversion Clean Form */}
           <Reveal delay={60}>
-            <div
-              className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0D1424] p-7 sm:p-9"
-              style={{ boxShadow: '0 0 0 1px rgba(57,167,81,0.08), 0 30px 60px rgba(0,0,0,0.6), 0 -1px 0 0 rgba(82,254,125,0.12)' }}
-            >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/40 to-transparent" />
-
-              <div className="mb-7 border-b border-[#1E2C4A] pb-6">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#38BDF8]">Project Inquiry</p>
-                <h2 className="mt-2 font-display text-2xl font-bold text-white">Tell me about your project</h2>
-                <p className="mt-1.5 text-sm text-[#94A3B8]">
-                  Fill in the details below and I&apos;ll come back with a concrete technical response.
-                </p>
+            <div className="relative overflow-hidden rounded-2xl border border-[#1E2C4A] bg-[#0A0F1A] p-6 sm:p-8 shadow-2xl">
+              {/* Top ambient cyan accent line */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#38BDF8]/60 to-transparent" />
+              <div className="mb-5 border-b border-[#1E2C4A] pb-4">
+                <h2 className="font-display text-xl sm:text-2xl font-bold text-white">
+                  {lang === 'so' ? 'Iiga warran mashruucaaga' : 'Start a project'}
+                </h2>
               </div>
 
               <InquiryForm />
             </div>
           </Reveal>
+
         </div>
       </section>
     </>
@@ -449,14 +611,21 @@ function SupportContent() {
 }
 
 export default function SupportPage() {
+  const { lang } = useLanguage()
+
   return (
     <SiteDataProvider>
       <PageLayout
-        title="Support"
-        description="Contact Make to discuss your web application, mobile app, API integration, or maintenance requirements."
+        title={lang === 'so' ? 'Taageero & Xiriir' : 'Support & Contact'}
+        description={
+          lang === 'so'
+            ? 'Kala xiriir Make wada-shaqeynta mashaariicda web-ka, apps-ka mobile-ka, DevOps, iyo API integration.'
+            : 'Contact Make to discuss custom web applications, mobile apps, DevOps pipelines, or backend API integrations.'
+        }
       >
         <SupportContent />
       </PageLayout>
     </SiteDataProvider>
   )
 }
+

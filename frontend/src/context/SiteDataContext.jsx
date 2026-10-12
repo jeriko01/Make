@@ -325,6 +325,7 @@ const FALLBACK_SITE_DATA = {
       },
     ],
   },
+  testimonials: [],
   social_links: [
     { id: 1, label: 'GitHub', url: 'https://github.com', icon: 'Github' },
     { id: 2, label: 'LinkedIn', url: 'https://linkedin.com', icon: 'Linkedin' },
